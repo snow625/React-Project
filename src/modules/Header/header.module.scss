@@ -1,0 +1,20 @@
+.header {
+  padding: 20px 0;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media screen and (min-width: 1280px) {
+  .header {
+    border: none;
+  }
+  .nav {
+    justify-content: left;
+    align-items: flex-end;
+  }
+}
