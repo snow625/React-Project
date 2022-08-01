@@ -64,3 +64,9 @@ ul {
     width: 1280px;
   }
 }
+
+.input {
+  @media (min-width: 768px) {
+    margin-bottom: 40px;
+  }
+}
