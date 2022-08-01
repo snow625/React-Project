@@ -5,8 +5,12 @@ export const instance = axios.create({
 });
 
 const setToken = (token = "") => {
-  instance.defaults.authorization = `Bearer ${token}`;
+  if (token) {
+    return (instance.defaults.headers.authorization = `Bearer ${token}`);
+  }
+  instance.defaults.headers.authorization = "";
 };
+
 export const registerInAPI = async (userData) => {
   const { data } = await instance.post("/auth/register", userData);
   setToken(data.accessToken);
