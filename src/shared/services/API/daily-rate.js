@@ -1,5 +1,6 @@
 import { instance } from "./auth";
 
+//PAY ATTENTION
 // userCharacteristics means object of this template:
 // {
 //   "weight": 100,

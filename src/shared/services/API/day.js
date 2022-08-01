@@ -1,5 +1,6 @@
 import { instance } from "./auth";
 
+//PAY ATTENTION
 // productCharacteristics means object of this template:
 //{
 //   "productId": "5d51694802b2373622ff552c",
