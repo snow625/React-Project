@@ -13,7 +13,6 @@ const setToken = (token = "") => {
 
 export const registerInAPI = async (userData) => {
   const { data } = await instance.post("/auth/register", userData);
-  setToken(data.accessToken);
   return data;
 };
 
@@ -24,7 +23,7 @@ export const loginInAPI = async (userData) => {
 };
 
 export const logoutFromAPI = async (token) => {
-  const { data } = await instance.post("/logout", token);
+  const { data } = await instance.post("/auth/logout", token);
   return data;
 };
 
