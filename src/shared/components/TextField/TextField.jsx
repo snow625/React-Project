@@ -1,7 +1,7 @@
 import { nanoid } from "@reduxjs/toolkit";
 import { useMemo } from "react";
 import PropTypes from "prop-types";
-import s from "./textField.module.css";
+import s from "./textField.module.scss";
 
 const TextField = (props) => {
   const {

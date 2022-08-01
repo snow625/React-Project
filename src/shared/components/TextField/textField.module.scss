@@ -1,0 +1,38 @@
+.wrapper {
+  width: 240px;
+  flex-direction: column;
+}
+
+.label {
+  font-family: "Verdana";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  color: #9b9faa;
+}
+
+.input {
+  width: 100%;
+  display: block;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  outline: transparent;
+  text-align: center;
+  margin-bottom: 32px;
+
+  font-family: "Verdana";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.21;
+  color: #9b9faa;
+
+  @media (min-width: 768px) {
+    margin-bottom: 40px;
+  }
+}
+.input:focus,
+.input:hover {
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+}
