@@ -1,0 +1,15 @@
+.title {
+  font-size: 35px;
+}
+.pageContainer {
+  text-align: center;
+}
+.wrapper {
+  margin-top: 120px;
+}
+.link {
+  text-decoration: none;
+  cursor: pointer;
+  color: inherit;
+  font-size: 20px;
+}

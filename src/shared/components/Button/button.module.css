@@ -1,0 +1,18 @@
+.btn {
+  background-color: transparent;
+  outline: transparent;
+  padding: 5px 15px;
+  border-radius: 10px;
+  border: 1px solid grey;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.btn:active {
+  background-color: wheat;
+  color: white;
+}
+.btn:focus,
+.btn:hover {
+  outline: 1px solid rgb(61, 61, 66);
+}
