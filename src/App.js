@@ -1,6 +1,7 @@
 
 function App() {
-  return <h2>Project</h2>
+  return <h2>ionTest</h2>
+  
 }
 
 export default App;
