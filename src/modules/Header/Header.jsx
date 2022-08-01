@@ -1,16 +1,16 @@
-import Contaiter from "../../shared/components/Contaiter";
 import Logo from "./Logo";
 import HeaderAuth from "./HeaderAuth/HeaderAuth";
 import UserMenu from "./UserMenu";
-
+import Button from "../../shared/components/Button";
 const Header = () => {
   return (
     <header>
-      <Contaiter>
+      <div className="container">
         <Logo />
+        <Button text="bdsads" />
         <HeaderAuth />
         <UserMenu />
-      </Contaiter>
+      </div>
     </header>
   );
 };
