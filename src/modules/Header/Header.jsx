@@ -7,7 +7,8 @@ const Header = () => {
     <header>
       <div className="container">
         <Logo />
-        <Button text="bdsads" />
+        <Button text="Start losing weight" />
+        <Button text=" Register" white="true" />
         <HeaderAuth />
         <UserMenu />
       </div>

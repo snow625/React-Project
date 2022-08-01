@@ -1,15 +1,20 @@
 import PropTypes from "prop-types";
-import s from "./button.module.css";
+import s from "./button.module.scss";
 
 const Button = (props) => {
-  const { type, text, onClick } = props;
+  const { type, text, onClick, white } = props;
+  const setClass = () => {
+    return white? s.btn_white : s.btn;
+  }
   return (
-    <button className={s.btn} onClick={onClick} type={type}>
+    <button className={setClass()} onClick={onClick} type={type}>
       {text}
     </button>
   );
 };
+
 Button.defaultProps = {
+  white: false,
   type: "submit",
   onClick: () => {},
 };
