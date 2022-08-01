@@ -1,5 +1,5 @@
-import { Navigate, Outlet } from "react-router-dom";
-import useIsLogin from "../../hooks/useisLogin";
+import { Outlet } from "react-router-dom";
+// import useIsLogin from "../../hooks/useisLogin";
 
 const PublikRoute = () => {
   //   const isLogin = useIsLogin();
