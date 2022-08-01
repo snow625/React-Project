@@ -1,16 +1,17 @@
 import Logo from "./Logo";
 import HeaderAuth from "./HeaderAuth/HeaderAuth";
 import UserMenu from "./UserMenu";
-import Button from "../../shared/components/Button";
+import s from './header.module.scss';
+
 const Header = () => {
   return (
-    <header>
+    <header className={s.header}>
       <div className="container">
+        <nav className={s.nav}>
         <Logo />
-        <Button text="Start losing weight" />
-        <Button text=" Register" white="true" />
         <HeaderAuth />
-        <UserMenu />
+        {/* <UserMenu /> */}
+        </nav>
       </div>
     </header>
   );
