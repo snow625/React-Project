@@ -1,6 +1,8 @@
-// import { Link } from "react-router-dom";
-// import style from "./homePage.module.css";
+import CalculateForm from "../../modules/CalculateForm/CalculateForm";
 const HomePage = () => {
-  return <p>HomePage</p>;
+  const handleClick = (data) => {
+    console.log(data);
+  };
+  return <CalculateForm onSubmit={handleClick} />;
 };
 export default HomePage;

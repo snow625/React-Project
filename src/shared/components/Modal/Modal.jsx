@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
-
 import PropTypes from "prop-types";
+import style from "./modal.module.scss";
+import sprite from "../../../images/svg/sprite.svg";
 
-import style from "./modal.module.css";
 
 const modalPlace = document.getElementById("modal-root");
 
@@ -24,7 +24,16 @@ const Modal = (props) => {
 
   return createPortal(
     <div onClick={handleClose} className={style.overlay}>
-      <div className={style.modal}>{children}</div>
+      <div className={style.modal}>
+        <button className={style.close_btn} type="button" aria-label="button close">
+          <svg className={style.close_icon} >
+            <use href={sprite + "#icon-close"} />
+          </svg>
+        </button>
+        <div className={style.container}>
+        {children}
+        </div>
+      </div>
     </div>,
     modalPlace
   );
