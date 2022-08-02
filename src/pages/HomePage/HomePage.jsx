@@ -2,6 +2,9 @@
 import CalculateForm from "../../modules/CalculateForm/CalculateForm";
 
 const HomePage = () => {
-  return <CalculateForm />;
+  const handleClick = (data) => {
+    console.log(data);
+  };
+  return <CalculateForm onSubmit={handleClick} />;
 };
 export default HomePage;
