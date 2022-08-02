@@ -12,7 +12,7 @@ const setToken = (token = "") => {
 };
 
 export const registerInAPI = async (userData) => {
-  const { data } = await instance.post("/auth/register", userData);
+  const data = await instance.post("/auth/register", userData);
   return data;
 };
 

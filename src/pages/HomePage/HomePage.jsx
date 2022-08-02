@@ -1,4 +1,5 @@
 import CalculateForm from "../../modules/CalculateForm/CalculateForm";
+
 const HomePage = () => {
   const handleClick = (data) => {
     console.log(data);

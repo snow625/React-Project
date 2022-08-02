@@ -9,6 +9,7 @@ const HomePage = lazy(() => import("./pages/HomePage"));
 const LoginPage = lazy(() => import("./pages/LoginPage"));
 const RegisterPage = lazy(() => import("./pages/RegisterPage"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
+
 const CalculatePage = lazy(() => import("./pages/CalculatePage"));
 const DiaryPage = lazy(() => import("./pages/DiaryPage"));
 
@@ -17,8 +18,6 @@ const UserRoutes = () => {
     <Suspense fallback={<p>...Loading page</p>}>
       <Routes>
         <Route element={<PublikRoute />}>
-          <Route path={"/"} element={<HomePage />} />
-          <Route path={"/react-project"} element={<HomePage />} />
           <Route path={"/login"} element={<LoginPage />} />
           <Route path={"/register"} element={<RegisterPage />} />
         </Route>
@@ -28,6 +27,8 @@ const UserRoutes = () => {
           <Route path={"/diary"} element={<DiaryPage />} />
         </Route>
 
+        <Route path={"/react-project"} element={<HomePage />} />
+        <Route path={"/"} element={<HomePage />} />
         <Route path={"*"} element={<NotFoundPage />} />
       </Routes>
     </Suspense>
