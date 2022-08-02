@@ -1,1 +1,1 @@
-export { default } from "./CalculatePage";
+export { default } from "./DiaryPage";

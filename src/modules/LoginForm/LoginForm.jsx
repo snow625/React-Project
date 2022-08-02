@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 import useForm from "../../shared/hooks/useForm";
 import TextField from "../../shared/components/TextField/TextField";
 import Button from "../../shared/components/Button";
@@ -12,6 +13,12 @@ const LoginForm = ({ onSubmit }) => {
     isReset: true,
   });
 
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    return navigate("/register");
+  };
+
   const { email, password } = state;
 
   return (
@@ -23,11 +30,23 @@ const LoginForm = ({ onSubmit }) => {
         {...fields.password}
       />
       <Button type="submit" text="Login" />
-      <Link to="/register">
-        <Button type="button" text="Register" white="true" />
-      </Link>
+
+      <Button
+        onClick={handleClick}
+        type="button"
+        text="Register"
+        white="true"
+      />
     </form>
   );
+};
+
+LoginForm.defaultProps = {
+  onSubmit: () => {},
+};
+
+LoginForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default LoginForm;
