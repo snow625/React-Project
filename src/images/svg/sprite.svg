@@ -28,5 +28,8 @@
 <path stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="2.6667" d="M8 8l16 16"></path>
 <path stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="2.6667" d="M8 24l16-16"></path>
 </symbol>
+<symbol id="icon-remove" viewBox="0 0 12 12">
+<path d="m1 1 9.826 10M1 11l9.826-10" stroke="#9B9FAA" stroke-width="2"/>
+</symbol>
 </defs>
 </svg>
