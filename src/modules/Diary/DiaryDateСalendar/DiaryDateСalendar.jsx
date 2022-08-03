@@ -7,16 +7,18 @@ import styles from "./diaryDateСalendar.module.scss";
 const DiaryDateCalendar = () => {
   const [startDate, setStartDate] = useState(new Date());
   return (
-    <div className={styles.wrapper}>
-      <DatePicker
-        className={styles.datePicker}
-        selected={startDate}
-        onChange={(date) => setStartDate(date)}
-        dateFormat="dd.MM.yyyy"
-      />
-      <svg className={styles.icon}>
-        <use href={sprite + "#icon-add"}></use>
-      </svg>
+    <div className="container">
+      <div className={styles.wrapper}>
+        <DatePicker
+          className={styles.datePicker}
+          selected={startDate}
+          onChange={(date) => setStartDate(date)}
+          dateFormat="dd.MM.yyyy"
+        />
+        <svg className={styles.icon}>
+          <use href={sprite + "#icon-calendar"}></use>
+        </svg>
+      </div>
     </div>
   );
 };

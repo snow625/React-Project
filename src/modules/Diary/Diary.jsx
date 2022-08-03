@@ -2,11 +2,11 @@ import DiaryDateCalendar from "./DiaryDateСalendar/DiaryDateСalendar";
 import DiaryAddProductForm from "./DiaryAddProductForm/DiaryAddProductForm";
 import DiaryProductsList from "./DiaryProductsList";
 import CircleButton from "../../shared/components/CircleButton/CircleButton";
-// import styles from "./diary.module.scss";
+import styles from "./diary.module.scss";
 
 const Diary = () => {
   return (
-    <div>
+    <div className={styles.wrapper}>
       <DiaryDateCalendar />
       <DiaryAddProductForm />
       <DiaryProductsList />
