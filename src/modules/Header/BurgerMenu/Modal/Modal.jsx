@@ -4,7 +4,6 @@ import s from "./modal.module.scss";
 
 const Modal = ({onToggle}) => {
   return (
-    <div className={s.backdrop + s.isHidden}>
       <div className={s.modal}>
           <ul className={s.list}>
             <li className={s.item}>
@@ -15,7 +14,6 @@ const Modal = ({onToggle}) => {
             </li>
           </ul>
       </div>
-    </div>
   );
 };
 

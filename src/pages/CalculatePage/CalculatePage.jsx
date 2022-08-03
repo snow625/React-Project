@@ -1,5 +1,10 @@
+import CalculatorСalorieForm from "../../modules/CalculatorСalorieForm";
+
 const CalculatePage = () => {
-  return <h2>CalculatePage</h2>;
+  const handleClick = (data) => {
+    console.log(data);
+  };
+  return <CalculatorСalorieForm onSubmit={handleClick} />;
 };
 
 export default CalculatePage;
