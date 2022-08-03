@@ -1,9 +1,12 @@
 import { NavLink } from "react-router-dom";
+import { createPortal } from "react-dom";
 import PropTypes from 'prop-types'
 import s from "./modal.module.scss";
 
+const modalPlace = document.getElementById("burger-root");
+
 const Modal = ({onToggle}) => {
-  return (
+  return createPortal (
       <div className={s.modal}>
           <ul className={s.list}>
             <li className={s.item}>
@@ -13,7 +16,8 @@ const Modal = ({onToggle}) => {
               <NavLink onClick={onToggle} className={s.link} to="/calculate">Calculator</NavLink>
             </li>
           </ul>
-      </div>
+      </div>,
+      modalPlace
   );
 };
 
