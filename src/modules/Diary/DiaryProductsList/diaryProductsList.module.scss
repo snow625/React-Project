@@ -3,6 +3,10 @@
   max-height: 260px;
   overflow: auto;
 
+  @media (max-width: 676px) {
+    margin-bottom: 60px;
+  }
+
   @media (min-width: 768px) {
     max-width: 480px;
   }
