@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import { userLogout } from "../../../redux/auth/auth-operation";
 import { userName } from "../../../redux/auth/auth-selector";
-import s from "./user-menu.module.scss";
+import s from "./user-info.module.scss";
 
-const UserMenu = () => {
+const UserInfo = () => {
   const dispatch = useDispatch();
   const name = useSelector(userName);
   const handleClick = () => {
@@ -20,4 +20,4 @@ const UserMenu = () => {
   );
 };
 
-export default UserMenu;
+export default UserInfo;
