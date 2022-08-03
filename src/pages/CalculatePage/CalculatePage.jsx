@@ -8,7 +8,10 @@ const CalculatePage = () => {
   };
   return (
     <div className={style.wrapper}>
-      <CalculatorСalorieForm onSubmit={handleClick} />
+      <div className={style.form}>
+        <CalculatorСalorieForm onSubmit={handleClick} />
+      </div>
+
       <RightSideBar />
     </div>
   );
