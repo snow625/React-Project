@@ -1,0 +1,95 @@
+.addForm {
+  display: block;
+  @media (min-width: 768px) {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 60px;
+  }
+}
+
+.wrapperProduct {
+  width: 285px;
+
+  @media (max-width: 767px) {
+    margin-bottom: 32px;
+  }
+
+  @media (min-width: 768px) {
+    width: 240px;
+    margin-right: 22px;
+  }
+
+  @media (min-width: 1280px) {
+    margin-right: 48px;
+  }
+}
+
+.wrapperGrams {
+  width: 285px;
+
+  @media (max-width: 767px) {
+    margin-bottom: 60px;
+  }
+  @media (min-width: 768px) {
+    width: 106px;
+  }
+}
+
+.label {
+  font-family: "Verdana";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  color: #9b9faa;
+}
+
+.labelGrams {
+  composes: label;
+  @media (min-width: 768px) {
+    display: block;
+    text-align: right;
+  }
+}
+
+.input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  outline: none;
+  text-align: center;
+  font-family: "Verdana";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.21;
+  color: #9b9faa;
+}
+
+.input:focus,
+.input:hover {
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background-color: #fc842d;
+
+  @media (max-width: 767px) {
+    margin: 0 auto;
+  }
+
+  @media (min-width: 768px) {
+    margin-left: 87px;
+  }
+
+  @media (min-width: 768px) {
+    margin-left: 60px;
+  }
+}
