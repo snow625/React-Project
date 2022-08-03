@@ -18,9 +18,9 @@ const App = () => {
     <>
       <Header />
       <main>
-        <div className="container">
-          <UserRoutes />
-        </div>
+        {/* <div className="container"> */}
+        <UserRoutes />
+        {/* </div> */}
       </main>
     </>
   );
