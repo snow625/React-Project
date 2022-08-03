@@ -42,9 +42,13 @@
 
 @media screen and (min-width: 1280px) {
   .header {
+    padding-top: 0;
     position: absolute;
+    top: 80px;
+    left: calc(50% - 640px);
     border: none;
-    position: absolute;
+
+    // margin-left: 52px;
   }
   .nav {
     justify-content: left;
