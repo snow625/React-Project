@@ -24,7 +24,12 @@ const RegisterForm = ({ onSubmit }) => {
   return (
     <form onSubmit={handleSubmit}>
       <TextField onChange={handleChange} value={username} {...fields.name} />
-      <TextField onChange={handleChange} value={email} {...fields.email} />
+      <TextField
+        onChange={handleChange}
+        value={email}
+        {...fields.email}
+        pattern="(?![^@]{3})/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@a-zA-Z0-9?(?:.a-zA-Z0-9?)*$/"
+      />
       <TextField
         onChange={handleChange}
         value={password}
