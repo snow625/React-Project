@@ -23,6 +23,12 @@
   fill: currentColor;
 }
 
+@media screen and (min-width: 768px) {
+  .btn {
+    top: 25%;
+  }
+}
+
 @media screen and (min-width: 1280px) {
   .btn {
     display: none;
