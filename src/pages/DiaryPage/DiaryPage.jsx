@@ -1,11 +1,12 @@
 import Diary from "../../modules/Diary/Diary";
-
+import RightSideBar from "../../shared/components/RightSideBar";
+import style from "./diaryPage.module.scss";
 const DiaryPage = () => {
   return (
-    <>
-      <h2>DiaryPage</h2>
+    <div className={style.wrapper}>
       <Diary />
-    </>
+      <RightSideBar />
+    </div>
   );
 };
 
