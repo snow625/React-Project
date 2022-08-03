@@ -1,8 +1,17 @@
-import PropTypes from "prop-types";
+import { useEffect } from "react";
 import sprite from "../../../images/svg/sprite.svg";
+import PropTypes from "prop-types";
 import s from "./burger-menu.module.scss";
 
 const BurgerMenu = ({ onToggle, modalState }) => {
+  useEffect(() => {
+    if (modalState) {
+      document.body.style.overflow = "hidden";
+    } else if (!modalState) {
+      document.body.style.overflow = "auto";
+    }
+  }, [modalState]);
+
   return (
     <button className={s.btn} onClick={onToggle}>
       {!modalState ? (
