@@ -1,11 +1,11 @@
 import { NavLink } from "react-router-dom";
-import s from './user-navigate.module.scss';
+import s from './navigation.module.scss';
 
 const getLinkClassName = ({ isActive }) => {
   return isActive ? s.linkActive : s.link;
 };
 
-const UserNavigate = () => {
+const Navigation = () => {
   return (
     <ul className={s.list}>
       <li className={s.item}>
@@ -18,4 +18,4 @@ const UserNavigate = () => {
   );
 };
 
-export default UserNavigate;
+export default Navigation;
