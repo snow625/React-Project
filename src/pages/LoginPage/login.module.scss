@@ -1,0 +1,21 @@
+.wrapper {
+  padding-top: 40px;
+
+  @media (min-width: 768px) {
+    padding-top: 160px;
+  }
+
+  @media (min-width: 1280px) {
+    padding-top: 300px;
+  }
+}
+.title {
+  font-size: 14px;
+  line-height: 0.9;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 60px;
+  @media (max-width: 768px) {
+    text-align: center;
+  }
+}

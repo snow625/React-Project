@@ -7,7 +7,7 @@ import styles from "./diaryDateСalendar.module.scss";
 const DiaryDateCalendar = () => {
   const [startDate, setStartDate] = useState(new Date());
   return (
-    <div className="container">
+    <div className="wrapper_container">
       <div className={styles.wrapper}>
         <DatePicker
           className={styles.datePicker}

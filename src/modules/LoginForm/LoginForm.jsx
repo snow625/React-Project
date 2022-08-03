@@ -6,6 +6,8 @@ import Button from "../../shared/components/Button";
 import fields from "./fields";
 import initialState from "./initialState";
 
+import style from "./loginForm.module.scss";
+
 const LoginForm = ({ onSubmit }) => {
   const { state, handleChange, handleSubmit } = useForm({
     onSubmit,
@@ -29,14 +31,15 @@ const LoginForm = ({ onSubmit }) => {
         value={password}
         {...fields.password}
       />
-      <Button type="submit" text="Login" />
-
-      <Button
-        onClick={handleClick}
-        type="button"
-        text="Register"
-        white="true"
-      />
+      <div className={style.button_wrapper}>
+        <Button type="submit" text="Login" />
+        <Button
+          onClick={handleClick}
+          type="button"
+          text="Register"
+          white="true"
+        />
+      </div>
     </form>
   );
 };

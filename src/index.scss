@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap");
 
 :root {
   --text-color: #9b9faa;
@@ -68,5 +68,11 @@ ul {
   @media (min-width: 1280px) {
     padding: 0 15px;
     width: 1280px;
+  }
+}
+.wrapper_container {
+  @extend .container;
+  @media (min-width: 1280px) {
+    width: 100%;
   }
 }

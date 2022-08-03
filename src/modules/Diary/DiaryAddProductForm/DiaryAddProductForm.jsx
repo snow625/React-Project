@@ -3,7 +3,7 @@ import fields from "./fields";
 import styles from "./diaryAddProductForm.module.scss";
 const DiaryAddProductForm = () => {
   return (
-    <div className="container">
+    <div className="wrapper_container">
       <form className={styles.addForm}>
         <div className={styles.wrapperProduct}>
           <label htmlFor={"product"} className={styles.label}>

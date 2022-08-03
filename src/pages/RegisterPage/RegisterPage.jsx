@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { createNewUser } from "../../redux/auth/auth-operation";
 import RegisterForm from "../../modules/RegisterForm/RegisterForm";
 
+import style from "./registrerPage.module.scss";
+
 const RegisterPage = () => {
   const dispatch = useDispatch();
   const onSubmit = useCallback(
@@ -13,8 +15,8 @@ const RegisterPage = () => {
   );
 
   return (
-    <div className="container">
-      <h2>Register new user:</h2>
+    <div className={`container ${style.wrapper}`}>
+      <h2 className={style.title}>Register:</h2>
       <RegisterForm onSubmit={onSubmit} />
     </div>
   );

@@ -9,6 +9,11 @@
     height: 38px;
     margin-bottom: 60px;
   }
+
+  @media (min-width: 480px) and (max-width: 767px) {
+    margin: 0 auto;
+    margin-bottom: 32px;
+  }
 }
 
 .datePicker {

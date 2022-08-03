@@ -6,6 +6,8 @@ import Button from "../../shared/components/Button";
 import fields from "./fields";
 import initialState from "./initialState";
 
+import style from "./registerForm.module.scss";
+
 const RegisterForm = ({ onSubmit }) => {
   const { state, handleChange, handleSubmit } = useForm({
     onSubmit,
@@ -28,9 +30,10 @@ const RegisterForm = ({ onSubmit }) => {
         value={password}
         {...fields.password}
       />
-      <Button type="submit" text="Register" />
-
-      <Button onClick={handleClick} type="button" text="Login" white="true" />
+      <div className={style.button_wrapper}>
+        <Button type="submit" text="Register" />
+        <Button onClick={handleClick} type="button" text="Login" white="true" />
+      </div>
     </form>
   );
 };

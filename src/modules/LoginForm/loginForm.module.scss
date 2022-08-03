@@ -1,0 +1,10 @@
+.button_wrapper {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  @media (min-width: 768px) {
+    flex-direction: row;
+    gap: 32px;
+  }
+}

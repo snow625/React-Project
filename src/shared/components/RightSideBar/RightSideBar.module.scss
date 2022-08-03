@@ -54,11 +54,11 @@
   .flexbox {
     width: 250px;
   }
-  
-  .title { 
+
+  .title {
     margin-bottom: 40px;
   }
-  
+
   .sub_title {
     margin-bottom: 40px;
   }
@@ -67,7 +67,9 @@
 @media screen and (min-width: 1280px) {
   .backbox {
     align-items: center;
-    // width: 100%;
+    padding-top: 290px;
+    padding-bottom: 265px;
+    padding-left: 100px;
   }
 
   .box {
