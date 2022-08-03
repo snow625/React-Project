@@ -1,0 +1,13 @@
+.list {
+  max-width: 280px;
+  max-height: 260px;
+  overflow: auto;
+
+  @media (min-width: 768px) {
+    max-width: 480px;
+  }
+
+  @media (min-width: 1280px) {
+    max-width: 622px;
+  }
+}

@@ -1,6 +1,11 @@
 .listItem {
   display: flex;
   align-items: baseline;
+  margin-right: 14px;
+
+  @media (min-width: 768px) {
+    margin-right: 40px;
+  }
 }
 
 .listItem:not(:last-child) {
