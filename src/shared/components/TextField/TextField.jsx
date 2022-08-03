@@ -1,7 +1,8 @@
 import { nanoid } from "@reduxjs/toolkit";
 import { useMemo } from "react";
 import PropTypes from "prop-types";
-import s from "./textField.module.scss";
+
+import style from "./textField.module.scss";
 
 const TextField = (props) => {
   const {
@@ -19,14 +20,14 @@ const TextField = (props) => {
   const id = useMemo(() => nanoid(), []);
 
   return (
-    <div className={s.wrapper}>
-      <label htmlFor={id} className={s.label}>
+    <div className={style.wrapper}>
+      <label htmlFor={id} className={style.label}>
         {label}
       </label>
       <input
         onChange={onChange}
         id={id}
-        className={s.input}
+        className={style.input}
         type={type}
         name={name}
         value={value}
@@ -40,7 +41,7 @@ const TextField = (props) => {
 };
 TextField.defaultProps = {
   type: "text",
-  required: false,
+  required: true,
   onChange: () => {},
 };
 
