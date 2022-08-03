@@ -3,7 +3,7 @@ import styles from "./diaryProductsListItem.module.scss";
 
 const DiaryListItem = () => {
   return (
-    <div className={styles.listItem}>
+    <li className={styles.listItem}>
       <span className={styles.product}>Pork</span>
       <span className={styles.grams}>100 g</span>
       <span className={styles.calories}>320 kcal</span>
@@ -12,7 +12,7 @@ const DiaryListItem = () => {
           <use href={sprite + "#icon-remove"}></use>
         </svg>
       </button>
-    </div>
+    </li>
   );
 };
 

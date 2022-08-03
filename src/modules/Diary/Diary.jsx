@@ -1,17 +1,12 @@
-import { useState } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import DiaryDateCalendar from "./DiaryDateСalendar/DiaryDateСalendar";
 import DiaryAddProductForm from "./DiaryAddProductForm/DiaryAddProductForm";
 import DiaryProductsList from "./DiaryProductsList";
+import styles from "./diary.module.css";
+
 const Diary = () => {
-  const [startDate, setStartDate] = useState(new Date());
   return (
     <>
-      <DatePicker
-        selected={startDate}
-        onChange={(date) => setStartDate(date)}
-        dateFormat="dd.MM.yyyy"
-      />
+      <DiaryDateCalendar />
       <DiaryAddProductForm />
       <DiaryProductsList />
     </>
