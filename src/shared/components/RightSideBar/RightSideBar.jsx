@@ -4,7 +4,6 @@ const RightSideBar = () => {
   return (
     <>
       <div className={style.backbox}>
-        <div className="container">
           <div className={style.box}>
             <div className={style.summary}>
               <h3 className={style.title}>Summary for 06/20/2020</h3>
@@ -36,7 +35,6 @@ const RightSideBar = () => {
               <p className={style.text}>Your diet will be displayed here</p>
             </div>
           </div>
-        </div>
       </div>
     </>
   );
