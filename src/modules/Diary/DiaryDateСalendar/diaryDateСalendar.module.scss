@@ -1,3 +1,12 @@
+.wrapper {
+  position: relative;
+  width: 160px;
+
+  @media (min-width: 768px) {
+    width: 270px;
+  }
+}
+
 .datePicker {
   margin-bottom: 32px;
   font-size: 18px;
@@ -10,5 +19,10 @@
   @media (min-width: 768px) {
     margin-bottom: 60px;
     font-size: 34px;
+    line-height: 1.28;
   }
+}
+
+.icon {
+  width: 20px;
 }

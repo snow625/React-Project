@@ -45,7 +45,7 @@
 }
 
 .labelGrams {
-  composes: label;
+  @extend .label;
   @media (min-width: 768px) {
     display: block;
     text-align: right;
