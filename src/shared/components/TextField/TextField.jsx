@@ -21,9 +21,6 @@ const TextField = (props) => {
 
   return (
     <div className={style.wrapper}>
-      <label htmlFor={id} className={style.label}>
-        {label}
-      </label>
       <input
         onChange={onChange}
         id={id}
@@ -36,6 +33,9 @@ const TextField = (props) => {
         pattern={pattern}
         title={title}
       />
+      <label htmlFor={id} className={style.label}>
+        {label}
+      </label>
     </div>
   );
 };
