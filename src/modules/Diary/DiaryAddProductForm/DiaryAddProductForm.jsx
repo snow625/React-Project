@@ -17,11 +17,6 @@ const DiaryAddProductForm = () => {
           </label>
           <input id={"grams"} className={styles.input} {...fields.grams} />
         </div>
-        {/* <button className={styles.btn} type="submit" aria-label="Add product">
-          <svg className={styles.icon}>
-            <use href={sprite + "#icon-add"}></use>
-          </svg>
-        </button> */}
         <CircleButton type="submit" label="Add product button" />
       </form>
     </div>

@@ -1,14 +1,18 @@
 .wrapper {
   position: relative;
   width: 160px;
+  height: 20px;
+  margin-bottom: 32px;
 
   @media (min-width: 768px) {
     width: 270px;
+    height: 38px;
+    margin-bottom: 60px;
   }
 }
 
 .datePicker {
-  margin-bottom: 32px;
+  // margin-bottom: 32px;
   font-size: 18px;
   line-height: 1.17;
   font-weight: 700;
@@ -17,12 +21,15 @@
   cursor: pointer;
 
   @media (min-width: 768px) {
-    margin-bottom: 60px;
     font-size: 34px;
     line-height: 1.28;
   }
 }
 
 .icon {
-  width: 20px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 18px;
+  height: 20px;
 }
