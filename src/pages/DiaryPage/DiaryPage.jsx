@@ -4,7 +4,9 @@ import style from "./diaryPage.module.scss";
 const DiaryPage = () => {
   return (
     <div className={style.wrapper}>
-      <Diary />
+      <div className={style.diary}>
+        <Diary />
+      </div>
       <RightSideBar />
     </div>
   );

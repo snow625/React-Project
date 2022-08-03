@@ -6,9 +6,12 @@ const CalculatePage = () => {
   const handleClick = (data) => {
     console.log(data);
   };
+
   return (
     <div className={style.wrapper}>
-      <CalculatorСalorieForm onSubmit={handleClick} />
+      <div className={style.form}>
+        <CalculatorСalorieForm onSubmit={handleClick} />
+      </div>
       <RightSideBar />
     </div>
   );
