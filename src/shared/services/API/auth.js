@@ -31,6 +31,7 @@ export const getCurrentUser = async (token) => {
   setToken(token);
   try {
     const { data } = await instance.get("/user");
+    console.log(data);
     return data;
   } catch (error) {
     setToken();

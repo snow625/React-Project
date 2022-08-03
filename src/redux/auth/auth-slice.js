@@ -13,7 +13,8 @@ export const initialState = {
   loading: false,
   error: null,
   id: "",
-  todaySummary: {},
+  summary: {},
+  foodNotAllowed: [],
 };
 
 const pending = (store) => ({
@@ -50,7 +51,8 @@ const authSlice = createSlice({
       accessToken: payload.accessToken,
       isLogin: true,
       user: payload.user,
-      todaySummary: payload.todaySummary,
+      summary: payload.todaySummary,
+      foodNotAllowed: payload.user.userData.notAllowedProducts,
       id: payload.id,
     }),
 
@@ -65,6 +67,8 @@ const authSlice = createSlice({
       loading: false,
       isLogin: true,
       user: payload,
+      foodNotAllowed: payload.userData.notAllowedProducts,
+      // summary: payload.days[0].daySummary,
     }),
   },
 });
