@@ -14,6 +14,7 @@ const RadioField = (props) => {
     type,
     pattern,
     title,
+    checked,
   } = props;
 
   const id = useMemo(() => nanoid(), []);
@@ -34,6 +35,7 @@ const RadioField = (props) => {
         required={required}
         pattern={pattern}
         title={title}
+        checked={checked}
       />
     </div>
   );

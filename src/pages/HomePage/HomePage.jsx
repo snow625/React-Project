@@ -1,9 +1,9 @@
-import CalculateForm from "../../modules/CalculateForm/CalculateForm";
+import CalculatorСalorieForm from "../../modules/CalculatorСalorieForm";
 
 const HomePage = () => {
   const handleClick = (data) => {
     console.log(data);
   };
-  return <CalculateForm onSubmit={handleClick} />;
+  return <CalculatorСalorieForm onSubmit={handleClick} />;
 };
 export default HomePage;

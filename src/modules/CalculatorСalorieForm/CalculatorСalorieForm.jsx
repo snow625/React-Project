@@ -1,4 +1,4 @@
-import style from "./CalculateForm.module.scss";
+import style from "./calculatorСalorieForm.module.scss";
 import Button from "../../shared/components/Button";
 import TextField from "../../shared/components/TextField";
 import RadioField from "../../shared/components/RadioField";
@@ -6,7 +6,7 @@ import RadioField from "../../shared/components/RadioField";
 import useForm from "../../shared/hooks/useForm";
 import initialState from "./initialState";
 
-const CalculateForm = ({ onSubmit }) => {
+const CalculatorСalorieForm = ({ onSubmit }) => {
   const { state, handleChange, handleSubmit } = useForm({
     onSubmit,
     initialState,
@@ -100,4 +100,4 @@ const CalculateForm = ({ onSubmit }) => {
   );
 };
 
-export default CalculateForm;
+export default CalculatorСalorieForm;
