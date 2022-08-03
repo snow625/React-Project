@@ -1,5 +1,8 @@
 .addForm {
-  display: block;
+  @media (max-width: 767px) {
+    display: none;
+  }
+
   @media (min-width: 768px) {
     display: flex;
     align-items: flex-end;
@@ -45,7 +48,7 @@
 }
 
 .labelGrams {
-  composes: label;
+  @extend .label;
   @media (min-width: 768px) {
     display: block;
     text-align: right;
@@ -69,27 +72,4 @@
 .input:hover {
   border: none;
   border-bottom: 1px solid #e0e0e0;
-}
-
-.btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 48px;
-  height: 48px;
-  border: none;
-  border-radius: 50%;
-  background-color: #fc842d;
-
-  @media (max-width: 767px) {
-    margin: 0 auto;
-  }
-
-  @media (min-width: 768px) {
-    margin-left: 87px;
-  }
-
-  @media (min-width: 768px) {
-    margin-left: 60px;
-  }
 }
