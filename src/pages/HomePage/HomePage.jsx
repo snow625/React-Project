@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useIsLogin from "../../shared/hooks/useisLogin";
+
 import CalculatorСalorieForm from "../../modules/CalculatorСalorieForm";
 import Modal from "../../shared/components/Modal";
 import ModalText from "../../shared/components/ModalText";
@@ -17,7 +17,6 @@ const initialState = {
 const HomePage = () => {
   const [state, setState] = useState(initialState);
   const navigate = useNavigate();
-  const isLogin = useIsLogin();
 
   const handleClick = async (data) => {
     setState((prevState) => ({ ...prevState, error: null, loading: true }));
@@ -49,7 +48,7 @@ const HomePage = () => {
     return navigate("/register");
   };
 
-  const { calories, notAllowedProducts, isModalOpen, loading, error } = state;
+  const { calories, notAllowedProducts, isModalOpen } = state;
   return (
     <>
       <div className={`${style.wrapper} container`}>
