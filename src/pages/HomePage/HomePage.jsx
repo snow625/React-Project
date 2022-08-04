@@ -32,9 +32,23 @@ const HomePage = () => {
       const result = await getDailyRateInGeneral(dataValuesToNumbers);
       const { dailyRate, notAllowedProducts } = result;
 
+      // const products = () => {
+      //   return notAllowedProducts.length > 10 ? notAllowedProducts.slice(0,10) : notAllowedProducts
+      // }
+
       const products = () => {
-        return notAllowedProducts.length > 10 ? notAllowedProducts.slice(0,10) : notAllowedProducts
-      }
+        if (notAllowedProducts.length > 10) {
+          const randomIdx = [];
+
+          for (let i = 0; i < 10; i += 1) {
+            randomIdx.push(
+              Math.floor(Math.random() * (notAllowedProducts.length - 1) + 1)
+            );
+          }
+          return notAllowedProducts.filter((_, idx) => randomIdx.includes(idx));
+        }
+        return notAllowedProducts;
+      };
 
       const calories = Math.trunc(dailyRate);
       setState((prevState) => ({
