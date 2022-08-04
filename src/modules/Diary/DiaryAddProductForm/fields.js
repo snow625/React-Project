@@ -4,8 +4,8 @@ const fields = {
     required: true,
     type: "text",
   },
-  grams: {
-    name: "grams",
+  weight: {
+    name: "weight",
     required: true,
     type: "text",
   },
