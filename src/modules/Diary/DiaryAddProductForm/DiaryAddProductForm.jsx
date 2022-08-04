@@ -13,14 +13,23 @@ const initialState = {
   id: null,
   weight: "",
 };
-const DiaryAddProductForm = () => {
-  const addProduct = () => {};
-
+const DiaryAddProductForm = ({ onSubmit }) => {
   const { state, setState, handleChange, handleSubmit } = useForm({
-    addProduct,
+    onSubmit,
     initialState,
   });
   const { product, foundProducts, currentProduct, weight } = state;
+
+  const handleFocus = () => {
+    setState((prevState) => {
+      return {
+        ...prevState,
+        foundProducts: [],
+        currentProduct: "",
+        id: null,
+      };
+    });
+  };
 
   useEffect(() => {
     const findProduct = async (product) => {
@@ -48,6 +57,7 @@ const DiaryAddProductForm = () => {
       ...prevState,
       product: selectedProduct,
       currentProduct: selectedProduct,
+      foundProducts: [],
       id: requiredId,
     }));
   };
@@ -64,6 +74,8 @@ const DiaryAddProductForm = () => {
             className={styles.input}
             value={product}
             onChange={handleChange}
+            onFocus={handleFocus}
+            autoComplete="off"
             {...fields.product}
           />
           {foundProducts.length > 0 && (

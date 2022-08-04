@@ -1,6 +1,7 @@
 .select {
   position: absolute;
-  bottom: 0px;
+  bottom: -50px;
+  width: inherit;
   left: 0;
   outline: none;
   background-color: white;

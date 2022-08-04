@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import sprite from "../../../images/svg/sprite.svg";
 import styles from "./diaryDateСalendar.module.scss";
 
+
 const DiaryDateCalendar = ({fetchDayInfo}) => {
   const [startDate, setStartDate] = useState(new Date());
 
@@ -18,13 +19,14 @@ const DiaryDateCalendar = ({fetchDayInfo}) => {
   }, [])
 
 
+
   return (
     <div className="wrapper_container">
       <div className={styles.wrapper}>
         <DatePicker
           className={styles.datePicker}
-          selected={startDate}
-          onChange={(date) => setStartDate(date)}
+          selected={date}
+          onChange={(date) => setDate(date)}
           dateFormat="dd.MM.yyyy"
         />
         <svg className={styles.icon}>

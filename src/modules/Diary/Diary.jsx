@@ -10,6 +10,7 @@ import styles from "./diary.module.scss";
 
 
 const Diary = () => {
+
   const [state, setState] = useState({
     dayId: null,
     eatenProducts: [],
@@ -76,6 +77,7 @@ const Diary = () => {
       <DiaryDateCalendar fetchDayInfo={fetchDayInfo} />
       <DiaryAddProductForm />
       <DiaryProductsList eatenProducts={state.eatenProducts} onClick={deleteItem} />
+
       <CircleButton type="button" label="Add product button" mobile={true} />
     </div>
   );
