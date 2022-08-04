@@ -1,11 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import sprite from "../../../images/svg/sprite.svg";
 import styles from "./diaryDateСalendar.module.scss";
 
-const DiaryDateCalendar = () => {
-  const [date, setDate] = useState(new Date());
+
+const DiaryDateCalendar = ({fetchDayInfo}) => {
+  const [startDate, setStartDate] = useState(new Date());
+
+  const currentDate = {
+    date: startDate.toISOString().slice(0, 10),
+  } 
+
+  useEffect(() => {
+
+    fetchDayInfo(currentDate)
+  }, [])
+
+
 
   return (
     <div className="wrapper_container">

@@ -26,7 +26,7 @@ const CalculatorСalorieForm = ({ onSubmit }) => {
         </h2>
         <form onSubmit={handleSubmit}>
           <div className={style.containerInputForm}>
-            <div>
+            <div className={style.inputFormFirst}>
               <TextField
                 onChange={handleChange}
                 value={height}

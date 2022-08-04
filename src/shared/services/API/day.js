@@ -14,8 +14,7 @@ export const postEatenProduct = async (date, productCharacteristics) => {
 };
 
 export const getInfoForDay = async (date) => {
-  const body = { date };
-  const { data } = await instance.post("/day/info", body);
+  const { data } = await instance.post("/day/info", date);
   return data;
 };
 
