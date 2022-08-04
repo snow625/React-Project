@@ -5,29 +5,8 @@ import {
   getUser,
   userLogout,
 } from "./auth-operation";
-
-export const initialState = {
-  user: {},
-  accessToken: "",
-  isLogin: false,
-  loading: false,
-  error: null,
-  id: "",
-  summary: {},
-  foodNotAllowed: [],
-};
-
-const pending = (store) => ({
-  ...store,
-  loading: true,
-  error: null,
-});
-
-const rejected = (store, { payload }) => ({
-  ...store,
-  loading: false,
-  error: payload.message,
-});
+import { pending, rejected } from "../../shared/utils/pendingRejected";
+import initialState from "./initialState";
 
 const authSlice = createSlice({
   name: "auth",
@@ -48,12 +27,12 @@ const authSlice = createSlice({
     [loginOldUser.fulfilled]: (store, { payload }) => ({
       ...store,
       loading: false,
-      accessToken: payload.accessToken,
+      token: payload.accessToken,
       isLogin: true,
-      user: payload.user,
-      summary: payload.todaySummary,
-      foodNotAllowed: payload.user.userData.notAllowedProducts,
-      id: payload.id,
+      user: {
+        userId: payload.user.id,
+        userName: payload.user.username,
+      },
     }),
 
     [userLogout.pending]: pending,
@@ -66,9 +45,7 @@ const authSlice = createSlice({
       ...store,
       loading: false,
       isLogin: true,
-      user: payload,
-      foodNotAllowed: payload.userData.notAllowedProducts,
-      // summary: payload.days[0].daySummary,
+      user: { userId: payload.id, userName: payload.username },
     }),
   },
 });

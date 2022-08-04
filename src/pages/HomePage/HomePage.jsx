@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useIsLogin from "../../shared/hooks/useisLogin";
+
 import CalculatorСalorieForm from "../../modules/CalculatorСalorieForm";
 import Modal from "../../shared/components/Modal";
 import ModalText from "../../shared/components/ModalText";
@@ -17,18 +17,44 @@ const initialState = {
 const HomePage = () => {
   const [state, setState] = useState(initialState);
   const navigate = useNavigate();
-  const isLogin = useIsLogin();
 
   const handleClick = async (data) => {
     setState((prevState) => ({ ...prevState, error: null, loading: true }));
+    console.log(data)
+
+    let dataValuesToNumbers = {};
+
+    Object.entries(data).forEach(([key, value]) => {
+      dataValuesToNumbers[key] = Number(value)
+    })
+    
     try {
-      const result = await getDailyRateInGeneral(data);
+      const result = await getDailyRateInGeneral(dataValuesToNumbers);
       const { dailyRate, notAllowedProducts } = result;
+
+      // const products = () => {
+      //   return notAllowedProducts.length > 10 ? notAllowedProducts.slice(0,10) : notAllowedProducts
+      // }
+
+      const products = () => {
+        if (notAllowedProducts.length > 10) {
+          const randomIdx = [];
+
+          for (let i = 0; i < 10; i += 1) {
+            randomIdx.push(
+              Math.floor(Math.random() * (notAllowedProducts.length - 1) + 1)
+            );
+          }
+          return notAllowedProducts.filter((_, idx) => randomIdx.includes(idx));
+        }
+        return notAllowedProducts;
+      };
+
       const calories = Math.trunc(dailyRate);
       setState((prevState) => ({
         ...prevState,
         calories,
-        notAllowedProducts,
+        notAllowedProducts: products(),
         loading: false,
         isModalOpen: true,
       }));
@@ -49,7 +75,7 @@ const HomePage = () => {
     return navigate("/register");
   };
 
-  const { calories, notAllowedProducts, isModalOpen, loading, error } = state;
+  const { calories, notAllowedProducts, isModalOpen } = state;
   return (
     <>
       <div className={`${style.wrapper} container`}>

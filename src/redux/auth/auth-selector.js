@@ -6,9 +6,9 @@ export const userData = (store) => {
 };
 
 export const userName = (store) => {
-  return store.auth.user.username;
+  return store.auth.user.userName;
 };
 
 export const getUserId = (store) => {
-  return store.auth.user.id;
+  return store.auth.user.userId;
 };

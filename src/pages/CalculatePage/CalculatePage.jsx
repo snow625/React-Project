@@ -24,14 +24,40 @@ const CalculatePage = () => {
 
   const handleClick = async (data) => {
     setState((prevState) => ({ ...prevState, error: null, loading: true }));
+
+    let dataValuesToNumbers = {};
+
+    Object.entries(data).forEach(([key, value]) => {
+      dataValuesToNumbers[key] = Number(value);
+    });
+
     try {
-      const result = await getDailyRateForUser(userId, data);
+      const result = await getDailyRateForUser(userId, dataValuesToNumbers);
       const { dailyRate, notAllowedProducts, summaries } = result;
+
+      // const products = () => {
+      //   return notAllowedProducts.length > 10 ? notAllowedProducts.slice(0,10) : notAllowedProducts
+      // }
+
+      const products = () => {
+        if (notAllowedProducts.length > 10) {
+          const randomIdx = [];
+
+          for (let i = 0; i < 10; i += 1) {
+            randomIdx.push(
+              Math.floor(Math.random() * (notAllowedProducts.length - 1) + 1)
+            );
+          }
+          return notAllowedProducts.filter((_, idx) => randomIdx.includes(idx));
+        }
+        return notAllowedProducts;
+      };
+
       const calories = Math.trunc(dailyRate);
       setState((prevState) => ({
         ...prevState,
         calories,
-        notAllowedProducts,
+        notAllowedProducts: products(),
         loading: false,
         isModalOpen: true,
       }));
