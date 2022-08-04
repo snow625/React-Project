@@ -6,6 +6,7 @@ import RightSideBar from "../../shared/components/RightSideBar";
 import Modal from "../../shared/components/Modal";
 import ModalText from "../../shared/components/ModalText";
 import { getUserId } from "../../redux/auth/auth-selector";
+import { makeRandomProducts } from "../../shared/utils/randomFunctions";
 import { getDailyRateForUser } from "../../shared/services/API/daily-rate";
 import style from "./calculatePage.module.scss";
 
@@ -33,31 +34,19 @@ const CalculatePage = () => {
 
     try {
       const result = await getDailyRateForUser(userId, dataValuesToNumbers);
-      const { dailyRate, notAllowedProducts, summaries } = result;
+      const { dailyRate, notAllowedProducts } = result;
 
       // const products = () => {
       //   return notAllowedProducts.length > 10 ? notAllowedProducts.slice(0,10) : notAllowedProducts
       // }
 
-      const products = () => {
-        if (notAllowedProducts.length > 10) {
-          const randomIdx = [];
-
-          for (let i = 0; i < 10; i += 1) {
-            randomIdx.push(
-              Math.floor(Math.random() * (notAllowedProducts.length - 1) + 1)
-            );
-          }
-          return notAllowedProducts.filter((_, idx) => randomIdx.includes(idx));
-        }
-        return notAllowedProducts;
-      };
+      const products = makeRandomProducts(notAllowedProducts)
 
       const calories = Math.trunc(dailyRate);
       setState((prevState) => ({
         ...prevState,
         calories,
-        notAllowedProducts: products(),
+        notAllowedProducts: products,
         loading: false,
         isModalOpen: true,
       }));

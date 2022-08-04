@@ -5,6 +5,7 @@ import CalculatorСalorieForm from "../../modules/CalculatorСalorieForm";
 import Modal from "../../shared/components/Modal";
 import ModalText from "../../shared/components/ModalText";
 import { getDailyRateInGeneral } from "../../shared/services/API/daily-rate";
+import { makeRandomProducts } from "../../shared/utils/randomFunctions";
 import style from "./homePage.module.scss";
 
 const initialState = {
@@ -36,25 +37,13 @@ const HomePage = () => {
       //   return notAllowedProducts.length > 10 ? notAllowedProducts.slice(0,10) : notAllowedProducts
       // }
 
-      const products = () => {
-        if (notAllowedProducts.length > 10) {
-          const randomIdx = [];
-
-          for (let i = 0; i < 10; i += 1) {
-            randomIdx.push(
-              Math.floor(Math.random() * (notAllowedProducts.length - 1) + 1)
-            );
-          }
-          return notAllowedProducts.filter((_, idx) => randomIdx.includes(idx));
-        }
-        return notAllowedProducts;
-      };
+      const products = makeRandomProducts(notAllowedProducts)
 
       const calories = Math.trunc(dailyRate);
       setState((prevState) => ({
         ...prevState,
         calories,
-        notAllowedProducts: products(),
+        notAllowedProducts: products,
         loading: false,
         isModalOpen: true,
       }));
