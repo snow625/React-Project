@@ -7,10 +7,10 @@ import { instance } from "./auth";
 //   "weight": 100
 // }
 
-export const postEatenProduct = async (date, productCharacteristics) => {
-  const body = { date, ...productCharacteristics };
-  const { data } = await instance.post("/day", body);
-  return data;
+export const postEatenProduct = async (data) => {
+  const { data: result } = await instance.post("/day", data);
+  console.log(result);
+  return result;
 };
 
 export const getInfoForDay = async (date) => {

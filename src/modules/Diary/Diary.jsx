@@ -3,6 +3,7 @@ import DiaryAddProductForm from "./DiaryAddProductForm/DiaryAddProductForm";
 import DiaryProductsList from "./DiaryProductsList";
 import CircleButton from "../../shared/components/CircleButton/CircleButton";
 import { getInfoForDay } from "../../shared/services/API/day";
+import { addProduct } from "../../redux/summary/summary-operation";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setSummary } from "../../redux/summary/summary-slice";
@@ -30,7 +31,13 @@ const Diary = () => {
     const { id, weight } = productData;
     const { data } = state;
     const updatedWeight = Number(weight);
-    console.log({ productId: id, weight: updatedWeight, date: data.date });
+    const totalProductInfo = {
+      productId: id,
+      weight: updatedWeight,
+      date: data.date,
+    };
+    console.log(totalProductInfo);
+    dispatch(addProduct(totalProductInfo));
   };
 
   const deleteItem = (id) => {
