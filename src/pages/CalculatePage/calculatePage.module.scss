@@ -3,12 +3,19 @@
     padding: 0 15px;
     width: 1280px;
     display: flex;
-
+    align-items: baseline;
     margin: 0 auto;
   }
-  .form {
-    padding-top: 155px;
-    padding-right: 133px;
-    padding-bottom: 110px;
+}
+.form {
+  padding-top: 32px;
+  padding-bottom: 41px;
+  @media (min-width: 768px) {
+    padding-top: 100px;
+    padding-bottom: 48px;
+  }
+  @media (min-width: 1280px) {
+    padding-top: 293px;
+    padding-right: 139px;
   }
 }

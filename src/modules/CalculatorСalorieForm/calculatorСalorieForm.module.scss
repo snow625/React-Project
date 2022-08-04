@@ -1,5 +1,11 @@
 .wrapper {
-  padding-bottom: 40px;
+  width: 280px;
+  @media (min-width: 768px) {
+    width: 704px;
+  }
+  @media (min-width: 1280px) {
+    width: 608px;
+  }
 }
 
 .title {
@@ -10,20 +16,12 @@
   line-height: 1.44;
   color: #212121;
 
-  margin-top: 32px;
   margin-bottom: 32px;
   @media (min-width: 768px) {
-    width: 704px;
     font-size: 34px;
-    line-height: 1.21;
+    line-height: 1.2;
 
-    margin-top: 100px;
     margin-bottom: 68px;
-  }
-
-  @media (min-width: 1280px) {
-    width: 608px;
-    margin-top: 140px;
   }
 }
 
@@ -32,8 +30,10 @@
   font-family: "Verdana";
   font-weight: 700;
   font-size: 14px;
-  line-height: 1.21;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
   color: #9b9faa;
+  margin-top: 40px;
   @media (min-width: 768px) {
     padding-bottom: 20px;
     border-bottom: 1px solid #e0e0e0;
@@ -41,26 +41,26 @@
 }
 
 .radioButton {
-  margin-top: 8px;
+  margin-top: 8.5px;
   display: flex;
   width: 240px;
   justify-content: space-between;
 }
 
 .containerInputForm {
-  margin-bottom: 40px;
-
   @media (min-width: 768px) {
-    height: 180px;
+    // height: 180px;
     display: flex;
-    margin-bottom: 60px;
   }
 }
+
 .inputFormButton {
   display: flex;
   justify-content: center;
+  margin-top: 40px;
   @media (min-width: 768px) {
     display: block;
+    margin-top: 20px;
   }
   @media (min-width: 1280px) {
     margin-left: 323px;
