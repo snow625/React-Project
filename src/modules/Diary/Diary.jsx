@@ -5,10 +5,12 @@ import CircleButton from "../../shared/components/CircleButton/CircleButton";
 import styles from "./diary.module.scss";
 
 const Diary = () => {
+  const handleFormSubmit = () => {};
+
   return (
     <div className={styles.wrapper}>
       <DiaryDateCalendar />
-      <DiaryAddProductForm />
+      <DiaryAddProductForm onSubmit={handleFormSubmit} />
       <DiaryProductsList />
       <CircleButton type="button" label="Add product button" mobile={true} />
     </div>
