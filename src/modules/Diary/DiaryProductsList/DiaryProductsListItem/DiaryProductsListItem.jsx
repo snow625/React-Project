@@ -1,19 +1,31 @@
+import PropTypes from "prop-types";
 import sprite from "../../../../images/svg/sprite.svg";
 import styles from "./diaryProductsListItem.module.scss";
 
-const DiaryListItem = () => {
+const DiaryListItem = ({ title, weight, kcal, id, onClick }) => {
   return (
-    <li className={styles.listItem}>
-      <span className={styles.product}>Pork</span>
-      <span className={styles.grams}>100 g</span>
-      <span className={styles.calories}>320 kcal</span>
-      <button className={styles.btn}>
+    <li className={styles.listItem} key={id}>
+      <span className={styles.product}>{title}</span>
+      <span className={styles.grams}>{weight}</span>
+      <span className={styles.calories}>{kcal} kcal</span>
+      <button className={styles.btn} onClick={() => onClick(id)} aria-label="button delete element">
         <svg className={styles.icon}>
           <use href={sprite + "#icon-remove"}></use>
         </svg>
       </button>
     </li>
   );
+};
+
+DiaryListItem.propTypes = {
+  eatenProducts: PropTypes.arrayOf(
+    PropTypes.exact({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      weight: PropTypes.number.isRequired,
+      kcal: PropTypes.number.isRequired,
+    })
+  ),
 };
 
 export default DiaryListItem;
