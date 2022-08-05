@@ -7,3 +7,7 @@ export const summary = (store) => {
 export const getdate = (store) => {
   return store.summary.date;
 };
+
+export const getFoodNotRecommended = (store) => {
+    return store.summary.notAllowedProducts;
+};
