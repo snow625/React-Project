@@ -33,24 +33,26 @@
 }
 
 @media screen and (min-width: 1280px) {
-  .item:first-child {
-    position: relative;
-    margin-left: 150px;
+  .container {
+    position: absolute;
+    top: 50px;
+    left: 227px;
+  }
 
+  .item:first-child {
     &::before {
-      content: '';
+      content: "";
 
       position: absolute;
-      left: -80%;
+      left: -38px;
       bottom: 50%;
 
       display: inline-block;
       width: 32px;
       height: 2px;
-      background: #E0E0E0;
+      background: #e0e0e0;
 
       transform: rotate(90deg);
     }
   }
 }
-
