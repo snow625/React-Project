@@ -1,7 +1,6 @@
 .wrapper {
   padding-top: 40px;
   padding-bottom: 60px;
-  
 
   @media (min-width: 768px) {
     padding-top: 100px;
@@ -12,4 +11,8 @@
     padding-top: 140px;
     padding-right: 125px;
   }
+}
+
+.btn {
+  margin-top: 60px;
 }

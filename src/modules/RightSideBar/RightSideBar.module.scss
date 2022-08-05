@@ -45,7 +45,8 @@
 //tablet version
 @media screen and (min-width: 768px) {
   .backbox {
-    padding: 80px 32px 80px 32px;
+    // padding: 80px 32px 80px 32px;
+    padding: 80px 0;
     justify-content: flex-start;
     background-image: url(../../assets/calculate-diaryPage/tablet/bgi-ridesidebar-tabl-1x.png);
     background-size: 350px 350px;
@@ -64,9 +65,12 @@
   }
 
   .box {
+    margin: 0 auto;
+    padding: 0 32px;
     display: flex;
     justify-content: space-between;
-    width: 610px;
+    width: 768px;
+    // width: 610px;
     // height: 166px;
   }
 
