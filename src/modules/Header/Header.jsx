@@ -1,3 +1,4 @@
+import { useState } from "react";
 import useIsLogin from "../../shared/hooks/useAuth";
 import Logo from "./Logo";
 import HeaderAuth from "./HeaderAuth/HeaderAuth";
@@ -5,33 +6,41 @@ import UserInfo from "./UserInfo";
 import Modal from "./BurgerMenu/Modal";
 import BurgerMenu from "./BurgerMenu/BurgerMenu";
 import Navigation from "./Navigation/Navigation";
-import { useState } from "react";
+import MobileNavigate from "./MobileNavigate/MobileNavigate";
+import { useMediaPredicate } from "react-media-hook";
 import s from "./header.module.scss";
 
 const Header = () => {
-  const isLogin = useIsLogin();
   const [state, setState] = useState(false);
+  const isLogin = useIsLogin();
+
+  const biggerThan768 = useMediaPredicate("(min-width: 768px)");
+  const smallerThan1280 = useMediaPredicate("(max-width: 1280px)");
+  const biggerThan1280 = useMediaPredicate("(min-width: 1280px)");
 
   const toggleModal = () => {
     setState((prevState) => !prevState);
   };
 
   return (
-    <header className={s.header}>
+    <header className={isLogin ? `${s.header} ${s.headerLogin}` : s.header}>
       <div className="container">
-        <nav className={isLogin ? s.nav : `${s.nav} ${s.navLogin}`}>
+        <nav className={s.nav}>
           <Logo isLogin={isLogin} />
           {!isLogin && <HeaderAuth />}
+          {isLogin && biggerThan1280 &&  <Navigation />}
           {isLogin && (
-            <div className={s.mobileContainer}>
-              <UserInfo />
+            <div className={s.wrapper}>
+              {biggerThan768 && isLogin && <UserInfo />}
+              {isLogin && smallerThan1280 && (
+                <BurgerMenu onToggle={toggleModal} modalState={state} />
+              )}
             </div>
           )}
-          {isLogin && <BurgerMenu onToggle={toggleModal} modalState={state} />}
           {state && <Modal onToggle={toggleModal} />}
-          {isLogin && <Navigation />}
         </nav>
       </div>
+      {isLogin && <MobileNavigate modalState={state} />}
     </header>
   );
 };

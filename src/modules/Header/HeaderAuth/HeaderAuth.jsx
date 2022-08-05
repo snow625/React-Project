@@ -7,6 +7,7 @@ const getLinkClassName = ({ isActive }) => {
 
 const HeaderAuth = () => {
   return (
+    <div className={s.container}>
     <ul className={s.list}>
       <li className={s.item}>
       <NavLink className={getLinkClassName} to='/login'>Sign in</NavLink>
@@ -15,6 +16,7 @@ const HeaderAuth = () => {
       <NavLink className={getLinkClassName} to='/register'>Registration</NavLink>
       </li>
     </ul>
+    </div>
   );
 };
 

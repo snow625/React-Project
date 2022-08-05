@@ -1,7 +1,8 @@
-import logo from "../../../assets/logo.png";
-import logodesktop from "../../../assets/logo-desktop.png";
-import sprite from "../../../assets/svg/sprite.svg";
 import { NavLink } from "react-router-dom";
+import { useMediaPredicate } from "react-media-hook";
+import logoBasic from "../../../assets/logo/logoBasic.svg";
+import logoDesktop from "../../../assets/logo/logoDesktop.svg";
+import logo from "../../../assets/logo/logo.svg";
 import PropTypes from "prop-types";
 import s from "./logo.module.scss";
 
@@ -10,16 +11,25 @@ const Logo = ({ isLogin }) => {
     return isLogin ? "/calculate" : "/";
   };
 
+  const smallerThan1280 = useMediaPredicate("(max-width: 1280px)");
+
+  const logoSet = () => {
+    if (!isLogin && smallerThan1280) {
+      return <img src={logoBasic} alt="logo" />;
+    }
+    if (isLogin && smallerThan1280) {
+      return <img src={logo} alt="logo" />;
+    }
+    return <img src={logoDesktop} alt="logo" />;
+  };
+
   return (
     <div className={s.inner}>
-      <NavLink to={link()}>
-        <img className={s.logo} src={logo} alt="logo" />
-        <img className={s.logoDesktop} src={logodesktop} alt="logo" />
-      </NavLink>
-      <NavLink className={s.link} to={link()}>
-        <svg className={s.icon}>
-          <use href={sprite + "#icon-logo-text"}></use>
-        </svg>
+      <NavLink
+        to={link()}
+        aria-label={isLogin ? "link to calculate page" : "link to home page"}
+      >
+        {logoSet()}
       </NavLink>
     </div>
   );

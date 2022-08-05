@@ -5,38 +5,19 @@
 }
 
 .nav {
-  position: relative;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
+.wrapper {
+  display: flex;
+  align-items: center;
+}
+
 @media screen and (max-width: 768px) {
-  .header {
+  .headerLogin {
     padding-bottom: 0;
-  }
-
-  .nav {
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .navLogin {
-    flex-direction: row;
-    align-items: center;
-  }
-
-  .mobileContainer {
-    display: flex;
-    justify-content: flex-end;
-
-    width: 100%;
-    height: 40px;
-
-    background: #eff1f3;
   }
 }
 
@@ -47,11 +28,5 @@
     top: 80px;
     left: calc(50% - 640px);
     border: none;
-
-    // margin-left: 52px;
-  }
-  .nav {
-    justify-content: left;
-    align-items: flex-end;
   }
 }
