@@ -16,6 +16,7 @@ const fields = {
     type: "password",
     minLength: 8,
     maxLength: 100,
+    pattern: "(?=.*[0-9])(?=.*[a-z]|[0-9]).{7,}",
   },
 };
 
