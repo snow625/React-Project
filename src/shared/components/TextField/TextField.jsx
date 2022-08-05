@@ -15,6 +15,10 @@ const TextField = (props) => {
     type,
     pattern,
     title,
+    minLength,
+    maxLength,
+    min,
+    max,
   } = props;
 
   const id = useMemo(() => nanoid(), []);
@@ -32,6 +36,10 @@ const TextField = (props) => {
         required={required}
         pattern={pattern}
         title={title}
+        minLength={minLength}
+        maxLength={maxLength}
+        min={min}
+        max={max}
       />
       <label htmlFor={id} className={style.label}>
         {label}
