@@ -1,13 +1,18 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
+
 import CalculatorСalorieForm from "../../modules/CalculatorСalorieForm";
 import RightSideBar from "../../modules/RightSideBar";
 import Modal from "../../shared/components/Modal";
+import Loader from "../../shared/components/Loader/Loader";
 import ModalText from "../../shared/components/ModalText";
 import { getUserId } from "../../redux/auth/auth-selectors";
+import { updateSummaryAndnotAllowedProducts } from "../../redux/summary/summary-slice";
 import { makeRandomProducts } from "../../shared/utils/randomFunctions";
 import { getDailyRateForUser } from "../../shared/services/API/daily-rate";
+import { errorChecker } from "../../shared/utils/randomFunctions";
+
 import style from "./calculatePage.module.scss";
 
 const initialState = {
@@ -21,12 +26,13 @@ const initialState = {
 const CalculatePage = () => {
   const [state, setState] = useState(initialState);
   const navigate = useNavigate();
+  const dispath = useDispatch();
   const userId = useSelector(getUserId);
 
   const handleClick = async (data) => {
     setState((prevState) => ({ ...prevState, error: null, loading: true }));
 
-    let dataValuesToNumbers = {};
+    const dataValuesToNumbers = {};
 
     Object.entries(data).forEach(([key, value]) => {
       dataValuesToNumbers[key] = Number(value);
@@ -36,9 +42,7 @@ const CalculatePage = () => {
       const result = await getDailyRateForUser(userId, dataValuesToNumbers);
       const { dailyRate, notAllowedProducts } = result;
 
-      // const products = () => {
-      //   return notAllowedProducts.length > 10 ? notAllowedProducts.slice(0,10) : notAllowedProducts
-      // }
+      dispath(updateSummaryAndnotAllowedProducts(result));
 
       const products = makeRandomProducts(notAllowedProducts);
 
@@ -51,7 +55,14 @@ const CalculatePage = () => {
         isModalOpen: true,
       }));
     } catch (error) {
-      setState((prevState) => ({ ...prevState, error, loading: false }));
+      setState((prevState) => ({
+        ...prevState,
+        error: {
+          message: error.response.data.message,
+          status: error.response.status,
+        },
+        loading: false,
+      }));
     }
   };
 
@@ -77,6 +88,7 @@ const CalculatePage = () => {
         </div>
         <RightSideBar />
       </div>
+
       {isModalOpen && (
         <Modal onClose={toggleModal}>
           <ModalText
@@ -86,6 +98,8 @@ const CalculatePage = () => {
           />
         </Modal>
       )}
+      {loading && <Loader />}
+      {error && errorChecker(error)}
     </>
   );
 };

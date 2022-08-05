@@ -12,3 +12,7 @@ export const userName = (store) => {
 export const getUserId = (store) => {
   return store.auth.user.userId;
 };
+
+export const getErrorLoadingAuth = (store) => {
+  return { loading: store.auth.loading, error: store.auth.error };
+};

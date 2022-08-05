@@ -1,3 +1,5 @@
+import Alert from "../components/Alert";
+
 export const makeRandomProducts = (arr) => {
   if (arr.length > 10) {
     const randomIdx = [];
@@ -7,4 +9,13 @@ export const makeRandomProducts = (arr) => {
     return arr.filter((_, idx) => randomIdx.includes(idx));
   }
   return arr;
+};
+
+export const errorChecker = (error) => {
+  const { message, status } = error;
+  if (status === 403) {
+    return <Alert message={message} />;
+  }
+  return <Alert message={message} />;
+  
 };

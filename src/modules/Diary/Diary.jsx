@@ -96,7 +96,7 @@ const Diary = () => {
           />
         </div>
       </div>
-      {relogin(error)}
+      {error && relogin(error)}
       {loading && <Loader />}
       {modal && (
         <Modal onClose={toggleModal}>
