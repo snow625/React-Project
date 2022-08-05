@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 
 import PublikRoute from "./shared/components/PublikRoute/PublikRoute";
 import PrivateRoute from "./shared/components/PrivateRoute/PrivateRoute";
+import Loader from "./shared/components/Loader/Loader";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 
@@ -15,11 +16,13 @@ const DiaryPage = lazy(() => import("./pages/DiaryPage"));
 
 const UserRoutes = () => {
   return (
-    <Suspense fallback={<p>...Loading page</p>}>
+    <Suspense fallback={<Loader />}>
       <Routes>
         <Route element={<PublikRoute />}>
           <Route path={"/login"} element={<LoginPage />} />
           <Route path={"/register"} element={<RegisterPage />} />
+          <Route path={"/react-project"} element={<HomePage />} />
+          <Route path={"/"} element={<HomePage />} />
         </Route>
 
         <Route element={<PrivateRoute />}>
@@ -27,8 +30,6 @@ const UserRoutes = () => {
           <Route path={"/diary"} element={<DiaryPage />} />
         </Route>
 
-        <Route path={"/react-project"} element={<HomePage />} />
-        <Route path={"/"} element={<HomePage />} />
         <Route path={"*"} element={<NotFoundPage />} />
       </Routes>
     </Suspense>

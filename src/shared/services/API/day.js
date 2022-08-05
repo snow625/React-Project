@@ -9,7 +9,6 @@ import { instance } from "./auth";
 
 export const postEatenProduct = async (data) => {
   const { data: result } = await instance.post("/day", data);
-  console.log(result);
   return result;
 };
 
@@ -18,8 +17,9 @@ export const getInfoForDay = async (date) => {
   return data;
 };
 
-export const deleteDay = async (dayId, eatenProductId) => {
-  const body = { dayId, eatenProductId };
-  const { data } = await instance.delete("/day", body);
+export const deleteProductItem = async (productItem) => {
+  const { data } = await instance.delete("/day", {
+    data: productItem,
+  });
   return data;
 };

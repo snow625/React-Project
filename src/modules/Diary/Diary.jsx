@@ -1,102 +1,90 @@
+import { useDispatch, useSelector } from "react-redux";
+import { useCallback } from "react";
+import { useNavigate } from "react-router-dom";
+
 import DiaryDateCalendar from "./DiaryDateСalendar/DiaryDateСalendar";
 import DiaryAddProductForm from "./DiaryAddProductForm/DiaryAddProductForm";
 import DiaryProductsList from "./DiaryProductsList";
 import CircleButton from "../../shared/components/CircleButton/CircleButton";
-import { getInfoForDay } from "../../shared/services/API/day";
-import { addProduct } from "../../redux/summary/summary-operation";
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { setSummary } from "../../redux/summary/summary-slice";
+import Loader from "../../shared/components/Loader/Loader";
+
+import {
+  addProduct,
+  dayInfo,
+  removeProduct,
+} from "../../redux/summary/summary-operation";
+
+import { getSummary } from "../../redux/summary/summary-selector";
+
+import {
+  setDate,
+  updateEatenProducts,
+} from "../../redux/summary/summary-slice";
 import styles from "./diary.module.scss";
 
 const Diary = () => {
-  const [state, setState] = useState({
-    data: "",
-    dayId: null,
-    eatenProducts: [],
-    daySummary: {},
-    loading: false,
-    error: null,
-  });
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    if (Object.keys(state.daySummary).length > 0) {
-      console.log(state.daySummary);
-      dispatch(setSummary(state.daySummary));
-    }
-  }, [dispatch, state.daySummary]);
+  const summaryRedux = useSelector(getSummary);
+  const { loading, error, eatenProducts, dayId, date } = summaryRedux;
 
-  const addNewProduct = (productData) => {
-    const { id, weight } = productData;
-    const { data } = state;
-    const updatedWeight = Number(weight);
-    const totalProductInfo = {
-      productId: id,
-      weight: updatedWeight,
-      date: data.date,
-    };
-    console.log(totalProductInfo);
-    dispatch(addProduct(totalProductInfo));
-  };
+  const getDayInfo = useCallback(
+    (data) => {
+      dispatch(setDate(data));
+      dispatch(dayInfo(data));
+    },
+    [dispatch]
+  );
 
-  const deleteItem = (id) => {
-    const data = {
-      dayId: state.dayId,
-      eatenProductId: id,
-    };
-    // dispatch(operation(data))
-    // отфильтровать текущий state
-    console.log(data);
-  };
-
-  const fetchDayInfo = async (data) => {
-    setState((prevState) => ({
-      ...prevState,
-      data,
-      loading: true,
-      error: null,
-    }));
-
-    try {
-      const result = await getInfoForDay(data);
-      const {
-        id,
-        daySummary: { kcalLeft, kcalConsumed, dailyRate, percentsOfDailyRate },
-        eatenProducts,
-      } = result;
-
-      setState((prevState) => ({
-        ...prevState,
-        dayId: id,
-        eatenProducts: [...eatenProducts],
-        daySummary: {
-          kcalLeft: kcalLeft,
-          kcalConsumed: kcalConsumed,
-          dailyRate: dailyRate,
-          percentsOfDailyRate: percentsOfDailyRate,
-        },
-      }));
-    } catch (error) {
-      setState((prevState) => ({
-        ...prevState,
-        error: error.message,
-        loading: false,
-      }));
+  const relogin = (error) => {
+    if (error?.status === 401) {
+      navigate("/login");
     }
   };
+
+  const addNewProduct = useCallback(
+    (productData) => {
+      const { id, weight } = productData;
+      const updatedWeight = Number(weight);
+
+      const totalProductInfo = {
+        productId: id,
+        weight: updatedWeight,
+        date,
+      };
+      dispatch(addProduct(totalProductInfo));
+    },
+    [date, dispatch]
+  );
+
+  const deleteProductItem = useCallback(
+    (id) => {
+      const data = {
+        dayId,
+        eatenProductId: id,
+      };
+      dispatch(removeProduct(data));
+      dispatch(updateEatenProducts(id));
+    },
+    [dayId, dispatch]
+  );
 
   return (
-    <div className={styles.wrapper}>
-      <DiaryDateCalendar fetchDayInfo={fetchDayInfo} />
-      <DiaryAddProductForm onSubmit={addNewProduct} />
-      <DiaryProductsList
-        eatenProducts={state.eatenProducts}
-        onClick={deleteItem}
-      />
+    <>
+      <div className={styles.wrapper}>
+        <DiaryDateCalendar fetchDayInfo={getDayInfo} />
+        <DiaryAddProductForm onSubmit={addNewProduct} />
+        <DiaryProductsList
+          eatenProducts={eatenProducts}
+          onClick={deleteProductItem}
+        />
 
-      <CircleButton type="button" label="Add product button" mobile={true} />
-    </div>
+        <CircleButton type="button" label="Add product button" mobile={true} />
+      </div>
+      {relogin(error)}
+      {loading && <Loader />}
+    </>
   );
 };
 

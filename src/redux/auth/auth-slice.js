@@ -6,7 +6,7 @@ import {
   userLogout,
 } from "./auth-operation";
 import { pending, rejected } from "../../shared/utils/pendingRejected";
-import initialState from "./initialState";
+import initialState from "./auth-initialState";
 
 const authSlice = createSlice({
   name: "auth",

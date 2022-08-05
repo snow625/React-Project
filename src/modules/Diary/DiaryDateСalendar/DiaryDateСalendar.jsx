@@ -8,13 +8,13 @@ import styles from "./diaryDateСalendar.module.scss";
 const DiaryDateCalendar = ({ fetchDayInfo }) => {
   const [startDate, setStartDate] = useState(new Date());
 
-  const currentDate = {
-    date: startDate.toISOString().slice(0, 10),
+  const prepareDate = (dateOld) => {
+    return { date: dateOld.toISOString().slice(0, 10) };
   };
 
   useEffect(() => {
-    fetchDayInfo(currentDate);
-  }, [startDate]);
+    fetchDayInfo(prepareDate(startDate));
+  }, [fetchDayInfo, startDate]);
 
   return (
     <div className="wrapper_container">

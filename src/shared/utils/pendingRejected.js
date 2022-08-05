@@ -7,5 +7,5 @@ export const pending = (store) => ({
 export const rejected = (store, { payload }) => ({
   ...store,
   loading: false,
-  error: payload.message,
+  error: { message: payload.message, status: payload.response.status },
 });
