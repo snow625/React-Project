@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +8,8 @@ import DiaryAddProductForm from "./DiaryAddProductForm/DiaryAddProductForm";
 import DiaryProductsList from "./DiaryProductsList";
 import CircleButton from "../../shared/components/CircleButton/CircleButton";
 import Loader from "../../shared/components/Loader/Loader";
+import Modal from "../../shared/components/Modal";
+import ModalText from "../../shared/components/ModalText";
 
 import {
   addProduct,
@@ -23,6 +26,10 @@ import {
 import styles from "./diary.module.scss";
 
 const Diary = () => {
+  const [modal, setModal] = useState(false);
+  const toggleModal = () => {
+    setModal((prevState) => !prevState);
+  };
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -79,11 +86,23 @@ const Diary = () => {
           eatenProducts={eatenProducts}
           onClick={deleteProductItem}
         />
-
-        <CircleButton type="button" label="Add product button" mobile={true} />
+        <div className={styles.btn}>
+          <CircleButton
+            type="button"
+            label="Add product button"
+            mobile={true}
+            iconNameInSprite="add"
+            onClick={toggleModal}
+          />
+        </div>
       </div>
       {error && relogin(error)}
       {loading && <Loader />}
+      {modal && (
+        <Modal onClose={toggleModal}>
+          <ModalText />
+        </Modal>
+      )}
     </>
   );
 };

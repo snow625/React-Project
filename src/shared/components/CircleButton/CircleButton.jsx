@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import sprite from "../../../assets/svg/sprite.svg";
 import styles from "./circleButton.module.scss";
 
-const CircleButton = ({ type, label, mobile, onClick }) => {
+const CircleButton = ({ type, label, mobile, iconNameInSprite, onClick }) => {
   const chooseClass = () => {
     return mobile ? `${styles.btn} ${styles.mobile}` : styles.btn;
   };
@@ -14,7 +14,7 @@ const CircleButton = ({ type, label, mobile, onClick }) => {
       onClick={onClick}
     >
       <svg className={styles.icon}>
-        <use href={sprite + "#icon-add"}></use>
+        <use href={sprite + `#icon-${iconNameInSprite}`}></use>
       </svg>
     </button>
   );

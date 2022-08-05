@@ -29,3 +29,9 @@
 .list::-webkit-scrollbar-thumb {
   background-color: #264061;
 }
+
+.warn {
+  @media (min-width: 1280px) {
+    min-width: 622px;
+  }
+}
