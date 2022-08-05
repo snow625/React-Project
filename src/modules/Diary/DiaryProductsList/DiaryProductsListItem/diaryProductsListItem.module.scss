@@ -1,6 +1,7 @@
 .listItem {
+  // position: relative;
   display: flex;
-  align-items: baseline;
+  align-items: flex-end;
   margin-right: 14px;
 
   @media (min-width: 768px) {
@@ -77,13 +78,25 @@
 }
 
 .btn {
+  // position: absolute;
+  // right: -17px;
+  // top: -50%;
   background-color: transparent;
   border: none;
   padding: 5px 8px 5px 17px;
-  transform: translatey(4px);
+  transform: translatey(-10%);
 
   @media (min-width: 768px) {
     padding: 9px 8px 9px 17px;
+  }
+}
+
+.doubleBtn {
+  @extend .btn;
+  transform: translateY(-30px);
+
+  @media (min-width: 1280px) {
+    transform: translateY(-50%);
   }
 }
 
