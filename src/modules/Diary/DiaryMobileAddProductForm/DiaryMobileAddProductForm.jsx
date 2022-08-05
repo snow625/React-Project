@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import CircleButton from "../../../shared/components/CircleButton/CircleButton";
 import ProductSelector from "./ProductSelector/ProductSelector";
-import Button from "../../../shared/components/Button";
 import fields from "./fields";
 import useForm from "../../../shared/hooks/useForm";
 import { searchProduct } from "../../../shared/services/API/product-search";
@@ -14,11 +13,10 @@ const initialState = {
   id: null,
   weight: "",
 };
-const DiaryAddProductForm = ({ isMobile, onSubmit }) => {
+const DiaryAddProductForm = ({ onSubmit }) => {
   const { state, setState, handleChange, handleSubmit } = useForm({
     onSubmit,
     initialState,
-    isReset: true,
   });
   const { product, foundProducts, currentProduct, weight } = state;
 
@@ -65,10 +63,7 @@ const DiaryAddProductForm = ({ isMobile, onSubmit }) => {
   };
   return (
     <div className="wrapper_container">
-      <form
-        className={isMobile ? styles.mobileAddForm : styles.addForm}
-        onSubmit={handleSubmit}
-      >
+      <form className={styles.addForm} onSubmit={handleSubmit}>
         <div className={styles.wrapperProduct}>
           <label htmlFor={"product"} className={styles.label}>
             Введите название продукта
@@ -102,17 +97,11 @@ const DiaryAddProductForm = ({ isMobile, onSubmit }) => {
             onChange={handleChange}
           />
         </div>
-        {isMobile ? (
-          <div className={styles.addBtn}>
-            <Button type="submit" text="Add" white={false} />
-          </div>
-        ) : (
-          <CircleButton
-            type="submit"
-            label="Add product button"
-            iconNameInSprite="add"
-          />
-        )}
+        <CircleButton
+          type="submit"
+          label="Add product button"
+          iconNameInSprite="add"
+        />
       </form>
     </div>
   );
