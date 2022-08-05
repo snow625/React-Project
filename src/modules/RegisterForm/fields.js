@@ -26,7 +26,7 @@ const fields = {
     type: "password",
     minLength: 8,
     maxLength: 100,
-    pattern: "(?=.*d)(?=.*[a-z])(?=.*[A-Z]).{8,}",
+    pattern: "(?=.*[0-9])(?=.*[a-z]|[0-9]).{7,}",
     title: "Input password, example: qwerty123",
   },
 };
