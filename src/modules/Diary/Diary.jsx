@@ -82,7 +82,7 @@ const Diary = () => {
 
         <CircleButton type="button" label="Add product button" mobile={true} />
       </div>
-      {relogin(error)}
+      {error && relogin(error)}
       {loading && <Loader />}
     </>
   );

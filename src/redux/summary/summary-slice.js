@@ -18,6 +18,18 @@ const summarySlice = createSlice({
         (el) => el.id !== payload
       );
     },
+
+    updateSummaryAndnotAllowedProducts: (store, { payload }) => {
+      store.notAllowedProducts = makeRandomProducts(payload.notAllowedProducts);
+      const { summaries } = payload;
+      const newSummary = summaries[summaries.length - 1];
+      store.summary = {
+        kcalLeft: newSummary.kcalLeft,
+        kcalConsumed: newSummary.kcalConsumed,
+        dailyRate: newSummary.dailyRate,
+        percentsOfDailyRate: newSummary.percentsOfDailyRate,
+      };
+    },
   },
   extraReducers: {
     [getUser.fulfilled]: (store, { payload }) => {
@@ -101,6 +113,10 @@ const summarySlice = createSlice({
   },
 });
 
-export const { setDate, updateEatenProducts } = summarySlice.actions;
+export const {
+  setDate,
+  updateEatenProducts,
+  updateSummaryAndnotAllowedProducts,
+} = summarySlice.actions;
 
 export default summarySlice.reducer;

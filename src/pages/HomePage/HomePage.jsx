@@ -7,6 +7,7 @@ import Modal from "../../shared/components/Modal";
 import ModalText from "../../shared/components/ModalText";
 import { getDailyRateInGeneral } from "../../shared/services/API/daily-rate";
 import { makeRandomProducts } from "../../shared/utils/randomFunctions";
+import { errorChecker } from "../../shared/utils/randomFunctions";
 import style from "./homePage.module.scss";
 
 const initialState = {
@@ -43,7 +44,14 @@ const HomePage = () => {
         isModalOpen: true,
       }));
     } catch (error) {
-      setState((prevState) => ({ ...prevState, error, loading: false }));
+      setState((prevState) => ({
+        ...prevState,
+        error: {
+          message: error.response.data.message,
+          status: error.response.status,
+        },
+        loading: false,
+      }));
     }
   };
 
@@ -59,13 +67,14 @@ const HomePage = () => {
     return navigate("/register");
   };
 
-  const { calories, notAllowedProducts, isModalOpen, loading } = state;
+  const { calories, notAllowedProducts, isModalOpen, loading, error } = state;
   return (
     <>
       <div className={`${style.wrapper} container`}>
         <CalculatorСalorieForm onSubmit={handleClick} />
       </div>
       {loading && <Loader />}
+      {error && errorChecker(error)}
       {isModalOpen && (
         <Modal onClose={toggleModal}>
           <ModalText
