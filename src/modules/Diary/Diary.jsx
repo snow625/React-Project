@@ -9,7 +9,6 @@ import DiaryProductsList from "./DiaryProductsList";
 import CircleButton from "../../shared/components/CircleButton/CircleButton";
 import Loader from "../../shared/components/Loader/Loader";
 import Modal from "../../shared/components/Modal";
-import ModalText from "../../shared/components/ModalText";
 
 import {
   addProduct,
@@ -81,7 +80,7 @@ const Diary = () => {
     <>
       <div className={styles.wrapper}>
         <DiaryDateCalendar fetchDayInfo={getDayInfo} />
-        <DiaryAddProductForm onSubmit={addNewProduct} />
+        <DiaryAddProductForm isMobile={false} onSubmit={addNewProduct} />
         <DiaryProductsList
           eatenProducts={eatenProducts}
           onClick={deleteProductItem}
@@ -100,7 +99,7 @@ const Diary = () => {
       {loading && <Loader />}
       {modal && (
         <Modal onClose={toggleModal}>
-          <ModalText />
+          <DiaryAddProductForm isMobile={true} onSubmit={addNewProduct} />
         </Modal>
       )}
     </>

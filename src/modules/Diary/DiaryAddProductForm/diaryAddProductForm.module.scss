@@ -10,6 +10,11 @@
   }
 }
 
+.mobileAddForm {
+  margin-top: 40px;
+  width: 280px;
+}
+
 .wrapperProduct {
   position: relative;
   width: 285px;
@@ -61,6 +66,7 @@
   border: none;
   border-bottom: 1px solid #e0e0e0;
   outline: none;
+  background-color: transparent;
   text-align: center;
   font-family: "Verdana";
   font-weight: 700;
@@ -73,4 +79,8 @@
 .input:hover {
   border: none;
   border-bottom: 1px solid #e0e0e0;
+}
+
+.addBtn {
+  text-align: center;
 }
