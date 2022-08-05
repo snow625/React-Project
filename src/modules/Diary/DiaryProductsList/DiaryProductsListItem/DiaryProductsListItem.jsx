@@ -9,15 +9,7 @@ const DiaryListItem = ({ title, weight, kcal, id, onClick }) => {
       <span className={styles.grams}>{weight}</span>
       <span className={styles.calories}>{Math.round(kcal)} kcal</span>
       <button
-        className={
-          title.length > 36
-            ? styles.fourthBtn
-            : title.length > 24
-            ? styles.tripleBtn
-            : title.length > 12
-            ? styles.doubleBtn
-            : styles.btn
-        }
+        className={title.length > 24 ? styles.doubleBtn : styles.btn}
         onClick={() => onClick(id)}
         aria-label="button delete element"
       >
