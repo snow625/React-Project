@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { createNewUser } from "../../redux/auth/auth-operation";
+import { createNewUser } from "../../redux/auth/auth-operations";
 import RegisterForm from "../../modules/RegisterForm/RegisterForm";
 
 import style from "./registrerPage.module.scss";

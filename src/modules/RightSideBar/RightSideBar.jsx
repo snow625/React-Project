@@ -1,6 +1,6 @@
 import style from "./RightSideBar.module.scss";
 import { useSelector } from "react-redux";
-import { summary, getdate } from "../../../redux/summary/summary-selector";
+import { summary, getdate } from "../../redux/summary/summary-selectors";
 
 const RightSideBar = () => {
   const daySummary = useSelector(summary);

@@ -1,4 +1,4 @@
-import useIsLogin from "../../shared/hooks/useisLogin";
+import useIsLogin from "../../shared/hooks/useAuth";
 import Logo from "./Logo";
 import HeaderAuth from "./HeaderAuth/HeaderAuth";
 import UserInfo from "./UserInfo";

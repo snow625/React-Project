@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux/es/exports";
-import { userLogout } from "../../../redux/auth/auth-operation";
-import { userName } from "../../../redux/auth/auth-selector";
+import { userLogout } from "../../../redux/auth/auth-operations";
+import { userName } from "../../../redux/auth/auth-selectors";
 import s from "./user-info.module.scss";
 
 const UserInfo = () => {

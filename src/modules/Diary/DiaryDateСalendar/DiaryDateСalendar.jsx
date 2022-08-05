@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import sprite from "../../../images/svg/sprite.svg";
+import sprite from "../../../assets/svg/sprite.svg";
 import styles from "./diaryDateСalendar.module.scss";
 
 const DiaryDateCalendar = ({ fetchDayInfo }) => {

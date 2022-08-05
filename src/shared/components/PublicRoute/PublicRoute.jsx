@@ -1,11 +1,11 @@
 import { Outlet, Navigate } from "react-router-dom";
-import useIsLogin from "../../hooks/useisLogin";
+import useIsLogin from "../../hooks/useAuth";
 
-const PublikRoute = () => {
+const PublicRoute = () => {
   const isLogin = useIsLogin();
   if (isLogin) {
     return <Navigate to="/diary" />;
   }
   return <Outlet />;
 };
-export default PublikRoute;
+export default PublicRoute;

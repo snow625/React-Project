@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import sprite from "../../../images/svg/sprite.svg";
+import sprite from "../../../assets/svg/sprite.svg";
 import styles from "./circleButton.module.scss";
 
 const CircleButton = ({ type, label, mobile, onClick }) => {
