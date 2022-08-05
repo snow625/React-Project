@@ -7,7 +7,7 @@ const DiaryListItem = ({ title, weight, kcal, id, onClick }) => {
     <li className={styles.listItem} key={id}>
       <span className={styles.product}>{title}</span>
       <span className={styles.grams}>{weight}</span>
-      <span className={styles.calories}>{kcal} kcal</span>
+      <span className={styles.calories}>{Math.round(kcal)} kcal</span>
       <button
         className={styles.btn}
         onClick={() => onClick(id)}

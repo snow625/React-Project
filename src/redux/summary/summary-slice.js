@@ -22,13 +22,15 @@ const summarySlice = createSlice({
     updateSummaryAndnotAllowedProducts: (store, { payload }) => {
       store.notAllowedProducts = makeRandomProducts(payload.notAllowedProducts);
       const { summaries } = payload;
-      const newSummary = summaries[summaries.length - 1];
-      store.summary = {
-        kcalLeft: newSummary.kcalLeft,
-        kcalConsumed: newSummary.kcalConsumed,
-        dailyRate: newSummary.dailyRate,
-        percentsOfDailyRate: newSummary.percentsOfDailyRate,
-      };
+      if (summaries.length > 0) {
+        const newSummary = summaries[summaries.length - 1];
+        store.summary = {
+          kcalLeft: newSummary.kcalLeft,
+          kcalConsumed: newSummary.kcalConsumed,
+          dailyRate: newSummary.dailyRate,
+          percentsOfDailyRate: newSummary.percentsOfDailyRate,
+        };
+      }
     },
   },
   extraReducers: {
