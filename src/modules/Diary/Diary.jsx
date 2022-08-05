@@ -18,10 +18,7 @@ import {
 
 import { getSummary } from "../../redux/summary/summary-selectors";
 
-import {
-  setDate,
-  updateEatenProducts,
-} from "../../redux/summary/summary-slice";
+import { setDate } from "../../redux/summary/summary-slice";
 import styles from "./diary.module.scss";
 
 const Diary = () => {
@@ -71,7 +68,6 @@ const Diary = () => {
         eatenProductId: id,
       };
       dispatch(removeProduct(data));
-      dispatch(updateEatenProducts(id));
     },
     [dayId, dispatch]
   );

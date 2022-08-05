@@ -10,6 +10,7 @@ export const getdate = (store) => {
 export const getErrorLoadingSummary = (store) => {
   return { loading: store.summary.loading, error: store.summary.error };
 };
+
 export const getFoodNotRecommended = (store) => {
-    return store.summary.notAllowedProducts;
+  return store.summary.notAllowedProducts;
 };
