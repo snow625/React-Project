@@ -24,6 +24,7 @@ export const loginInAPI = async (userData) => {
 
 export const logoutFromAPI = async (token) => {
   const { data } = await instance.post("/auth/logout", token);
+  setToken();
   return data;
 };
 

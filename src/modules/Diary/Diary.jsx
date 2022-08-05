@@ -80,7 +80,12 @@ const Diary = () => {
           onClick={deleteProductItem}
         />
 
-        <CircleButton type="button" label="Add product button" mobile={true} />
+        <CircleButton
+          type="button"
+          label="Add product button"
+          mobile={true}
+          iconNameInSprite="add"
+        />
       </div>
       {relogin(error)}
       {loading && <Loader />}

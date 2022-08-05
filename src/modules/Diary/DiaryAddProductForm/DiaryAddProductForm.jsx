@@ -97,7 +97,11 @@ const DiaryAddProductForm = ({ onSubmit }) => {
             onChange={handleChange}
           />
         </div>
-        <CircleButton type="submit" label="Add product button" />
+        <CircleButton
+          type="submit"
+          label="Add product button"
+          iconNameInSprite="add"
+        />
       </form>
     </div>
   );
