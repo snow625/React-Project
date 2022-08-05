@@ -7,7 +7,10 @@ const fields = {
   weight: {
     name: "weight",
     required: true,
-    type: "text",
+    type: "number",
+    min: "1",
+    max: "3000",
+    title: "Input weight product in (gram)",
   },
 };
 
