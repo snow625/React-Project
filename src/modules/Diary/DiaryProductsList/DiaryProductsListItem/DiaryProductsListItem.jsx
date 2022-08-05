@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import sprite from "../../../../images/svg/sprite.svg";
+import sprite from "../../../../assets/svg/sprite.svg";
 import styles from "./diaryProductsListItem.module.scss";
 
 const DiaryListItem = ({ title, weight, kcal, id, onClick }) => {
@@ -8,7 +8,11 @@ const DiaryListItem = ({ title, weight, kcal, id, onClick }) => {
       <span className={styles.product}>{title}</span>
       <span className={styles.grams}>{weight}</span>
       <span className={styles.calories}>{kcal} kcal</span>
-      <button className={styles.btn} onClick={() => onClick(id)} aria-label="button delete element">
+      <button
+        className={styles.btn}
+        onClick={() => onClick(id)}
+        aria-label="button delete element"
+      >
         <svg className={styles.icon}>
           <use href={sprite + "#icon-remove"}></use>
         </svg>

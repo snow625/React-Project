@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import sprite from "../../../images/svg/sprite.svg";
+import sprite from "../../../assets/svg/sprite.svg";
 import PropTypes from "prop-types";
 import s from "./burger-menu.module.scss";
 

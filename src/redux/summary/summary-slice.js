@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import initialState from "./summary-initialState";
 import { pending, rejected } from "../../shared/utils/pendingRejected";
-import { getUser } from "../auth/auth-operation";
-import { addProduct, dayInfo, removeProduct } from "./summary-operation";
+import { getUser } from "../auth/auth-operations";
+import { addProduct, dayInfo, removeProduct } from "./summary-operations";
 import { makeRandomProducts } from "../../shared/utils/randomFunctions";
 
 const summarySlice = createSlice({

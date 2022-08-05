@@ -7,7 +7,7 @@ const DiaryProductsList = ({ eatenProducts, onClick }) => {
     if (eatenProducts.length > 0) {
       const elements = eatenProducts.map(({ title, weight, kcal, id }) => (
         <DiaryProductsListItem
-        onClick={onClick}
+          onClick={onClick}
           key={id}
           title={title}
           weight={weight}
@@ -15,7 +15,7 @@ const DiaryProductsList = ({ eatenProducts, onClick }) => {
           id={id}
         />
       ));
-      return <ul className={styles.list}>{elements}</ul>;
+      return <ul className={styles.list}>{elements.reverse()}</ul>;
     }
     return <p>List empty, add new product</p>;
   };

@@ -12,9 +12,9 @@ import {
   addProduct,
   dayInfo,
   removeProduct,
-} from "../../redux/summary/summary-operation";
+} from "../../redux/summary/summary-operations";
 
-import { getSummary } from "../../redux/summary/summary-selector";
+import { getSummary } from "../../redux/summary/summary-selectors";
 
 import {
   setDate,

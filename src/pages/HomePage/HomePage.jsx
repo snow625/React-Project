@@ -22,10 +22,8 @@ const HomePage = () => {
 
   const handleClick = async (data) => {
     setState((prevState) => ({ ...prevState, error: null, loading: true }));
-    console.log(data);
 
-    let dataValuesToNumbers = {};
-
+    const dataValuesToNumbers = {};
     Object.entries(data).forEach(([key, value]) => {
       dataValuesToNumbers[key] = Number(value);
     });
@@ -34,11 +32,7 @@ const HomePage = () => {
       const result = await getDailyRateInGeneral(dataValuesToNumbers);
       const { dailyRate, notAllowedProducts } = result;
 
-      // const products = () => {
-      //   return notAllowedProducts.length > 10 ? notAllowedProducts.slice(0,10) : notAllowedProducts
-      // }
-
-      const products = makeRandomProducts(notAllowedProducts)
+      const products = makeRandomProducts(notAllowedProducts);
 
       const calories = Math.trunc(dailyRate);
       setState((prevState) => ({

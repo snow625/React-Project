@@ -2,10 +2,10 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import CalculatorСalorieForm from "../../modules/CalculatorСalorieForm";
-import RightSideBar from "../../shared/components/RightSideBar";
+import RightSideBar from "../../modules/RightSideBar";
 import Modal from "../../shared/components/Modal";
 import ModalText from "../../shared/components/ModalText";
-import { getUserId } from "../../redux/auth/auth-selector";
+import { getUserId } from "../../redux/auth/auth-selectors";
 import { makeRandomProducts } from "../../shared/utils/randomFunctions";
 import { getDailyRateForUser } from "../../shared/services/API/daily-rate";
 import style from "./calculatePage.module.scss";
@@ -40,7 +40,7 @@ const CalculatePage = () => {
       //   return notAllowedProducts.length > 10 ? notAllowedProducts.slice(0,10) : notAllowedProducts
       // }
 
-      const products = makeRandomProducts(notAllowedProducts)
+      const products = makeRandomProducts(notAllowedProducts);
 
       const calories = Math.trunc(dailyRate);
       setState((prevState) => ({

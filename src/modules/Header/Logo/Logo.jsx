@@ -1,8 +1,8 @@
-import logo from "../../../images/logo.png";
-import logodesktop from "../../../images/logo-desktop.png";
-import sprite from "../../../images/svg/sprite.svg";
+import logo from "../../../assets/logo.png";
+import logodesktop from "../../../assets/logo-desktop.png";
+import sprite from "../../../assets/svg/sprite.svg";
 import { NavLink } from "react-router-dom";
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 import s from "./logo.module.scss";
 
 const Logo = ({ isLogin }) => {
@@ -27,10 +27,10 @@ const Logo = ({ isLogin }) => {
 
 Logo.defaultProps = {
   isLogin: false,
-}
+};
 
 Logo.propTypes = {
-  isLogin: PropTypes.bool.isRequired
-}
+  isLogin: PropTypes.bool.isRequired,
+};
 
 export default Logo;

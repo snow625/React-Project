@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux/es/exports";
-import { getUser } from "./redux/auth/auth-operation";
+import { getUser } from "./redux/auth/auth-operations";
 import Header from "./modules/Header";
 
 import UserRoutes from "./UserRoutes";

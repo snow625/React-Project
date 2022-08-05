@@ -4,7 +4,7 @@
   @media (min-width: 768px) {
     padding-top: 160px;
     padding-bottom: 500px;
-    background-image: url(../../images/register-loginPage/tablet/bgi-tabl-1x.png);
+    background-image: url(../../assets/register-loginPage/tablet/bgi-tabl-1x.png);
     background-size: 770px 920px;
     background-position: right bottom;
     background-repeat: no-repeat;
@@ -13,7 +13,7 @@
       (-webkit-min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-      background-image: url(../../images/register-loginPage/tablet/bgi-tabl-2x.png);
+      background-image: url(../../assets/register-loginPage/tablet/bgi-tabl-2x.png);
       background-size: 770px 920px;
       background-position: right bottom;
       background-repeat: no-repeat;
@@ -23,21 +23,20 @@
   @media (min-width: 1280px) {
     padding-top: 300px;
     padding-bottom: 270px;
-    background-image: url(../../images/register-loginPage/desktop/bgi-homepage-desk-1x.png);
+    background-image: url(../../assets/register-loginPage/desktop/bgi-homepage-desk-1x.png);
     background-size: 980px 820px;
     background-position: top right;
     background-repeat: no-repeat;
 
     @media (min-device-pixel-ratio: 2),
-    (-webkit-min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi),
-    (min-resolution: 2dppx) {
-    background-image: url(../../images/register-loginPage/desktop/bgi-homepage-desk-2x.png);
-    background-size: 980px 820px;
-    background-position: top right;
-    background-repeat: no-repeat;
-    } 
-
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url(../../assets/register-loginPage/desktop/bgi-homepage-desk-2x.png);
+      background-size: 980px 820px;
+      background-position: top right;
+      background-repeat: no-repeat;
+    }
   }
 }
 .title {

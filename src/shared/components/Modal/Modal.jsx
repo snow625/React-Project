@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
 import style from "./modal.module.scss";
-import sprite from "../../../images/svg/sprite.svg";
+import sprite from "../../../assets/svg/sprite.svg";
 
 const modalPlace = document.getElementById("modal-root");
 

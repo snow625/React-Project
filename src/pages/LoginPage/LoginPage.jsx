@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useDispatch } from "react-redux/es/exports";
 import LoginForm from "../../modules/LoginForm/LoginForm";
-import { loginOldUser } from "../../redux/auth/auth-operation";
+import { loginOldUser } from "../../redux/auth/auth-operations";
 
 import style from "./login.module.scss";
 

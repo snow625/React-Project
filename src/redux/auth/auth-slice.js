@@ -4,7 +4,7 @@ import {
   loginOldUser,
   getUser,
   userLogout,
-} from "./auth-operation";
+} from "./auth-operations";
 import { pending, rejected } from "../../shared/utils/pendingRejected";
 import initialState from "./auth-initialState";
 

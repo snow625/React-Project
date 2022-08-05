@@ -4,7 +4,7 @@
   @media (min-width: 768px) {
     padding-top: 100px;
     padding-bottom: 400px;
-    background-image: url(../../images/homePage/tablet/bgi-homepage-tablet-1x.png);
+    background-image: url(../../assets/homePage/tablet/bgi-homepage-tablet-1x.png);
     background-size: 768px 501px;
     background-position: right -20px bottom 100px;
     background-repeat: no-repeat;
@@ -13,35 +13,31 @@
       (-webkit-min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-      background-image: url(../../images/homePage/tablet/bgi-homepage-tablet-2x.png);
+      background-image: url(../../assets/homePage/tablet/bgi-homepage-tablet-2x.png);
       background-size: 768px 501px;
-      background-position: right  bottom 100px;
+      background-position: right bottom 100px;
       background-repeat: no-repeat;
-      }
+    }
   }
   @media (min-width: 1280px) {
-
     padding-top: 155px;
     padding-bottom: 475px;
-    background-image: url(../../images/homePage/desktop/bgi-homepage-desk-2x.png);
+    background-image: url(../../assets/homePage/desktop/bgi-homepage-desk-2x.png);
     background-size: 980px 820px;
     background-position: top right;
     background-repeat: no-repeat;
 
     @media (min-device-pixel-ratio: 2),
-    (-webkit-min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi),
-    (min-resolution: 2dppx) {
-    background-image: url(../../images/homePage/desktop/bgi-homepage-desk-2x.png);
-    background-size: 980px 820px;
-    background-position: top right;
-    background-repeat: no-repeat;
-    }  
-
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url(../../assets/homePage/desktop/bgi-homepage-desk-2x.png);
+      background-size: 980px 820px;
+      background-position: top right;
+      background-repeat: no-repeat;
+    }
 
     padding-top: 293px;
     padding-bottom: 111px;
-
-
   }
 }
