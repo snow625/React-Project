@@ -1,10 +1,11 @@
 import { useEffect } from "react";
+// import { debounce } from "debounce";
 import CircleButton from "../../../shared/components/CircleButton/CircleButton";
 import ProductSelector from "./ProductSelector/ProductSelector";
 import Button from "../../../shared/components/Button";
 import fields from "./fields";
 import useForm from "../../../shared/hooks/useForm";
-import { searchProduct } from "../../../shared/services/API/product-search";
+import { debouncedSearchProduct } from "../../../shared/services/API/product-search";
 import styles from "./diaryAddProductForm.module.scss";
 
 const initialState = {
@@ -36,7 +37,7 @@ const DiaryAddProductForm = ({ isMobile, onSubmit }) => {
   useEffect(() => {
     const findProduct = async (product) => {
       try {
-        const result = await searchProduct(product);
+        const result = await debouncedSearchProduct(product);
         setState((prevState) => ({ ...prevState, foundProducts: result }));
       } catch (error) {
         console.log(error);
