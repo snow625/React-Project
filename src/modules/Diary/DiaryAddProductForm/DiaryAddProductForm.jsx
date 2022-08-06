@@ -1,26 +1,26 @@
 import { useEffect } from "react";
-import CircleButton from "../../../shared/components/CircleButton/CircleButton";
+
 import ProductSelector from "./ProductSelector/ProductSelector";
+import CircleButton from "../../../shared/components/CircleButton/CircleButton";
 import Button from "../../../shared/components/Button";
-import fields from "./fields";
 import useForm from "../../../shared/hooks/useForm";
 import { searchProduct } from "../../../shared/services/API/product-search";
+import { errorChecker } from "../../../shared/utils/randomFunctions";
+import Loader from "../../../shared/components/Loader/Loader";
+
+import initialState from "./initialState";
+import fields from "./fields";
+
 import styles from "./diaryAddProductForm.module.scss";
 
-const initialState = {
-  product: "",
-  foundProducts: [],
-  currentProduct: "",
-  id: null,
-  weight: "",
-};
 const DiaryAddProductForm = ({ isMobile, onSubmit }) => {
   const { state, setState, handleChange, handleSubmit } = useForm({
     onSubmit,
     initialState,
     isReset: true,
   });
-  const { product, foundProducts, currentProduct, weight } = state;
+  const { product, foundProducts, currentProduct, weight, loading, error } =
+    state;
 
   const handleFocus = () => {
     setState((prevState) => {
@@ -35,11 +35,27 @@ const DiaryAddProductForm = ({ isMobile, onSubmit }) => {
 
   useEffect(() => {
     const findProduct = async (product) => {
+      setState((prevState) => ({
+        ...prevState,
+        error: null,
+        loading: true,
+      }));
       try {
         const result = await searchProduct(product);
-        setState((prevState) => ({ ...prevState, foundProducts: result }));
+        setState((prevState) => ({
+          ...prevState,
+          foundProducts: result,
+          loading: false,
+        }));
       } catch (error) {
-        console.log(error);
+        setState((prevState) => ({
+          ...prevState,
+          loading: false,
+          error: {
+            message: error.response.data.message,
+            status: error.response.status,
+          },
+        }));
       }
     };
 
@@ -114,6 +130,8 @@ const DiaryAddProductForm = ({ isMobile, onSubmit }) => {
           />
         )}
       </form>
+      {loading && <Loader />}
+      {error && errorChecker(error)}
     </div>
   );
 };
