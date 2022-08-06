@@ -67,14 +67,15 @@ const RightSideBar = () => {
       <div className={style.backbox}>
         <div className={style.box}>
           <div className={style.summary}>
-            <h3 className={style.title}>{`Summary for ${newCurrentDate()}`}</h3>
+            <h3 className={style.title}>{`Сводка за ${newCurrentDate()}`}</h3>
             <div className={style.flexbox}>
               <ul className={style.list}>
-                <li className={style.item}>Left</li>
-                <li className={style.item}>Consumed</li>
-                <li className={style.item}>Daily rate</li>
-                <li className={style.item}>Daily percentage</li>
+                <li className={style.item}>Осталось</li>
+                <li className={style.item}>Употреблено</li>
+                <li className={style.item}>Дневная норма</li>
+                <li className={style.item}>% от нормы</li>
               </ul>
+
               <ul className={style.list}>
                 <li className={style.item}>
                   <span className="{style.number}">{kcalLeft}</span> kcal
@@ -93,11 +94,11 @@ const RightSideBar = () => {
             </div>
           </div>
           <div className={style.food}>
-            <h3 className={style.sub_title}>Food not recommended</h3>
+            <h3 className={style.sub_title}>Нерекомендуемые продукты:</h3>
             {foodNotRecommended.length > 0 ? (
               foodNotRecommendedList()
             ) : (
-              <p className={style.text}>Your diet will be displayed here</p>
+              <p className={style.text}>Здесь будет отображаться Ваш рацион</p>
             )}
           </div>
         </div>
