@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useMediaPredicate } from "react-media-hook";
+import { useModal } from "../../shared/hooks/useModal";
 import useIsLogin from "../../shared/hooks/useAuth";
 import Logo from "../../shared/components/Logo";
 import HeaderAuth from "./HeaderAuth";
@@ -9,15 +10,18 @@ import BurgerMenu from "./BurgerMenu";
 import Navigation from "./Navigation";
 import MobileNavigate from "./MobileNavigate";
 
+
 import style from "./header.module.scss";
 
 const Header = () => {
   const [state, setState] = useState(false);
   const isLogin = useIsLogin();
+  const isModalReduxOpen = useModal();
 
-  const biggerThan768 = useMediaPredicate("(min-width: 768px)");
   const smallerThan1280 = useMediaPredicate("(max-width: 1280px)");
+  const smallerThan768 = useMediaPredicate("(max-width: 768px)");
   const biggerThan1280 = useMediaPredicate("(min-width: 1280px)");
+  const biggerThan768 = useMediaPredicate("(min-width: 768px)");
 
   const toggleModal = () => {
     setState((prevState) => !prevState);
@@ -26,6 +30,16 @@ const Header = () => {
   const headerClassChange = () => {
     return isLogin ? `${style.header} ${style.headerLogin}` : style.header;
   };
+
+  const checker = () => {
+    if (smallerThan768 && isLogin) {
+      return true;
+    }
+    if (smallerThan768 && isModalReduxOpen) {
+      return true;
+    }
+    return false;
+  }
 
   return (
     <header className={headerClassChange()}>
@@ -42,12 +56,12 @@ const Header = () => {
               )}
             </div>
           )}
-          {smallerThan1280 && (
+          {smallerThan1280 && isLogin && state &&(
             <Modal onClose={toggleModal} modalState={state} />
           )}
         </nav>
       </div>
-      {isLogin && <MobileNavigate onClick={toggleModal} modalState={state} />}
+      {checker() && <MobileNavigate onClick={toggleModal} modalState={state} />}
     </header>
   );
 };

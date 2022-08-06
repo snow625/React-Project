@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+import { useMediaPredicate } from "react-media-hook";
 
 import DiaryDateCalendar from "./DiaryDateСalendar/DiaryDateСalendar";
 import DiaryAddProductForm from "./DiaryAddProductForm/DiaryAddProductForm";
@@ -29,6 +30,8 @@ const Diary = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const mobile = useMediaPredicate("(max-width: 768px)");
+
   const summaryRedux = useSelector(getSummary);
   const { loading, error, eatenProducts, dayId, date } = summaryRedux;
 
@@ -50,7 +53,10 @@ const Diary = () => {
         date,
       };
       dispatch(addProduct(totalProductInfo));
-      dispatch(toggleModalRedux());
+      if (mobile) {
+
+        dispatch(toggleModalRedux());
+      }
     },
     [date, dispatch]
   );
