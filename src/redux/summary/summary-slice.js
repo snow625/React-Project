@@ -5,6 +5,7 @@ import { pending, rejected } from "../../shared/utils/pendingRejected";
 import { getUser } from "../auth/auth-operations";
 import { addProduct, dayInfo, removeProduct } from "./summary-operations";
 import { makeRandomProducts } from "../../shared/utils/randomFunctions";
+import { loginOldUser } from "../auth/auth-operations";
 
 const summarySlice = createSlice({
   name: "summary",
@@ -37,6 +38,18 @@ const summarySlice = createSlice({
         loading: false,
         notAllowedProducts: products,
       };
+    },
+    [loginOldUser.fulfilled]: (store, { payload }) => {
+      if (payload.user?.userData?.notAllowedProducts?.length > 0) {
+        const products = makeRandomProducts(
+          payload.user.userData.notAllowedProducts
+        );
+        return {
+          ...store,
+          loading: false,
+          notAllowedProducts: products,
+        };
+      }
     },
 
     [dayInfo.pending]: pending,
