@@ -50,9 +50,13 @@ const RightSideBar = () => {
   };
 
   const foodNotRecommendedList = () => {
-    const elements = foodNotRecommended.map((el) => <li key={el}>{el}</li>);
+    const elements = foodNotRecommended.map((el) => (
+      <li className={style.li} key={el}>
+        {el}
+      </li>
+    ));
 
-    return <ol>{elements}</ol>;
+    return <ol className={style.ol}>{elements}</ol>;
   };
 
   const { kcalLeft, kcalConsumed, dailyRate, percentsOfDailyRate } =
@@ -90,7 +94,7 @@ const RightSideBar = () => {
           </div>
           <div className={style.food}>
             <h3 className={style.sub_title}>Food not recommended</h3>
-            {foodNotRecommended ? (
+            {foodNotRecommended.length > 0 ? (
               foodNotRecommendedList()
             ) : (
               <p className={style.text}>Your diet will be displayed here</p>

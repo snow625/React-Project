@@ -81,6 +81,11 @@
   border-bottom: 1px solid #e0e0e0;
 }
 
+.input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 50px white inset;
+  -webkit-text-fill-color: #9b9faa;
+}
+
 .addBtn {
   text-align: center;
 }
