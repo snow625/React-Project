@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useCallback } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { useMediaPredicate } from "react-media-hook";
 
 import DiaryDateCalendar from "./DiaryDateСalendar/DiaryDateСalendar";
@@ -28,7 +28,7 @@ import styles from "./diary.module.scss";
 const Diary = () => {
   const isModalOpen = useModal();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const mobile = useMediaPredicate("(max-width: 768px)");
 
@@ -43,23 +43,19 @@ const Diary = () => {
     [dispatch]
   );
 
-  const addNewProduct = useCallback(
-    (productData) => {
-      const { id, weight } = productData;
-      const updatedWeight = Number(weight);
-      const totalProductInfo = {
-        productId: id,
-        weight: updatedWeight,
-        date,
-      };
-      dispatch(addProduct(totalProductInfo));
-      if (mobile) {
-
-        dispatch(toggleModalRedux());
-      }
-    },
-    [date, dispatch]
-  );
+  const addNewProduct = (productData) => {
+    const { id, weight } = productData;
+    const updatedWeight = Number(weight);
+    const totalProductInfo = {
+      productId: id,
+      weight: updatedWeight,
+      date,
+    };
+    dispatch(addProduct(totalProductInfo));
+    if (mobile) {
+      dispatch(toggleModalRedux());
+    }
+  };
 
   const deleteProductItem = useCallback(
     (id) => {
