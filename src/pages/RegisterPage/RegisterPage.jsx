@@ -16,15 +16,14 @@ const RegisterPage = () => {
   const { loading, error } = useSelector(getErrorLoadingAuth);
   const RegisterOk = useSelector(userName);
 
- 
   useEffect(() => {
     const checkRegistered = () => {
-     return navigate("/login");
-    }
+      return navigate("/login");
+    };
     if (RegisterOk) {
-       checkRegistered();
-     }
-},[RegisterOk, navigate]);
+      checkRegistered();
+    }
+  }, [RegisterOk, navigate]);
 
   const onSubmit = useCallback(
     (userData) => {
@@ -35,7 +34,7 @@ const RegisterPage = () => {
 
   return (
     <div className={`container ${style.wrapper}`}>
-      <h2 className={style.title}>Register:</h2>
+      <h2 className={style.title}>Регистрация:</h2>
       <RegisterForm onSubmit={onSubmit} />
       {error && errorChecker(error)}
       {loading && <Loader />}

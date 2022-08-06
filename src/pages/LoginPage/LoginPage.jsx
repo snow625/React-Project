@@ -20,7 +20,7 @@ const LoginPage = () => {
 
   return (
     <div className={`container ${style.wrapper}`}>
-      <h2 className={style.title}>Sing in:</h2>
+      <h2 className={style.title}>Вход:</h2>
       <LoginForm onSubmit={handleSubmit} />
       {error && errorChecker(error)}
       {loading && <Loader />}

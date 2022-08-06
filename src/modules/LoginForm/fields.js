@@ -10,7 +10,7 @@ const fields = {
     title: "Input email, example: test@gmail.com",
   },
   password: {
-    label: "Password *",
+    label: "Пароль *",
     name: "password",
     required: true,
     type: "password",

@@ -24,7 +24,7 @@ const LoginForm = ({ onSubmit }) => {
   const { email, password } = state;
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className={style.form_wrapper} onSubmit={handleSubmit}>
       <TextField onChange={handleChange} value={email} {...fields.email} />
       <TextField
         onChange={handleChange}
@@ -32,11 +32,11 @@ const LoginForm = ({ onSubmit }) => {
         {...fields.password}
       />
       <div className={style.button_wrapper}>
-        <Button type="submit" text="Login" />
+        <Button type="submit" text="Войти" />
         <Button
           onClick={handleClick}
           type="button"
-          text="Register"
+          text="Регистрация"
           white="true"
         />
       </div>

@@ -22,7 +22,7 @@ const RegisterForm = ({ onSubmit }) => {
   const { username, email, password } = state;
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className={style.form_wrapper} onSubmit={handleSubmit}>
       <TextField onChange={handleChange} value={username} {...fields.name} />
       <TextField onChange={handleChange} value={email} {...fields.email} />
       <TextField
@@ -31,8 +31,8 @@ const RegisterForm = ({ onSubmit }) => {
         {...fields.password}
       />
       <div className={style.button_wrapper}>
-        <Button type="submit" text="Register" />
-        <Button onClick={handleClick} type="button" text="Login" white="true" />
+        <Button type="submit" text="Создать" />
+        <Button onClick={handleClick} type="button" text="Войти" white="true" />
       </div>
     </form>
   );
