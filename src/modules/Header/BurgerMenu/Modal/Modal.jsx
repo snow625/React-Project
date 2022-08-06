@@ -5,18 +5,18 @@ import s from "./modal.module.scss";
 
 const modalPlace = document.getElementById("burger-root");
 
-const Modal = ({ onToggle, modalState }) => {
+const Modal = ({ onClose, modalState }) => {
   return createPortal(
     <div className={!modalState ? s.modal : `${s.modal} + ${s.isOpen}`}>
       <ul className={s.list}>
         <li className={s.item}>
-          <NavLink onClick={onToggle} className={s.link} to="/diary">
-            Diary
+          <NavLink onClick={onClose} className={s.link} to="/diary">
+            Дневник
           </NavLink>
         </li>
         <li className={s.item}>
-          <NavLink onClick={onToggle} className={s.link} to="/calculate">
-            Calculator
+          <NavLink onClick={onClose} className={s.link} to="/calculate">
+            Калькулятор
           </NavLink>
         </li>
       </ul>

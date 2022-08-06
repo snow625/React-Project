@@ -3,10 +3,12 @@ import { useMediaPredicate } from "react-media-hook";
 import logoBasic from "../../../assets/logo/logoBasic.svg";
 import logoDesktop from "../../../assets/logo/logoDesktop.svg";
 import logo from "../../../assets/logo/logo.svg";
-import PropTypes from "prop-types";
-import s from "./logo.module.scss";
+import useIsLogin from "../../hooks/useAuth";
 
-const Logo = ({ isLogin }) => {
+import style from "./logo.module.scss";
+
+const Logo = () => {
+  const isLogin = useIsLogin();
   const link = () => {
     return isLogin ? "/calculate" : "/";
   };
@@ -24,7 +26,7 @@ const Logo = ({ isLogin }) => {
   };
 
   return (
-    <div className={s.inner}>
+    <div className={style.inner}>
       <NavLink
         to={link()}
         aria-label={isLogin ? "link to calculate page" : "link to home page"}
@@ -33,14 +35,6 @@ const Logo = ({ isLogin }) => {
       </NavLink>
     </div>
   );
-};
-
-Logo.defaultProps = {
-  isLogin: false,
-};
-
-Logo.propTypes = {
-  isLogin: PropTypes.bool.isRequired,
 };
 
 export default Logo;

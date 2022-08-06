@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 
@@ -10,8 +10,12 @@ import ModalText from "../../shared/components/ModalText";
 import { getUserId } from "../../redux/auth/auth-selectors";
 import { updateSummaryAndnotAllowedProducts } from "../../redux/summary/summary-slice";
 import { makeRandomProducts } from "../../shared/utils/randomFunctions";
+import { toggleModalRedux } from "../../redux/modal/modal-slice";
+
 import { getDailyRateForUser } from "../../shared/services/API/daily-rate";
 import { errorChecker } from "../../shared/utils/randomFunctions";
+import { useModal } from "../../shared/hooks/useModal";
+
 import {
   loadingState,
   errorState,
@@ -22,20 +26,22 @@ import style from "./calculatePage.module.scss";
 const initialState = {
   calories: null,
   notAllowedProducts: [],
-  isModalOpen: false,
+  isModal: false,
   loading: false,
   error: null,
 };
 
 const CalculatePage = () => {
   const [state, setState] = useState(initialState);
-  const navigate = useNavigate();
-  const dispath = useDispatch();
+  const { calories, notAllowedProducts, isModal, loading, error } = state;
+
   const userId = useSelector(getUserId);
+  const navigate = useNavigate();
+  const isModalOpen = useModal();
+  const dispatch = useDispatch();
 
   const handleClick = async (data) => {
     setState(loadingState);
-
     const dataValuesToNumbers = {};
     Object.entries(data).forEach(([key, value]) => {
       dataValuesToNumbers[key] = Number(value);
@@ -45,7 +51,7 @@ const CalculatePage = () => {
       const result = await getDailyRateForUser(userId, dataValuesToNumbers);
       const { dailyRate, notAllowedProducts } = result;
 
-      dispath(updateSummaryAndnotAllowedProducts(result));
+      dispatch(updateSummaryAndnotAllowedProducts(result));
 
       const products = makeRandomProducts(notAllowedProducts);
 
@@ -55,7 +61,7 @@ const CalculatePage = () => {
         calories,
         notAllowedProducts: products,
         loading: false,
-        isModalOpen: true,
+        isModal: true,
       }));
     } catch (error) {
       setState((prevState) => {
@@ -64,19 +70,18 @@ const CalculatePage = () => {
     }
   };
 
-  const toggleModal = () => {
-    setState((prevState) => ({
-      ...prevState,
-      isModalOpen: !prevState.isModalOpen,
-    }));
-  };
+  useEffect(() => {
+    if (isModal) {
+      dispatch(toggleModalRedux());
+      setState((prevState) => ({ ...prevState, isModal: false }));
+    }
+  }, [dispatch, isModal]);
 
   const modalButtonClick = () => {
-    toggleModal();
+    dispatch(toggleModalRedux());
+    setState((prevState) => ({ ...prevState, isModal: false }));
     return navigate("/diary");
   };
-
-  const { calories, notAllowedProducts, isModalOpen, loading, error } = state;
 
   return (
     <>
@@ -88,7 +93,7 @@ const CalculatePage = () => {
       </div>
 
       {isModalOpen && (
-        <Modal onClose={toggleModal}>
+        <Modal>
           <ModalText
             calories={calories}
             list={notAllowedProducts}
