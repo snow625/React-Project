@@ -13,11 +13,7 @@ const summarySlice = createSlice({
     setDate: (store, { payload }) => {
       store.date = payload.date;
     },
-    updateEatenProducts: (store, { payload }) => {
-      store.eatenProducts = store.eatenProducts.filter(
-        (el) => el.id !== payload
-      );
-    },
+    resetSummary: () => ({ ...initialState }),
 
     updateSummaryAndnotAllowedProducts: (store, { payload }) => {
       store.notAllowedProducts = makeRandomProducts(payload.notAllowedProducts);
@@ -62,10 +58,17 @@ const summarySlice = createSlice({
         };
       }
       if (payload.kcalLeft) {
+        const { kcalLeft, kcalConsumed, dailyRate, percentsOfDailyRate } =
+          payload;
         return {
           ...store,
           loading: false,
-          summary: {},
+          summary: {
+            kcalLeft,
+            kcalConsumed,
+            dailyRate,
+            percentsOfDailyRate,
+          },
           eatenProducts: [],
         };
       }
@@ -94,6 +97,7 @@ const summarySlice = createSlice({
     [removeProduct.rejected]: rejected,
     [removeProduct.fulfilled]: (store, { payload }) => {
       const {
+        deletedProductId,
         newDaySummary: {
           kcalLeft,
           kcalConsumed,
@@ -110,6 +114,9 @@ const summarySlice = createSlice({
           dailyRate,
           percentsOfDailyRate,
         },
+        eatenProducts: store.eatenProducts.filter(
+          (el) => el.id !== deletedProductId
+        ),
       };
     },
   },
@@ -119,6 +126,7 @@ export const {
   setDate,
   updateEatenProducts,
   updateSummaryAndnotAllowedProducts,
+  resetSummary,
 } = summarySlice.actions;
 
 export default summarySlice.reducer;

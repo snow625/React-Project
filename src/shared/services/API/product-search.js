@@ -1,5 +1,5 @@
 import { instance } from "./auth";
-import { debounce } from "debounce";
+// import { debounce } from "debounce";
 import AwesomeDebouncePromise from "awesome-debounce-promise";
 
 const searchProduct = async (query) => {
@@ -9,5 +9,5 @@ const searchProduct = async (query) => {
 
 export const debouncedSearchProduct = AwesomeDebouncePromise(
   searchProduct,
-  1000
+  5000
 );

@@ -7,6 +7,7 @@ const getLinkClassName = ({ isActive }) => {
 
 const Navigation = () => {
   return (
+    <div className={s.container}>
     <ul className={s.list}>
       <li className={s.item}>
       <NavLink className={getLinkClassName} to='/diary'>Diary</NavLink>
@@ -15,6 +16,7 @@ const Navigation = () => {
       <NavLink className={getLinkClassName} to='/calculate'>Calculate</NavLink>
       </li>
     </ul>
+    </div>
   );
 };
 

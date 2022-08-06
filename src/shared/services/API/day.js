@@ -21,5 +21,7 @@ export const deleteProductItem = async (productItem) => {
   const { data } = await instance.delete("/day", {
     data: productItem,
   });
-  return data;
+  const newData = { ...data, deletedProductId: productItem.eatenProductId };
+
+  return newData;
 };

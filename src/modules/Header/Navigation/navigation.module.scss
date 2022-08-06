@@ -32,22 +32,19 @@
   }
 }
 
-@media screen and (max-width: 1280px) {
-  .list {
-    display: none;
-  }
-}
-
 @media screen and (min-width: 1280px) {
+  .container {
+    position: absolute;
+    top: 50px;
+    left: 227px;
+  }
+  
   .item:first-child {
-    position: relative;
-    margin-left: 128px;
-
     &::before {
       content: "";
 
       position: absolute;
-      left: -80%;
+      left: -38px;
       bottom: 50%;
 
       display: inline-block;

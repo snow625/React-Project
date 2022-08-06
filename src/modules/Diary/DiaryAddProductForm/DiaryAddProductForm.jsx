@@ -1,28 +1,27 @@
 import { useEffect } from "react";
-// import { debounce } from "debounce";
 import CircleButton from "../../../shared/components/CircleButton/CircleButton";
 import ProductSelector from "./ProductSelector/ProductSelector";
 import Button from "../../../shared/components/Button";
-import fields from "./fields";
 import useForm from "../../../shared/hooks/useForm";
 import { debouncedSearchProduct } from "../../../shared/services/API/product-search";
+import {
+  loadingState,
+  errorState,
+} from "../../../shared/utils/loadingErrorSetState";
+import { errorChecker } from "../../../shared/utils/randomFunctions";
+import Loader from "../../../shared/components/Loader/Loader";
+import initialState from "./initialState";
+import fields from "./fields";
 import styles from "./diaryAddProductForm.module.scss";
 
-const initialState = {
-  product: "",
-  foundProducts: [],
-  currentProduct: "",
-  id: null,
-  weight: "",
-};
 const DiaryAddProductForm = ({ isMobile, onSubmit }) => {
   const { state, setState, handleChange, handleSubmit } = useForm({
     onSubmit,
     initialState,
     isReset: true,
   });
-  const { product, foundProducts, currentProduct, weight } = state;
-
+  const { product, foundProducts, currentProduct, weight, loading, error } =
+    state;
   const handleFocus = () => {
     setState((prevState) => {
       return {
@@ -36,14 +35,20 @@ const DiaryAddProductForm = ({ isMobile, onSubmit }) => {
 
   useEffect(() => {
     const findProduct = async (product) => {
+      setState(loadingState);
       try {
         const result = await debouncedSearchProduct(product);
-        setState((prevState) => ({ ...prevState, foundProducts: result }));
+        setState((prevState) => ({
+          ...prevState,
+          foundProducts: result,
+          loading: false,
+        }));
       } catch (error) {
-        console.log(error);
+        setState((prevState) => {
+          return errorState(prevState, error);
+        });
       }
     };
-
     if (currentProduct) {
       return;
     }
@@ -75,13 +80,10 @@ const DiaryAddProductForm = ({ isMobile, onSubmit }) => {
             Введите название продукта
           </label>
           <input
-            name="product"
-            id={"product"}
             className={styles.input}
             value={product}
             onChange={handleChange}
             onFocus={handleFocus}
-            autoComplete="off"
             {...fields.product}
           />
           {foundProducts.length > 0 && (
@@ -96,11 +98,10 @@ const DiaryAddProductForm = ({ isMobile, onSubmit }) => {
             Grams
           </label>
           <input
-            id={"weight"}
             className={styles.input}
-            {...fields.weight}
             value={weight}
             onChange={handleChange}
+            {...fields.weight}
           />
         </div>
         {isMobile ? (
@@ -115,6 +116,8 @@ const DiaryAddProductForm = ({ isMobile, onSubmit }) => {
           />
         )}
       </form>
+      {loading && <Loader />}
+      {error && errorChecker(error)}
     </div>
   );
 };

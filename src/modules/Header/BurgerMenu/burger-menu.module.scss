@@ -1,13 +1,10 @@
 .btn {
-  position: absolute;
-  right: 0;
-  top: 10%;
-
   display: flex;
   justify-content: center;
   align-items: center;
 
-  padding: 0;
+  padding: 5px;
+  margin-left: 53px;
 
   border: none;
   background: none;
@@ -21,16 +18,4 @@
   stroke-width: 0;
   stroke: currentColor;
   fill: currentColor;
-}
-
-@media screen and (min-width: 768px) {
-  .btn {
-    top: 25%;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .btn {
-    display: none;
-  }
 }

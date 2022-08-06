@@ -12,6 +12,10 @@ import { updateSummaryAndnotAllowedProducts } from "../../redux/summary/summary-
 import { makeRandomProducts } from "../../shared/utils/randomFunctions";
 import { getDailyRateForUser } from "../../shared/services/API/daily-rate";
 import { errorChecker } from "../../shared/utils/randomFunctions";
+import {
+  loadingState,
+  errorState,
+} from "../../shared/utils/loadingErrorSetState";
 
 import style from "./calculatePage.module.scss";
 
@@ -30,10 +34,9 @@ const CalculatePage = () => {
   const userId = useSelector(getUserId);
 
   const handleClick = async (data) => {
-    setState((prevState) => ({ ...prevState, error: null, loading: true }));
+    setState(loadingState);
 
     const dataValuesToNumbers = {};
-
     Object.entries(data).forEach(([key, value]) => {
       dataValuesToNumbers[key] = Number(value);
     });
@@ -55,14 +58,9 @@ const CalculatePage = () => {
         isModalOpen: true,
       }));
     } catch (error) {
-      setState((prevState) => ({
-        ...prevState,
-        error: {
-          message: error.response.data.message,
-          status: error.response.status,
-        },
-        loading: false,
-      }));
+      setState((prevState) => {
+        return errorState(prevState, error);
+      });
     }
   };
 
