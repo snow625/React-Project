@@ -6,8 +6,9 @@ import s from "./modal.module.scss";
 const modalPlace = document.getElementById("burger-root");
 
 const Modal = ({ onClose, modalState }) => {
+
   return createPortal(
-    <div className={!modalState ? s.modal : `${s.modal} + ${s.isOpen}`}>
+   <div className={s.modal}>
       <ul className={s.list}>
         <li className={s.item}>
           <NavLink onClick={onClose} className={s.link} to="/diary">
@@ -22,7 +23,7 @@ const Modal = ({ onClose, modalState }) => {
       </ul>
     </div>,
     modalPlace
-  );
+    );
 };
 
 Modal.defaultProps = {

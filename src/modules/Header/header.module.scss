@@ -29,4 +29,10 @@
     left: calc(50% - 640px);
     border: none;
   }
+
+  .wrapper {
+    position: absolute;
+    right: 8px;
+    bottom: 24px;
+  }
 }
