@@ -39,6 +39,10 @@ const UserInfo = ({ modalState }) => {
   );
 };
 
+UserInfo.defaultProps = {
+  modalState: false,
+};
+
 UserInfo.propTypes = {
   modalState: PropTypes.bool.isRequired,
 };
