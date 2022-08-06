@@ -13,6 +13,7 @@ const summarySlice = createSlice({
     setDate: (store, { payload }) => {
       store.date = payload.date;
     },
+    resetSummary: () => ({ ...initialState }),
 
     updateSummaryAndnotAllowedProducts: (store, { payload }) => {
       store.notAllowedProducts = makeRandomProducts(payload.notAllowedProducts);
@@ -125,6 +126,7 @@ export const {
   setDate,
   updateEatenProducts,
   updateSummaryAndnotAllowedProducts,
+  resetSummary,
 } = summarySlice.actions;
 
 export default summarySlice.reducer;

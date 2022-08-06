@@ -5,6 +5,10 @@ import CircleButton from "../../../shared/components/CircleButton/CircleButton";
 import Button from "../../../shared/components/Button";
 import useForm from "../../../shared/hooks/useForm";
 import { searchProduct } from "../../../shared/services/API/product-search";
+import {
+  loadingState,
+  errorState,
+} from "../../../shared/utils/loadingErrorSetState";
 import { errorChecker } from "../../../shared/utils/randomFunctions";
 import Loader from "../../../shared/components/Loader/Loader";
 
@@ -35,11 +39,7 @@ const DiaryAddProductForm = ({ isMobile, onSubmit }) => {
 
   useEffect(() => {
     const findProduct = async (product) => {
-      setState((prevState) => ({
-        ...prevState,
-        error: null,
-        loading: true,
-      }));
+      setState(loadingState);
       try {
         const result = await searchProduct(product);
         setState((prevState) => ({
@@ -48,14 +48,9 @@ const DiaryAddProductForm = ({ isMobile, onSubmit }) => {
           loading: false,
         }));
       } catch (error) {
-        setState((prevState) => ({
-          ...prevState,
-          loading: false,
-          error: {
-            message: error.response.data.message,
-            status: error.response.status,
-          },
-        }));
+        setState((prevState) => {
+          return errorState(prevState, error);
+        });
       }
     };
 
@@ -90,13 +85,10 @@ const DiaryAddProductForm = ({ isMobile, onSubmit }) => {
             Введите название продукта
           </label>
           <input
-            name="product"
-            id={"product"}
             className={styles.input}
             value={product}
             onChange={handleChange}
             onFocus={handleFocus}
-            autoComplete="off"
             {...fields.product}
           />
           {foundProducts.length > 0 && (
@@ -111,11 +103,10 @@ const DiaryAddProductForm = ({ isMobile, onSubmit }) => {
             Grams
           </label>
           <input
-            id={"weight"}
             className={styles.input}
-            {...fields.weight}
             value={weight}
             onChange={handleChange}
+            {...fields.weight}
           />
         </div>
         {isMobile ? (

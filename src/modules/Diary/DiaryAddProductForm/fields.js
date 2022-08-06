@@ -3,9 +3,12 @@ const fields = {
     name: "product",
     required: true,
     type: "text",
+    autoComplete: "off",
+    id: "product",
   },
   weight: {
     name: "weight",
+    id: "weight",
     required: true,
     type: "number",
     min: "1",

@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import { userLogout } from "../../../redux/auth/auth-operations";
+import { resetSummary } from "../../../redux/summary/summary-slice";
 import { userName } from "../../../redux/auth/auth-selectors";
 import sprite from "../../../assets/svg/sprite.svg";
 import PropTypes from "prop-types";
@@ -12,6 +13,7 @@ const UserInfo = ({ modalState }) => {
 
   const handleClick = () => {
     dispatch(userLogout());
+    dispatch(resetSummary());
   };
 
   return (

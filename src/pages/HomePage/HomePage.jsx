@@ -8,8 +8,12 @@ import ModalText from "../../shared/components/ModalText";
 import { getDailyRateInGeneral } from "../../shared/services/API/daily-rate";
 import { makeRandomProducts } from "../../shared/utils/randomFunctions";
 import { errorChecker } from "../../shared/utils/randomFunctions";
-import style from "./homePage.module.scss";
+import {
+  loadingState,
+  errorState,
+} from "../../shared/utils/loadingErrorSetState";
 
+import style from "./homePage.module.scss";
 const initialState = {
   calories: null,
   notAllowedProducts: [],
@@ -22,7 +26,7 @@ const HomePage = () => {
   const navigate = useNavigate();
 
   const handleClick = async (data) => {
-    setState((prevState) => ({ ...prevState, error: null, loading: true }));
+    setState(loadingState);
 
     const dataValuesToNumbers = {};
     Object.entries(data).forEach(([key, value]) => {
@@ -44,14 +48,9 @@ const HomePage = () => {
         isModalOpen: true,
       }));
     } catch (error) {
-      setState((prevState) => ({
-        ...prevState,
-        error: {
-          message: error.response.data.message,
-          status: error.response.status,
-        },
-        loading: false,
-      }));
+      setState((prevState) => {
+        return errorState(prevState, error);
+      });
     }
   };
 
