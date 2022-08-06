@@ -5,9 +5,9 @@ import s from "./modal.module.scss";
 
 const modalPlace = document.getElementById("burger-root");
 
-const Modal = ({ onToggle }) => {
+const Modal = ({ onToggle, modalState }) => {
   return createPortal(
-    <div className={s.modal}>
+    <div className={!modalState ? s.modal : `${s.modal} + ${s.isOpen}`}>
       <ul className={s.list}>
         <li className={s.item}>
           <NavLink onClick={onToggle} className={s.link} to="/diary">
@@ -27,10 +27,12 @@ const Modal = ({ onToggle }) => {
 
 Modal.defaultProps = {
   onToggle: () => {},
+  modalState: false,
 };
 
 Modal.propTypes = {
   onToggle: PropTypes.func.isRequired,
+  modalState: PropTypes.bool.isRequired,
 };
 
 export default Modal;

@@ -6,7 +6,7 @@ import sprite from "../../../assets/svg/sprite.svg";
 import PropTypes from "prop-types";
 import s from "./user-info.module.scss";
 
-const UserInfo = ({ modalState }) => {
+const UserInfo = ({ modalState, onClose }) => {
   const dispatch = useDispatch();
 
   const name = useSelector(userName);
@@ -15,12 +15,18 @@ const UserInfo = ({ modalState }) => {
     dispatch(userLogout());
     dispatch(resetSummary());
   };
+  console.log(modalState)
+  console.log(onClose);
 
   return (
     <>
       <div className={s.container}>
         {modalState ? (
-          <button className={s.iconBtn} aria-label="go back button">
+          <button
+            className={s.iconBtn}
+            onClick={onClose}
+            aria-label="go back button"
+          >
             <svg className={s.icon}>
               <use href={sprite + "#icon-goBack"} />
             </svg>

@@ -1,6 +1,4 @@
 .container {
-  position: relative;
-
   display: flex;
   align-items: center;
 }
@@ -55,8 +53,8 @@
 }
 
 .iconBtn {
-  // position: absolute;
-  // left: 10px;
+  position: absolute;
+  left: 10px;
 
   display: flex;
   justify-content: center;
@@ -71,6 +69,12 @@
 .icon {
   width: 12px;
   height: 7px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1280px) {
+  .container {
+    position: relative;
+  }
 }
 
 @media screen and (min-width: 1280px) {

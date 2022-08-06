@@ -31,13 +31,13 @@ const Header = () => {
           {isLogin && biggerThan1280 &&  <Navigation />}
           {isLogin && (
             <div className={s.wrapper}>
-              {biggerThan768 && isLogin && <UserInfo />}
+              {biggerThan768 && isLogin && <UserInfo modalState={state} onClose={() => toggleModal()}/>}
               {isLogin && smallerThan1280 && (
                 <BurgerMenu onToggle={toggleModal} modalState={state} />
               )}
             </div>
           )}
-          {state && <Modal onToggle={toggleModal} />}
+          {smallerThan1280 && <Modal onToggle={toggleModal} modalState={state} />}
         </nav>
       </div>
       {isLogin && <MobileNavigate modalState={state} />}
