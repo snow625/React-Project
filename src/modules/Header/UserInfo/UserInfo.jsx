@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { userLogout } from "../../../redux/auth/auth-operations";
-import { resetSummary } from "../../../redux/summary/summary-slice";
+
 import { userName } from "../../../redux/auth/auth-selectors";
 import { toggleModalRedux } from "../../../redux/modal/modal-slice";
 import { useModal } from "../../../shared/hooks/useModal";
@@ -20,7 +20,6 @@ const UserInfo = () => {
 
   const handleClickLogOut = () => {
     dispatch(userLogout());
-    dispatch(resetSummary());
   };
 
   const handleClickBack = () => {

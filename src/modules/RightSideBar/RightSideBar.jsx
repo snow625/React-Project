@@ -24,7 +24,7 @@ const RightSideBar = () => {
   };
 
   const newSummary = () => {
-    if (daySummary.kcalLeft) {
+    if (daySummary.dailyRate) {
       const dataValuesToMathFloor = {};
 
       Object.entries(daySummary).forEach(([key, value]) => {
@@ -58,6 +58,7 @@ const RightSideBar = () => {
 
     return <ol className={style.ol}>{elements}</ol>;
   };
+  console.log(newSummary());
 
   const { kcalLeft, kcalConsumed, dailyRate, percentsOfDailyRate } =
     newSummary();

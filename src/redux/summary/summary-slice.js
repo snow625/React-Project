@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import initialState from "./summary-initialState";
 import { pending, rejected } from "../../shared/utils/pendingRejected";
-import { getUser } from "../auth/auth-operations";
+import { getUser, userLogout } from "../auth/auth-operations";
 import { addProduct, dayInfo, removeProduct } from "./summary-operations";
 import { makeRandomProducts } from "../../shared/utils/randomFunctions";
 import { loginOldUser } from "../auth/auth-operations";
@@ -14,7 +14,6 @@ const summarySlice = createSlice({
     setDate: (store, { payload }) => {
       store.date = payload.date;
     },
-    resetSummary: () => ({ ...initialState }),
 
     updateSummaryAndnotAllowedProducts: (store, { payload }) => {
       store.notAllowedProducts = makeRandomProducts(payload.notAllowedProducts);
@@ -51,6 +50,7 @@ const summarySlice = createSlice({
         };
       }
     },
+    [userLogout.fulfilled]: () => initialState,
 
     [dayInfo.pending]: pending,
     [dayInfo.rejected]: rejected,
@@ -139,7 +139,6 @@ export const {
   setDate,
   updateEatenProducts,
   updateSummaryAndnotAllowedProducts,
-  resetSummary,
 } = summarySlice.actions;
 
 export default summarySlice.reducer;
