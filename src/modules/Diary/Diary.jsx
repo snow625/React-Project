@@ -103,13 +103,19 @@ const Diary = () => {
       )}
       {!isCalculateFinished && (
         <div className={styles.wrapper}>
-          <h3>Здравствуй новый пользоватеть!</h3>
-          <p>
-            Наше приложение предлагает Вам соблюдать диету и рассчитывать
-            каллории.Для того чтобы начать худеть сначала{" "}
-            <Link to={"/calculate"}>Рассчитай диету</Link>{" "}
-          </p>
-          <DiaryDateCalendar fetchDayInfo={getDayInfo} />
+          <div className={styles.visibility}>
+            <DiaryDateCalendar fetchDayInfo={getDayInfo} />
+          </div>
+          <div className={styles.wrapperComponent}>
+            <h3 className={styles.title}>Здравствуй новый пользоватеть!</h3>
+            <p className={styles.text}>
+              Наше приложение предлагает Вам соблюдать диету и рассчитывать
+              каллории. Для того чтобы начать худеть сначала{" "}
+              <Link className={styles.linkTo} to={"/calculate"}>
+                Рассчитай диету
+              </Link>{" "}
+            </p>
+          </div>
         </div>
       )}
       {error && relogin(error)}
