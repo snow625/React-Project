@@ -1,5 +1,8 @@
 .wrapper {
   padding-top: 60px;
+  @media (max-width: 768px) {
+    padding-top: 120px;
+  }
 
   @media (min-width: 768px) {
     padding-top: 160px;

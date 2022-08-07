@@ -1,64 +1,82 @@
+// .wrapper {
+//   @media (max-width: 768px) {
+//     padding-top: 80px;
+//   }
+// }
+
 .title {
-    font-size: 18px;
-    margin-bottom: 20px;
-    align-items: flex-start;
+  font-size: 18px;
+  margin-bottom: 20px;
+  align-items: flex-start;
+}
+
+.amount {
+  font-size: 14px;
+}
+
+.text {
+  position: relative;
+  font-size: 48px;
+  color: var(--text-color-blue);
+  margin-bottom: 52px;
+  width: 330px;
+  text-align: center;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 94px; //???при увеличении количества знаков ккал плывёт линия
+    left: 25px; //???
+    border-bottom: 1px solid var(--bgc-primary);
+    width: 280px;
   }
-  
-  .amount{
-    font-size: 14px;
+}
+
+.sub_title {
+  align-self: flex-start;
+  margin-bottom: 20px;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  align-self: flex-start;
+  margin-bottom: 40px;
+  max-height: 150px;
+  overflow-y: auto;
+}
+.list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.list::-webkit-scrollbar-track {
+  background-color: #f0f1f3;
+}
+
+.list::-webkit-scrollbar-thumb {
+  background-color: #264061;
+}
+
+.item {
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--text-color);
+  list-style: inside decimal;
+
+  &:not(:last-child) {
+    margin-bottom: 18px;
   }
-  
-  .text { 
-    position: relative;
-    font-size: 48px;
-    color: var(--text-color-blue);
-    margin-bottom: 52px;
-    width: 330px;
+}
+
+@media screen and (min-width: 670px) {
+  .title {
     text-align: center;
-  
-    &:after {
-      content: '';
-      position: absolute;
-      top: 94px; //???при увеличении количества знаков ккал плывёт линия
-      left: 25px; //???
-      border-bottom: 1px solid var(--bgc-primary);
-      width: 280px;
-    }
-  }
-  
-  .sub_title {
-    align-self: flex-start;
-    margin-bottom: 20px;
-  }
-  
-  .list {
-    margin: 0;
-    padding: 0;
-    align-self: flex-start;
-    margin-bottom: 40px;
-  }
-  
-  .item { 
-    font-weight: 400;
-    font-size: 14px;
-    color: var(--text-color);
-    list-style: inside decimal;
-  
-    &:not(:last-child){
-      margin-bottom: 18px;
-    } 
+    font-size: 26px;
   }
 
-  @media screen and (min-width: 670px)  {
-    .title {
-      text-align: center;
-      font-size: 26px;
-    }
-    
-    .text:after {
-      width: 330px;
-      top: 90px;
-      left: -15px;
-    }
-
+  .text:after {
+    width: 330px;
+    top: 90px;
+    left: -15px;
   }
+}
