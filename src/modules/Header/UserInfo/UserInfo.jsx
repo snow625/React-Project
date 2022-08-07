@@ -56,7 +56,11 @@ const UserInfo = () => {
       return btnBackMarkup();
     }
     if (isLogin && mobile && isModal) {
-      return [btnBackMarkup(), userInfoMarkup()];
+      return (
+        <>
+          {btnBackMarkup()} {userInfoMarkup()}
+        </>
+      );
     }
     if (isLogin && mobile && !isModal) {
       return userInfoMarkup();
