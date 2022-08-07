@@ -14,7 +14,12 @@ const MobileNavigate = ({ modalState, onClick }) => {
   );
 };
 
+MobileNavigate.defaultProps = {
+  onClick: () => {}
+}
+
 MobileNavigate.propTypes = {
+  onClick: PropTypes.func.isRequired,
   modalState: PropTypes.bool.isRequired,
 };
 

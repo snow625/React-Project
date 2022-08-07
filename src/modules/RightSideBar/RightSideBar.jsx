@@ -58,7 +58,6 @@ const RightSideBar = () => {
 
     return <ol className={style.ol}>{elements}</ol>;
   };
-  console.log(newSummary());
 
   const { kcalLeft, kcalConsumed, dailyRate, percentsOfDailyRate } =
     newSummary();
