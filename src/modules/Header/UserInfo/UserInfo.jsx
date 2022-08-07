@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import { userLogout } from "../../../redux/auth/auth-operations";
-
 import { userName } from "../../../redux/auth/auth-selectors";
 import { toggleModalRedux } from "../../../redux/modal/modal-slice";
 import { useModal } from "../../../shared/hooks/useModal";
@@ -26,110 +25,48 @@ const UserInfo = () => {
     dispatch(toggleModalRedux());
   };
 
-  const isModalOpen = () => {
-    // человек не залог, с тел и открыл модалку - компонент с кнопкой назад
-    if (!isLogin && mobile && isModal) {
-      return (
-        <button
-          className={style.iconBtn}
-          onClick={handleClickBack}
-          aria-label="Кнопка назад"
-        >
-          <svg className={style.icon}>
-            <use href={sprite + "#icon-goBack"} />
-          </svg>
-        </button>
-      );
-    }
-    // залог, с тел, модалка открыта - компонент с кнопкой и имя и выход
-    if (isLogin && mobile && isModal) {
-      return (
-        <>
-          <button
-            className={style.iconBtn}
-            onClick={handleClickBack}
-            aria-label="Кнопка назад"
-          >
-            <svg className={style.icon}>
-              <use href={sprite + "#icon-goBack"} />
-            </svg>
-          </button>
+  const btnBackMarkup = () => {
+    return (
+      <button
+        className={style.iconBtn}
+        onClick={handleClickBack}
+        aria-label="Кнопка назад"
+      >
+        <svg className={style.icon}>
+          <use href={sprite + "#icon-goBack"} />
+        </svg>
+      </button>
+    );
+  };
 
-          <p className={style.text}>{name}</p>
-          <span className={style.span}></span>
-          <button
-            className={style.btn}
-            type="button"
-            onClick={handleClickLogOut}
-          >
-            Выйти
-          </button>
-        </>
-      );
+  const userInfoMarkup = () => {
+    return (
+      <>
+        <p className={style.text}>{name}</p>
+        <span className={style.span}></span>
+        <button className={style.btn} type="button" onClick={handleClickLogOut}>
+          Выйти
+        </button>
+      </>
+    );
+  };
+
+  const isModalOpen = () => {
+    if (!isLogin && mobile && isModal) {
+      return btnBackMarkup();
     }
-    // залг, с тел, модалкка закрыта - компонент имя и выход
+    if (isLogin && mobile && isModal) {
+      return [btnBackMarkup(), userInfoMarkup()];
+    }
     if (isLogin && mobile && !isModal) {
-      return (
-        <>
-          <p className={style.text}>{name}</p>
-          <span className={style.span}></span>
-          <button
-            className={style.btn}
-            type="button"
-            onClick={handleClickLogOut}
-          >
-            Выйти
-          </button>
-        </>
-      );
+      return userInfoMarkup();
     }
     if (isLogin) {
-      return (
-        <>
-          <p className={style.text}>{name}</p>
-          <span className={style.span}></span>
-          <button
-            className={style.btn}
-            type="button"
-            onClick={handleClickLogOut}
-          >
-            Выйти
-          </button>
-        </>
-      );
+      return userInfoMarkup();
     }
   };
 
-  return (
-    <>
-      {isModalOpen()}
-      {/* <div className={style.container}>
-        {useModal() ? (
-          <button
-            className={style.iconBtn}
-            onClick={handleClickBack}
-            aria-label="Кнопка назад"
-          >
-            <svg className={style.icon}>
-              <use href={sprite + "#icon-goBack"} />
-            </svg>
-          </button>
-        ) : (
-          <>
-            <p className={style.text}>{name}</p>
-            <span className={style.span}></span>
-            <button
-              className={style.btn}
-              type="button"
-              onClick={handleClickLogOut}
-            >
-              Выйти
-            </button>
-          </>
-        )}
-      </div> */}
-    </>
-  );
+  return <>{isModalOpen()}</>;
 };
 
 export default UserInfo;
