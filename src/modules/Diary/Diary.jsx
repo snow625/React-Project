@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useCallback } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useMediaPredicate } from "react-media-hook";
 
 import DiaryDateCalendar from "./DiaryDateСalendar/DiaryDateСalendar";
@@ -11,7 +11,7 @@ import Loader from "../../shared/components/Loader/Loader";
 import Modal from "../../shared/components/Modal";
 
 import { useModal } from "../../shared/hooks/useModal";
-import { errorChecker } from "../../shared/utils/randomFunctions";
+
 import { toggleModalRedux } from "../../redux/modal/modal-slice";
 
 import {
@@ -21,19 +21,21 @@ import {
 } from "../../redux/summary/summary-operations";
 
 import { getSummary } from "../../redux/summary/summary-selectors";
-
 import { setDate } from "../../redux/summary/summary-slice";
 import styles from "./diary.module.scss";
 
 const Diary = () => {
   const isModalOpen = useModal();
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const mobile = useMediaPredicate("(max-width: 768px)");
 
   const summaryRedux = useSelector(getSummary);
-  const { loading, error, eatenProducts, dayId, date } = summaryRedux;
+  const { loading, error, eatenProducts, dayId, date, notAllowedProducts } =
+    summaryRedux;
+
+  const isCalculateFinished = notAllowedProducts.length > 0 ? true : false;
 
   const getDayInfo = useCallback(
     (data) => {
@@ -68,11 +70,11 @@ const Diary = () => {
     [dayId, dispatch]
   );
 
-  // const relogin = (error) => {
-  //   if (error?.status === 401) {
-  //     navigate("/login");
-  //   }
-  // };
+  const relogin = (error) => {
+    if (error?.status === 401) {
+      navigate("/login");
+    }
+  };
 
   const mobileCircleBtnClick = () => {
     dispatch(toggleModalRedux());
@@ -80,24 +82,37 @@ const Diary = () => {
 
   return (
     <>
-      <div className={styles.wrapper}>
-        <DiaryDateCalendar fetchDayInfo={getDayInfo} />
-        <DiaryAddProductForm isMobile={false} onSubmit={addNewProduct} />
-        <DiaryProductsList
-          eatenProducts={eatenProducts}
-          onClick={deleteProductItem}
-        />
-        <div className={styles.btn}>
-          <CircleButton
-            type="button"
-            label="Add product button"
-            mobile={true}
-            iconNameInSprite="add"
-            onClick={mobileCircleBtnClick}
+      {isCalculateFinished && (
+        <div className={styles.wrapper}>
+          <DiaryDateCalendar fetchDayInfo={getDayInfo} />
+          <DiaryAddProductForm isMobile={false} onSubmit={addNewProduct} />
+          <DiaryProductsList
+            eatenProducts={eatenProducts}
+            onClick={deleteProductItem}
           />
+          <div className={styles.btn}>
+            <CircleButton
+              type="button"
+              label="Add product button"
+              mobile={true}
+              iconNameInSprite="add"
+              onClick={mobileCircleBtnClick}
+            />
+          </div>
         </div>
-      </div>
-      {error && errorChecker(error)}
+      )}
+      {!isCalculateFinished && (
+        <div className={styles.wrapper}>
+          <h3>Здравствуй новый пользоватеть!</h3>
+          <p>
+            Наше приложение предлагает Вам соблюдать диету и рассчитывать
+            каллории.Для того чтобы начать худеть сначала{" "}
+            <Link to={"/calculate"}>Рассчитай диету</Link>{" "}
+          </p>
+          <DiaryDateCalendar fetchDayInfo={getDayInfo} />
+        </div>
+      )}
+      {error && relogin(error)}
       {loading && <Loader />}
       {isModalOpen && (
         <Modal>
