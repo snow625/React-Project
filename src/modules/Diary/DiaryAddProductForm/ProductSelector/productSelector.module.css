@@ -1,8 +1,20 @@
 .select {
   position: absolute;
-  bottom: -50px;
+  /* bottom: -50px; */
+  bottom: 0;
   width: inherit;
   left: 0;
   outline: none;
+  border: none;
   background-color: white;
+  z-index: 1;
+}
+
+.selectVisible {
+  composes: select;
+  z-index: 2;
+}
+
+.option {
+  font-size: 14px;
 }

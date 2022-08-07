@@ -1,5 +1,5 @@
 import { instance } from "./auth";
-// import { debounce } from "debounce";
+import Alert from "../../components/Alert";
 import AwesomeDebouncePromise from "awesome-debounce-promise";
 
 const searchProduct = async (query) => {
@@ -7,7 +7,16 @@ const searchProduct = async (query) => {
   return data;
 };
 
+const productSearchWarn = async (message) => {
+  return <Alert message={message} />;
+};
+
 export const debouncedSearchProduct = AwesomeDebouncePromise(
   searchProduct,
-  5000
+  1000
+);
+
+export const debouncedProductSearchWarn = AwesomeDebouncePromise(
+  productSearchWarn,
+  1000
 );

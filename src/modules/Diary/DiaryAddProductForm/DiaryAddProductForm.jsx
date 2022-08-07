@@ -1,15 +1,17 @@
 import { useEffect } from "react";
+import PropTypes from "prop-types";
 import CircleButton from "../../../shared/components/CircleButton/CircleButton";
 import ProductSelector from "./ProductSelector/ProductSelector";
 import Button from "../../../shared/components/Button";
 import useForm from "../../../shared/hooks/useForm";
 import { debouncedSearchProduct } from "../../../shared/services/API/product-search";
 import {
-  loadingState,
+  // loadingState,
   errorState,
 } from "../../../shared/utils/loadingErrorSetState";
 import { errorChecker } from "../../../shared/utils/randomFunctions";
 import Loader from "../../../shared/components/Loader/Loader";
+import sprite from "../../../assets/svg/sprite.svg";
 import initialState from "./initialState";
 import fields from "./fields";
 import styles from "./diaryAddProductForm.module.scss";
@@ -20,22 +22,23 @@ const DiaryAddProductForm = ({ isMobile, onSubmit }) => {
     initialState,
     isReset: true,
   });
-  const { product, foundProducts, currentProduct, weight, loading, error } =
-    state;
-  const handleFocus = () => {
-    setState((prevState) => {
-      return {
-        ...prevState,
-        foundProducts: [],
-        currentProduct: "",
-        id: null,
-      };
-    });
-  };
+  const {
+    product,
+    foundProducts,
+    currentProduct,
+    weight,
+    clearButton,
+    loading,
+    error,
+  } = state;
 
   useEffect(() => {
     const findProduct = async (product) => {
-      setState(loadingState);
+      setState((prevState) => ({
+        ...prevState,
+        error: null,
+        clearButton: false,
+      }));
       try {
         const result = await debouncedSearchProduct(product);
         setState((prevState) => ({
@@ -65,10 +68,21 @@ const DiaryAddProductForm = ({ isMobile, onSubmit }) => {
       ...prevState,
       product: selectedProduct,
       currentProduct: selectedProduct,
-      foundProducts: [],
       id: requiredId,
+      clearButton: true,
     }));
   };
+
+  const onSelect = (event) => {
+    handleChange(event);
+    const { value } = event.target;
+    if (foundProducts.length > 0) {
+      setCurrentProduct(value);
+    }
+  };
+
+  const clearState = () => setState(initialState);
+
   return (
     <div className="wrapper_container">
       <form
@@ -80,17 +94,23 @@ const DiaryAddProductForm = ({ isMobile, onSubmit }) => {
             Введите название продукта
           </label>
           <input
+            list="productsToSelect"
             className={styles.input}
             value={product}
-            onChange={handleChange}
-            onFocus={handleFocus}
+            onChange={onSelect}
             {...fields.product}
           />
-          {foundProducts.length > 0 && (
-            <ProductSelector
-              list={foundProducts}
-              onChange={setCurrentProduct}
-            />
+          <ProductSelector id="productsToSelect" productsList={foundProducts} />
+          {clearButton && (
+            <button
+              className={styles.clearBtn}
+              onClick={clearState}
+              aria-label="clear input button"
+            >
+              <svg className={styles.icon}>
+                <use href={sprite + "#icon-remove"}></use>
+              </svg>
+            </button>
           )}
         </div>
         <div className={styles.wrapperGrams}>
@@ -122,4 +142,12 @@ const DiaryAddProductForm = ({ isMobile, onSubmit }) => {
   );
 };
 
+DiaryAddProductForm.defaultProps = {
+  onSubmit: () => {},
+};
+
+DiaryAddProductForm.propTypes = {
+  isMobile: PropTypes.bool.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+};
 export default DiaryAddProductForm;

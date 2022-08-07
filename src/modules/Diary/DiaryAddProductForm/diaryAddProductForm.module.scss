@@ -73,12 +73,32 @@
   font-size: 14px;
   line-height: 1.21;
   color: #9b9faa;
+  z-index: 2;
+}
+
+.inputInvisible {
+  @extend .input;
+  z-index: 1;
 }
 
 .input:focus,
 .input:hover {
   border: none;
   border-bottom: 1px solid #e0e0e0;
+}
+
+.clearBtn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: var(--text-color-white);
+  border: none;
+  padding: 5px;
+}
+
+.icon {
+  width: 10px;
+  height: 10px;
 }
 
 .addBtn {

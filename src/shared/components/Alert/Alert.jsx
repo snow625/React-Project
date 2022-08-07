@@ -2,7 +2,7 @@ import Notiflix from "notiflix";
 
 const Alert = ({ message, type }) => {
   return Notiflix.Notify.warning(`${message}`, {
-    timeout: 5000,
+    timeout: 4000,
     fontFamily: "Verdana",
     fontSize: "14px",
     position: "center-top",
