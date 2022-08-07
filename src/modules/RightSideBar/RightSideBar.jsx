@@ -78,13 +78,13 @@ const RightSideBar = () => {
 
               <ul className={style.list}>
                 <li className={style.item}>
-                  <span className="{style.number}">{kcalLeft}</span> kcal
+                  <span className="{style.number}">{kcalLeft}</span> ккал
                 </li>
                 <li className={style.item}>
-                  <span className="{style.number}">{kcalConsumed}</span> kcal
+                  <span className="{style.number}">{kcalConsumed}</span> ккал
                 </li>
                 <li className={style.item}>
-                  <span className="{style.number}">{dailyRate}</span> kcal
+                  <span className="{style.number}">{dailyRate}</span> ккал
                 </li>
                 <li className={style.item}>
                   <span className="{style.number}">{percentsOfDailyRate}</span>{" "}
