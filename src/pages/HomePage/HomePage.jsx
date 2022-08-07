@@ -1,33 +1,41 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import CalculatorСalorieForm from "../../modules/CalculatorСalorieForm";
 import Loader from "../../shared/components/Loader/Loader";
 import Modal from "../../shared/components/Modal";
 import ModalText from "../../shared/components/ModalText";
 import { getDailyRateInGeneral } from "../../shared/services/API/daily-rate";
+import { useModal } from "../../shared/hooks/useModal";
 import { makeRandomProducts } from "../../shared/utils/randomFunctions";
+import { toggleModalRedux } from "../../redux/modal/modal-slice";
 import { errorChecker } from "../../shared/utils/randomFunctions";
+
 import {
   loadingState,
   errorState,
 } from "../../shared/utils/loadingErrorSetState";
 
 import style from "./homePage.module.scss";
+
 const initialState = {
   calories: null,
   notAllowedProducts: [],
-  isModalOpen: false,
   loading: false,
   error: null,
+  isModal: false,
 };
+
 const HomePage = () => {
   const [state, setState] = useState(initialState);
+  const { calories, notAllowedProducts, loading, error, isModal } = state;
   const navigate = useNavigate();
+  const isModalOpen = useModal();
+  const dispatch = useDispatch();
 
   const handleClick = async (data) => {
     setState(loadingState);
-
     const dataValuesToNumbers = {};
     Object.entries(data).forEach(([key, value]) => {
       dataValuesToNumbers[key] = Number(value);
@@ -38,35 +46,35 @@ const HomePage = () => {
       const { dailyRate, notAllowedProducts } = result;
 
       const products = makeRandomProducts(notAllowedProducts);
-
       const calories = Math.trunc(dailyRate);
       setState((prevState) => ({
         ...prevState,
         calories,
         notAllowedProducts: products,
         loading: false,
-        isModalOpen: true,
+        isModal: true,
       }));
     } catch (error) {
+      console.log(error);
       setState((prevState) => {
         return errorState(prevState, error);
       });
     }
   };
 
-  const toggleModal = () => {
-    setState((prevState) => ({
-      ...prevState,
-      isModalOpen: !prevState.isModalOpen,
-    }));
-  };
+  useEffect(() => {
+    if (isModal) {
+      dispatch(toggleModalRedux());
+      setState((prevState) => ({ ...prevState, isModal: false }));
+    }
+  }, [dispatch, isModal]);
 
   const modalButtonClick = () => {
-    toggleModal();
+    dispatch(toggleModalRedux());
+    setState((prevState) => ({ ...prevState, isModal: false }));
     return navigate("/register");
   };
 
-  const { calories, notAllowedProducts, isModalOpen, loading, error } = state;
   return (
     <>
       <div className={`${style.wrapper} container`}>
@@ -75,7 +83,7 @@ const HomePage = () => {
       {loading && <Loader />}
       {error && errorChecker(error)}
       {isModalOpen && (
-        <Modal onClose={toggleModal}>
+        <Modal>
           <ModalText
             calories={calories}
             list={notAllowedProducts}

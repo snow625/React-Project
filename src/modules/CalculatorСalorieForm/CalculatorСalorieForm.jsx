@@ -21,9 +21,7 @@ const CalculatorСalorieForm = ({ onSubmit }) => {
   return (
     <div className="wrapper_container">
       <div className={style.wrapper}>
-        <h2 className={style.title}>
-          Calculate your daily calorie intake right now
-        </h2>
+        <h2 className={style.title}>Рассчитайте свою суточную калорийность</h2>
         <form onSubmit={handleSubmit}>
           <div className={style.containerInputForm}>
             <div className={style.inputFormFirst}>
@@ -46,7 +44,7 @@ const CalculatorСalorieForm = ({ onSubmit }) => {
                 {...fields.desiredWeight}
               />
               <p className={style.labelForBlood} id={"bloodType"}>
-                Blood type *
+                Группа крови *
               </p>
               <div className={style.radioButton}>
                 <RadioField
@@ -73,7 +71,7 @@ const CalculatorСalorieForm = ({ onSubmit }) => {
             </div>
           </div>
           <div className={style.inputFormButton}>
-            <Button type="submit" text="Start losing weight" />
+            <Button type="submit" text="Начать худеть" />
           </div>
         </form>
       </div>

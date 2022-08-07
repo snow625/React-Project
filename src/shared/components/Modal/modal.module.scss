@@ -1,34 +1,38 @@
-
 .overlay {
   position: fixed;
-  top: 0;
+  overflow: auto;
+  top: 108px;
   left: 0;
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(33, 33, 33, 0.12);
-  z-index: 1200;
+  background-color: #fff;
+  z-index: 100;
 }
 
 .modal {
-  padding: 40px 20px; 
-  position: relative;
-  min-height: 600px; //???
+  padding: 40px 20px;
+
+  position: absolute;
+  min-height: 600px;
   max-width: 670px;
   width: 100vw;
   background-color: var(--text-color-white);
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  transform: traslate(-50%, -50%);//???
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   box-shadow: 0px 22px 40px rgba(0, 0, 0, 0.1);
 }
 
 .close_btn {
   display: none;
 }
+
 .container {
   display: flex;
   flex-direction: column;
@@ -40,6 +44,13 @@
 @media screen and (min-width: 670px) {
   .modal {
     padding: 64px 82px;
+  }
+  .overlay {
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(33, 33, 33, 0.12);
   }
   .close_btn {
     cursor: pointer;
@@ -58,88 +69,8 @@
     stroke-width: 0;
     stroke: var(--text-color-black);
     fill: var(--text-color-black);
-  } 
+  }
   .container {
     max-width: 370px;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// .overlay {
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   width: 100vw;
-//   height: 100vh;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   background-color: rgba(33, 33, 33, 0.12);
-//   z-index: 1200;
-// }
-
-// .modal {
-//   padding: 65px 80px 80px 80px;
-//   position: relative;
-//   transform: traslate(-50%, -50%);
-//   min-height: 500px;
-//   max-width: 670px;
-//   // width: 100vw;
-//   // padding: 64px;
-//   background-color: var(--text-color-white);
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: flex-start;
-//   align-items: center;
-//   box-shadow: 0px 22px 40px rgba(0, 0, 0, 0.1);
-
-//   @media (max-width: 480px) {
-//     padding: 20px;
-//   } //???
-
-// }
-// .close_btn {
-//   cursor: pointer;
-//   padding: 7px;
-//   position: absolute;
-//   border: none;
-//   background: transparent;
-//   top: 12px;
-//   right: 12px;
-// }
-// .close_icon {
-//   display: inline-block;
-//   width: 20px;
-//   height: 20px;
-//   stroke-width: 0;
-//   stroke: var(--text-color-black);
-//   fill: var(--text-color-black);
-  
-// } 
-
-
-
-
-
-
-
-

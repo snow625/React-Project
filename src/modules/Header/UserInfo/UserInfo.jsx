@@ -1,50 +1,72 @@
-import { useDispatch, useSelector } from "react-redux/es/exports";
+import { useDispatch, useSelector } from "react-redux";
 import { userLogout } from "../../../redux/auth/auth-operations";
-import { resetSummary } from "../../../redux/summary/summary-slice";
 import { userName } from "../../../redux/auth/auth-selectors";
+import { toggleModalRedux } from "../../../redux/modal/modal-slice";
+import { useModal } from "../../../shared/hooks/useModal";
+import { useMediaPredicate } from "react-media-hook";
+import useAuth from "../../../shared/hooks/useAuth";
 import sprite from "../../../assets/svg/sprite.svg";
-import PropTypes from "prop-types";
-import s from "./user-info.module.scss";
 
-const UserInfo = ({ modalState }) => {
+import style from "./user-info.module.scss";
+
+const UserInfo = () => {
   const dispatch = useDispatch();
-
   const name = useSelector(userName);
+  const isLogin = useAuth();
+  const isModal = useModal();
 
-  const handleClick = () => {
+  const mobile = useMediaPredicate("(max-width: 768px)");
+
+  const handleClickLogOut = () => {
     dispatch(userLogout());
-    dispatch(resetSummary());
   };
 
-  return (
-    <>
-      <div className={s.container}>
-        {modalState ? (
-          <button className={s.iconBtn} aria-label="go back button">
-            <svg className={s.icon}>
-              <use href={sprite + "#icon-goBack"} />
-            </svg>
-          </button>
-        ) : (
-          <>
-            <p className={s.text}>{name}</p>
-            <span className={s.span}></span>
-            <button className={s.btn} type="button" onClick={handleClick}>
-              Exit
-            </button>
-          </>
-        )}
-      </div>
-    </>
-  );
-};
+  const handleClickBack = () => {
+    dispatch(toggleModalRedux());
+  };
 
-UserInfo.defaultProps = {
-  modalState: false,
-};
+  const btnBackMarkup = () => {
+    return (
+      <button
+        className={style.iconBtn}
+        onClick={handleClickBack}
+        aria-label="Кнопка назад"
+      >
+        <svg className={style.icon}>
+          <use href={sprite + "#icon-goBack"} />
+        </svg>
+      </button>
+    );
+  };
 
-UserInfo.propTypes = {
-  modalState: PropTypes.bool.isRequired,
+  const userInfoMarkup = () => {
+    return (
+      <>
+        <p className={style.text}>{name}</p>
+        <span className={style.span}></span>
+        <button className={style.btn} type="button" onClick={handleClickLogOut}>
+          Выйти
+        </button>
+      </>
+    );
+  };
+
+  const isModalOpen = () => {
+    if (!isLogin && mobile && isModal) {
+      return btnBackMarkup();
+    }
+    if (isLogin && mobile && isModal) {
+      return [btnBackMarkup(), userInfoMarkup()];
+    }
+    if (isLogin && mobile && !isModal) {
+      return userInfoMarkup();
+    }
+    if (isLogin) {
+      return userInfoMarkup();
+    }
+  };
+
+  return <>{isModalOpen()}</>;
 };
 
 export default UserInfo;

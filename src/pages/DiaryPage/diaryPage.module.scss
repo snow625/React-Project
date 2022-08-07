@@ -7,6 +7,12 @@
   }
   .diary {
     padding-top: 155px;
-    padding-bottom: 110px;
+
+    // padding-bottom: 110px;
+  }
+}
+.diary {
+  @media (max-width: 768px) {
+    padding-top: 120px;
   }
 }

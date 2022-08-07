@@ -24,7 +24,7 @@ const RightSideBar = () => {
   };
 
   const newSummary = () => {
-    if (daySummary.kcalLeft) {
+    if (daySummary.dailyRate) {
       const dataValuesToMathFloor = {};
 
       Object.entries(daySummary).forEach(([key, value]) => {
@@ -50,9 +50,13 @@ const RightSideBar = () => {
   };
 
   const foodNotRecommendedList = () => {
-    const elements = foodNotRecommended.map((el) => <li key={el}>{el}</li>);
+    const elements = foodNotRecommended.map((el) => (
+      <li className={style.li} key={el}>
+        {el}
+      </li>
+    ));
 
-    return <ol>{elements}</ol>;
+    return <ol className={style.ol}>{elements}</ol>;
   };
 
   const { kcalLeft, kcalConsumed, dailyRate, percentsOfDailyRate } =
@@ -63,23 +67,24 @@ const RightSideBar = () => {
       <div className={style.backbox}>
         <div className={style.box}>
           <div className={style.summary}>
-            <h3 className={style.title}>{`Summary for ${newCurrentDate()}`}</h3>
+            <h3 className={style.title}>{`Сводка за ${newCurrentDate()}`}</h3>
             <div className={style.flexbox}>
               <ul className={style.list}>
-                <li className={style.item}>Left</li>
-                <li className={style.item}>Consumed</li>
-                <li className={style.item}>Daily rate</li>
-                <li className={style.item}>Daily percentage</li>
+                <li className={style.item}>Осталось</li>
+                <li className={style.item}>Употреблено</li>
+                <li className={style.item}>Дневная норма</li>
+                <li className={style.item}>% от нормы</li>
               </ul>
+
               <ul className={style.list}>
                 <li className={style.item}>
-                  <span className="{style.number}">{kcalLeft}</span> kcal
+                  <span className="{style.number}">{kcalLeft}</span> ккал
                 </li>
                 <li className={style.item}>
-                  <span className="{style.number}">{kcalConsumed}</span> kcal
+                  <span className="{style.number}">{kcalConsumed}</span> ккал
                 </li>
                 <li className={style.item}>
-                  <span className="{style.number}">{dailyRate}</span> kcal
+                  <span className="{style.number}">{dailyRate}</span> ккал
                 </li>
                 <li className={style.item}>
                   <span className="{style.number}">{percentsOfDailyRate}</span>{" "}
@@ -89,11 +94,11 @@ const RightSideBar = () => {
             </div>
           </div>
           <div className={style.food}>
-            <h3 className={style.sub_title}>Food not recommended</h3>
-            {foodNotRecommended ? (
+            <h3 className={style.sub_title}>Нерекомендуемые продукты:</h3>
+            {foodNotRecommended.length > 0 ? (
               foodNotRecommendedList()
             ) : (
-              <p className={style.text}>Your diet will be displayed here</p>
+              <p className={style.text}>Здесь будет отображаться Ваш рацион</p>
             )}
           </div>
         </div>

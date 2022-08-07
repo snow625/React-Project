@@ -17,7 +17,7 @@ const DiaryPage = () => {
 
         <RightSideBar />
       </div>
-      {error && errorChecker(error)}
+      {/* {error && errorChecker(error)} */}
     </>
   );
 };

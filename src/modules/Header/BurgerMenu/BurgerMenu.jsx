@@ -12,17 +12,19 @@ const BurgerMenu = ({ onToggle, modalState }) => {
     }
   }, [modalState]);
 
+  const setIconSvg = () => {
+    return modalState ? "#icon-close" : "#icon-menu";
+  };
+
   return (
-    <button className={s.btn} onClick={onToggle}>
-      {!modalState ? (
-        <svg className={s.icon}>
-          <use href={sprite + "#icon-menu"}></use>
-        </svg>
-      ) : (
-        <svg className={s.icon}>
-          <use href={sprite + "#icon-close"}></use>
-        </svg>
-      )}
+    <button
+      className={s.btn}
+      aria-label="Кнопка управления меню навигации"
+      onClick={onToggle}
+    >
+      <svg className={s.icon}>
+        <use href={sprite + setIconSvg()}></use>
+      </svg>
     </button>
   );
 };

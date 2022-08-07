@@ -3,17 +3,23 @@ import { useMediaPredicate } from "react-media-hook";
 import logoBasic from "../../../assets/logo/logoBasic.svg";
 import logoDesktop from "../../../assets/logo/logoDesktop.svg";
 import logo from "../../../assets/logo/logo.svg";
-import PropTypes from "prop-types";
+import useIsLogin from "../../../shared/hooks/useAuth";
+
 import s from "./logo.module.scss";
 
-const Logo = ({ isLogin }) => {
+const Logo = () => {
+  const isLogin = useIsLogin();
   const link = () => {
     return isLogin ? "/calculate" : "/";
   };
 
   const smallerThan1280 = useMediaPredicate("(max-width: 1280px)");
+  const biggerThan768 = useMediaPredicate("(min-width: 768px)");
 
   const logoSet = () => {
+    if (!isLogin && smallerThan1280 && biggerThan768) {
+      return <img src={logo} alt="logo" />;
+    }
     if (!isLogin && smallerThan1280) {
       return <img src={logoBasic} alt="logo" />;
     }
@@ -33,14 +39,6 @@ const Logo = ({ isLogin }) => {
       </NavLink>
     </div>
   );
-};
-
-Logo.defaultProps = {
-  isLogin: false,
-};
-
-Logo.propTypes = {
-  isLogin: PropTypes.bool.isRequired,
 };
 
 export default Logo;

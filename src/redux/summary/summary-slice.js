@@ -2,9 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import initialState from "./summary-initialState";
 import { pending, rejected } from "../../shared/utils/pendingRejected";
-import { getUser } from "../auth/auth-operations";
+import { getUser, userLogout } from "../auth/auth-operations";
 import { addProduct, dayInfo, removeProduct } from "./summary-operations";
 import { makeRandomProducts } from "../../shared/utils/randomFunctions";
+import { loginOldUser } from "../auth/auth-operations";
 
 const summarySlice = createSlice({
   name: "summary",
@@ -13,7 +14,6 @@ const summarySlice = createSlice({
     setDate: (store, { payload }) => {
       store.date = payload.date;
     },
-    resetSummary: () => ({ ...initialState }),
 
     updateSummaryAndnotAllowedProducts: (store, { payload }) => {
       store.notAllowedProducts = makeRandomProducts(payload.notAllowedProducts);
@@ -38,6 +38,19 @@ const summarySlice = createSlice({
         notAllowedProducts: products,
       };
     },
+    [loginOldUser.fulfilled]: (store, { payload }) => {
+      if (payload.user?.userData?.notAllowedProducts?.length > 0) {
+        const products = makeRandomProducts(
+          payload.user.userData.notAllowedProducts
+        );
+        return {
+          ...store,
+          loading: false,
+          notAllowedProducts: products,
+        };
+      }
+    },
+    [userLogout.fulfilled]: () => initialState,
 
     [dayInfo.pending]: pending,
     [dayInfo.rejected]: rejected,
@@ -83,10 +96,12 @@ const summarySlice = createSlice({
     [addProduct.fulfilled]: (store, { payload }) => {
       const { eatenProducts } = payload?.day || payload?.newDay;
       const summary = payload?.newSummary || payload?.daySummary;
+      const newDayId = payload?.newDay?.id || store.dayId;
       const { kcalLeft, kcalConsumed, dailyRate, percentsOfDailyRate } =
         summary;
       return {
         ...store,
+        dayId: newDayId,
         loading: false,
         eatenProducts,
         summary: { kcalConsumed, kcalLeft, dailyRate, percentsOfDailyRate },
@@ -126,7 +141,6 @@ export const {
   setDate,
   updateEatenProducts,
   updateSummaryAndnotAllowedProducts,
-  resetSummary,
 } = summarySlice.actions;
 
 export default summarySlice.reducer;

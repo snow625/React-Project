@@ -1,18 +1,30 @@
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
-import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
+import { toggleModalRedux } from "../../../redux/modal/modal-slice";
+
 import style from "./modal.module.scss";
 import sprite from "../../../assets/svg/sprite.svg";
 
 const modalPlace = document.getElementById("modal-root");
 
-const Modal = (props) => {
-  const { children, onClose } = props;
+const Modal = ({ children }) => {
+  const dispatch = useDispatch();
 
   useEffect(() => {
+    document.body.style.overflow = "hidden";
     document.addEventListener("keydown", handleClose);
-    return () => document.removeEventListener("keydown", handleClose);
+
+    const remove = () => {
+      document.removeEventListener("keydown", handleClose);
+      document.body.style.overflow = "";
+    };
+    return () => remove();
   }, []);
+
+  const onClose = () => {
+    dispatch(toggleModalRedux());
+  };
 
   function handleClose(event) {
     const { target, currentTarget, code } = event;
@@ -39,10 +51,6 @@ const Modal = (props) => {
     </div>,
     modalPlace
   );
-};
-
-Modal.propTypes = {
-  onClose: PropTypes.func.isRequired,
 };
 
 export default Modal;

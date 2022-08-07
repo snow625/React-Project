@@ -87,6 +87,7 @@
   border-bottom: 1px solid #e0e0e0;
 }
 
+
 .clearBtn {
   position: absolute;
   bottom: 0;
@@ -99,6 +100,11 @@
 .icon {
   width: 10px;
   height: 10px;
+
+.input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 50px white inset;
+  -webkit-text-fill-color: #9b9faa;
+
 }
 
 .addBtn {
