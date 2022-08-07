@@ -5,11 +5,8 @@ import ProductSelector from "./ProductSelector/ProductSelector";
 import Button from "../../../shared/components/Button";
 import useForm from "../../../shared/hooks/useForm";
 import { debouncedSearchProduct } from "../../../shared/services/API/product-search";
-import {
-  // loadingState,
-  errorState,
-} from "../../../shared/utils/loadingErrorSetState";
-import { errorChecker } from "../../../shared/utils/randomFunctions";
+import { errorState } from "../../../shared/utils/loadingErrorSetState";
+
 import Loader from "../../../shared/components/Loader/Loader";
 import sprite from "../../../assets/svg/sprite.svg";
 import initialState from "./initialState";
@@ -29,7 +26,6 @@ const DiaryAddProductForm = ({ isMobile, onSubmit }) => {
     weight,
     clearButton,
     loading,
-    error,
   } = state;
 
   useEffect(() => {
@@ -63,7 +59,7 @@ const DiaryAddProductForm = ({ isMobile, onSubmit }) => {
   const setCurrentProduct = (selectedProduct) => {
     const requiredId = foundProducts.find(
       (product) => product.title.ru === selectedProduct
-    )._id;
+    )?._id;
     setState((prevState) => ({
       ...prevState,
       product: selectedProduct,
@@ -72,6 +68,20 @@ const DiaryAddProductForm = ({ isMobile, onSubmit }) => {
       clearButton: true,
     }));
   };
+  useEffect(() => {
+    const reset = () =>
+      setState((prevState) => ({
+        ...prevState,
+        clearButton: false,
+        currentProduct: "",
+        product: "",
+        foundProducts: [],
+      }));
+
+    if (state.product === "" && state.foundProducts.length > 0 && !state.id) {
+      reset();
+    }
+  }, [setState, state.foundProducts.length, state.id, state.product]);
 
   const onSelect = (event) => {
     handleChange(event);
@@ -115,7 +125,7 @@ const DiaryAddProductForm = ({ isMobile, onSubmit }) => {
         </div>
         <div className={styles.wrapperGrams}>
           <label htmlFor={"weight"} className={styles.labelGrams}>
-            Grams
+            Граммы
           </label>
           <input
             className={styles.input}
@@ -137,7 +147,6 @@ const DiaryAddProductForm = ({ isMobile, onSubmit }) => {
         )}
       </form>
       {loading && <Loader />}
-      {error && errorChecker(error)}
     </div>
   );
 };
