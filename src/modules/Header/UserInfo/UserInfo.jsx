@@ -30,7 +30,6 @@ const UserInfo = () => {
   const isModalOpen = () => {
     // человек не залог, с тел и открыл модалку - компонент с кнопкой назад
     if (!isLogin && mobile && isModal) {
-      console.log('1')
       return (
         <button
           className={style.iconBtn}
@@ -45,7 +44,6 @@ const UserInfo = () => {
     }
     // залог, с тел, модалка открыта - компонент с кнопкой и имя и выход
     if (isLogin && mobile && isModal) {
-      console.log('2')
       return (
         <>
           <button
@@ -72,7 +70,6 @@ const UserInfo = () => {
     }
     // залг, с тел, модалкка закрыта - компонент имя и выход
     if (isLogin && mobile && !isModal) {
-      console.log('3')
       return (
         <>
           <p className={style.text}>{name}</p>
@@ -88,7 +85,6 @@ const UserInfo = () => {
       );
     }
     if (isLogin) {
-      console.log('4')
       return (
         <>
           <p className={style.text}>{name}</p>

@@ -12,8 +12,14 @@ const Modal = ({ children }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    document.body.style.overflow = "hidden";
     document.addEventListener("keydown", handleClose);
-    return () => document.removeEventListener("keydown", handleClose);
+
+    const remove = () => {
+      document.removeEventListener("keydown", handleClose);
+      document.body.style.overflow = "";
+    };
+    return () => remove();
   }, []);
 
   const onClose = () => {
