@@ -96,10 +96,12 @@ const summarySlice = createSlice({
     [addProduct.fulfilled]: (store, { payload }) => {
       const { eatenProducts } = payload?.day || payload?.newDay;
       const summary = payload?.newSummary || payload?.daySummary;
+      const newDayId = payload?.newDay?.id || store.dayId;
       const { kcalLeft, kcalConsumed, dailyRate, percentsOfDailyRate } =
         summary;
       return {
         ...store,
+        dayId: newDayId,
         loading: false,
         eatenProducts,
         summary: { kcalConsumed, kcalLeft, dailyRate, percentsOfDailyRate },
