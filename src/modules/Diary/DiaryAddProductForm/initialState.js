@@ -6,5 +6,6 @@ const initialState = {
   weight: "",
   error: null,
   loading: false,
+  clearButton: false,
 };
 export default initialState;

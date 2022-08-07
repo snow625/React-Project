@@ -1,37 +1,32 @@
 import PropTypes from "prop-types";
 import styles from "./productSelector.module.css";
 
-const ProductSelector = ({ list, onChange }) => {
-  const preparedList = list.length > 10 ? list.slice(0, 10) : list;
+const ProductSelector = ({ id, productsList }) => {
+  const preparedList =
+    productsList.length > 10 ? productsList.slice(0, 10) : productsList;
   const elements = preparedList.map((product) => {
     const { _id, title } = product;
     const { ru } = title;
     return (
-      <option key={_id} id={_id} value={ru}>
+      <option className={styles.option} key={_id} id={_id} value={ru}>
         {ru}
       </option>
     );
   });
 
-  const selectHandler = ({ target }) => {
-    const { value } = target;
-    onChange(value);
-  };
-
   return (
-    <select className={styles.select} onChange={selectHandler}>
+    <datalist className={styles.select} id={id}>
       {elements}
-    </select>
+    </datalist>
   );
 };
 
 ProductSelector.defaultProps = {
-  list: [],
-  onChange: () => {},
+  productsList: [],
 };
 
 ProductSelector.propTypes = {
-  list: PropTypes.arrayOf(
+  productsList: PropTypes.arrayOf(
     PropTypes.shape({
       _id: PropTypes.string.isRequired,
       title: PropTypes.shape({
@@ -39,7 +34,7 @@ ProductSelector.propTypes = {
       }),
     })
   ).isRequired,
-  onChange: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default ProductSelector;

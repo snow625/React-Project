@@ -1,5 +1,4 @@
 .listItem {
-  // position: relative;
   display: flex;
   align-items: flex-end;
   margin-right: 14px;
@@ -78,9 +77,6 @@
 }
 
 .btn {
-  // position: absolute;
-  // right: -17px;
-  // top: -50%;
   background-color: transparent;
   border: none;
   padding: 5px 8px 5px 17px;
@@ -96,7 +92,7 @@
   transform: translateY(-30px);
 
   @media (min-width: 1280px) {
-    transform: translateY(-50%);
+    transform: translateY(-40%);
   }
 }
 

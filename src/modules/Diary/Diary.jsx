@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useCallback } from "react";
+
 import { Link, useNavigate } from "react-router-dom";
 import { useMediaPredicate } from "react-media-hook";
 
@@ -28,6 +29,7 @@ const Diary = () => {
   const isModalOpen = useModal();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const nonMobile = !useMediaPredicate("(max-width: 768px)");
 
   const mobile = useMediaPredicate("(max-width: 768px)");
 
@@ -85,7 +87,9 @@ const Diary = () => {
       {isCalculateFinished && (
         <div className={styles.wrapper}>
           <DiaryDateCalendar fetchDayInfo={getDayInfo} />
+           {nonMobile && (
           <DiaryAddProductForm isMobile={false} onSubmit={addNewProduct} />
+        )}
           <DiaryProductsList
             eatenProducts={eatenProducts}
             onClick={deleteProductItem}
