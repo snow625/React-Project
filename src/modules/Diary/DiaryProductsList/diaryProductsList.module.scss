@@ -1,0 +1,37 @@
+.list {
+  max-width: 280px;
+  max-height: 260px;
+  overflow: auto;
+  margin: 0 auto;
+
+  @media (max-width: 767px) {
+    margin-bottom: 60px;
+  }
+
+  @media (min-width: 768px) {
+    margin: 0;
+    max-width: 480px;
+  }
+
+  @media (min-width: 1280px) {
+    max-width: 622px;
+  }
+}
+
+.list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.list::-webkit-scrollbar-track {
+  background-color: #f0f1f3;
+}
+
+.list::-webkit-scrollbar-thumb {
+  background-color: #264061;
+}
+
+.warn {
+  @media (min-width: 1280px) {
+    min-width: 622px;
+  }
+}

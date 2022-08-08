@@ -1,0 +1,107 @@
+.listItem {
+  display: flex;
+  align-items: flex-end;
+  margin-right: 14px;
+
+  @media (min-width: 768px) {
+    margin-right: 40px;
+  }
+}
+
+.listItem:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.item {
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e0e0e0;
+  font-family: Verdana;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.21;
+  letter-spacing: 0.04em;
+  text-align: left;
+
+  @media (min-width: 768px) {
+    padding-bottom: 20px;
+  }
+}
+
+.product {
+  @extend .item;
+  width: 130px;
+
+  @media (min-width: 768px) {
+    width: 240px;
+  }
+}
+
+.grams {
+  @extend .item;
+  width: 49px;
+  margin-left: 8px;
+  text-align: center;
+
+  @media (min-width: 768px) {
+    width: 106px;
+    margin-left: 22px;
+    text-align: right;
+  }
+
+  @media (min-width: 1280px) {
+    width: 107px;
+    margin-left: 48px;
+  }
+}
+
+.calories {
+  @extend .item;
+  padding-bottom: 9px;
+  margin-left: 8px;
+  width: 58px;
+  font-size: 10px;
+  line-height: 1.2;
+
+  @media (min-width: 768px) {
+    width: 106px;
+    margin-left: 46px;
+    font-size: 14px;
+    line-height: 1.21;
+    padding-bottom: 20px;
+    text-align: right;
+  }
+
+  @media (min-width: 768px) {
+    margin-left: 32px;
+  }
+}
+
+.btn {
+  background-color: transparent;
+  border: none;
+  padding: 5px 8px 5px 17px;
+  transform: translatey(-10%);
+
+  @media (min-width: 768px) {
+    padding: 9px 8px 9px 17px;
+  }
+}
+
+.doubleBtn {
+  @extend .btn;
+  transform: translateY(-30px);
+
+  @media (min-width: 1280px) {
+    transform: translateY(-40%);
+  }
+}
+
+.icon {
+  width: 10px;
+  height: 10px;
+
+  @media (min-width: 768px) {
+    width: 12px;
+    height: 12px;
+  }
+}

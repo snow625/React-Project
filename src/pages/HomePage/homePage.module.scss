@@ -1,0 +1,64 @@
+.wrapper {
+  padding-top: 32px;
+
+  @media (max-width: 768px) {
+    padding-top: 120px;
+  }
+
+  padding-top: 32px;
+  padding-bottom: 100px;
+
+  @media (min-width: 768px) {
+    padding-top: 100px;
+    padding-bottom: 400px;
+    background-image:
+      linear-gradient(45deg, transparent 80%, white),
+      linear-gradient(90deg, transparent 90%, white),
+      linear-gradient(180deg, transparent 90%, white),
+      url(../../assets/homePage/tablet/bgi-homepage-tablet-1x.webp);
+    background-size: 768px 550px;
+    background-position: right bottom;
+    background-repeat: no-repeat;
+
+    @media (min-device-pixel-ratio: 2),
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: 
+        linear-gradient(45deg, transparent 80%, white),
+        linear-gradient(90deg, transparent 90%, white),
+        linear-gradient(180deg, transparent 90%, white),
+        url(../../assets/homePage/tablet/bgi-homepage-tablet-2x.webp);
+      background-size: 768px 550px;
+      background-position: right bottom;
+      background-repeat: no-repeat;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    padding-top: 293px;
+    padding-bottom: 111px;
+    background-image: 
+      linear-gradient(45deg, transparent 80%, white),
+      linear-gradient(90deg, transparent 90%, white),
+      linear-gradient(180deg, transparent 90%, white),
+      url(../../assets/homePage/desktop/bgi-homepage-desk-1x.webp);
+    background-size: 1000px 850px;
+    background-position: top right;
+    background-repeat: no-repeat;
+
+    @media (min-device-pixel-ratio: 2),
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: 
+        linear-gradient(45deg, transparent 80%, white),
+        linear-gradient(90deg, transparent 90%, white),
+        linear-gradient(180deg, transparent 90%, white),
+        url(../../assets/homePage/desktop/bgi-homepage-desk-2x.webp);
+      background-size: 1000px 850px;
+      background-position: top right;
+      background-repeat: no-repeat;
+    }
+  }
+}

@@ -1,0 +1,27 @@
+@media screen and (min-width: 1280px) {
+  .wrapper {
+    padding: 0 15px;
+    width: 1280px;
+    display: flex;
+    // align-items: baseline;
+    margin: 0 auto;
+  }
+}
+.wrapper {
+  @media (max-width: 768px) {
+    padding-top: 120px;
+  }
+}
+.form {
+  padding-top: 32px;
+  padding-bottom: 41px;
+
+  @media (min-width: 768px) {
+    padding-top: 100px;
+    padding-bottom: 48px;
+  }
+  @media (min-width: 1280px) {
+    padding-top: 293px;
+    padding-right: 107px;
+  }
+}

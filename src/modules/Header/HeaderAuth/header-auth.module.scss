@@ -1,0 +1,58 @@
+.list {
+  display: flex;
+}
+
+.item {
+  &:not(:first-child) {
+    margin-left: 16px;
+  }
+}
+
+.link {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--text-color);
+  transition: 250ms;
+
+  font-family: "Raleway";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.07;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  &Active {
+    @extend .link;
+    color: var(--text-color-balack);
+  }
+
+  &:hover,
+  &:focus {
+    color: var(--text-color-balack);
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .container {
+    position: absolute;
+    top: 50px;
+    left: 227px;
+  }
+
+  .item:first-child {
+    &::before {
+      content: "";
+
+      position: absolute;
+      left: -38px;
+      bottom: 50%;
+
+      display: inline-block;
+      width: 32px;
+      height: 2px;
+      background: #e0e0e0;
+
+      transform: rotate(90deg);
+    }
+  }
+}

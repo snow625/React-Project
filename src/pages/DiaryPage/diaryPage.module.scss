@@ -1,0 +1,18 @@
+@media screen and (min-width: 1280px) {
+  .wrapper {
+    padding: 0 15px;
+    width: 1280px;
+    display: flex;
+    margin: 0 auto;
+  }
+  .diary {
+    padding-top: 155px;
+
+    // padding-bottom: 110px;
+  }
+}
+.diary {
+  @media (max-width: 768px) {
+    padding-top: 120px;
+  }
+}

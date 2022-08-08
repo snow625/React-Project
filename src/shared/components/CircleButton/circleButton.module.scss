@@ -1,0 +1,33 @@
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background-color: #fc842d;
+
+  @media (max-width: 767px) {
+    margin: 0 auto;
+  }
+
+  @media (min-width: 768px) {
+    margin-left: 87px;
+  }
+
+  @media (min-width: 768px) {
+    margin-left: 60px;
+  }
+}
+
+.mobile {
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+}

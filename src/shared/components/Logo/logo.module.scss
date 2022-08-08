@@ -1,0 +1,46 @@
+.inner {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  display: inline-block;
+  margin-left: 10px;
+  width: 100px;
+  height: 16px;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: black;
+}
+
+@media screen and (max-width: 768px) {
+  .logoDesktop {
+    display: none;
+  }
+
+  .link {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .logoDesktop {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .logo {
+    display: none;
+  }
+
+  .icon {
+    position: absolute;
+    bottom: 3%;
+    left: 85%;
+
+    margin: 0;
+  }
+}

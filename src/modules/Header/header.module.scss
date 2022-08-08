@@ -1,0 +1,44 @@
+.header {
+  padding: 20px 0;
+
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    background-color: white;
+  }
+  .headerLogin {
+    padding-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .header {
+    padding-top: 0;
+    position: absolute;
+    top: 80px;
+    left: calc(50% - 640px);
+    border: none;
+  }
+
+  .wrapper {
+    position: absolute;
+    right: 8px;
+    bottom: 24px;
+  }
+}
