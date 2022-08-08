@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react";
+import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import { useDispatch } from "react-redux";
 import { toggleModalRedux } from "../../../redux/modal/modal-slice";
