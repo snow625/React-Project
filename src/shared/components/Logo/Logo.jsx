@@ -10,7 +10,7 @@ import s from "./logo.module.scss";
 const Logo = () => {
   const isLogin = useIsLogin();
   const link = () => {
-    return isLogin ? "/calculate" : "/";
+    return isLogin ? "/diary" : "/";
   };
 
   const smallerThan1280 = useMediaPredicate("(max-width: 1280px)");

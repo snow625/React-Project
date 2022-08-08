@@ -28,7 +28,7 @@ const RightSideBar = () => {
       const dataValuesToMathFloor = {};
 
       Object.entries(daySummary).forEach(([key, value]) => {
-        dataValuesToMathFloor[key] = Math.floor(value);
+        dataValuesToMathFloor[key] = Math.floor(value)>0? Math.floor(value): "0";
       });
 
       const { kcalLeft, kcalConsumed, dailyRate, percentsOfDailyRate } =
