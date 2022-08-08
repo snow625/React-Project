@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { useDispatch } from "react-redux";
 import { toggleModalRedux } from "../../../redux/modal/modal-slice";
@@ -20,11 +20,7 @@ const Modal = ({ children }) => {
       document.body.style.overflow = "";
     };
     return () => remove();
-  }, []);
-
-  const onClose = () => {
-    dispatch(toggleModalRedux());
-  };
+  }, [handleClose]);
 
   function handleClose(event) {
     const { target, currentTarget, code } = event;
@@ -32,6 +28,10 @@ const Modal = ({ children }) => {
       onClose();
     }
   }
+
+  const onClose = () => {
+    dispatch(toggleModalRedux());
+  };
 
   return createPortal(
     <div onClick={handleClose} className={style.overlay}>
