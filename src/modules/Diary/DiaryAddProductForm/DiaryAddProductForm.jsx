@@ -58,7 +58,7 @@ const DiaryAddProductForm = ({ isMobile, onSubmit }) => {
 
   const setCurrentProduct = (selectedProduct) => {
     const requiredId = foundProducts.find(
-      (product) => product.title.ru === selectedProduct
+      (product) => product.title.ua === selectedProduct
     )?._id;
     setState((prevState) => ({
       ...prevState,
