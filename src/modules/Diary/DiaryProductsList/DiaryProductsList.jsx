@@ -17,7 +17,7 @@ const DiaryProductsList = ({ eatenProducts, onClick }) => {
       ));
       return <ul className={styles.list}>{elements.reverse()}</ul>;
     }
-    return <p className={styles.warn}>Список пустой, добавь новый продукт!</p>;
+    return <p className={styles.warn}>The list is empty, add products.</p>;
   };
 
   return <div className="wrapper_container">{productAnswer()}</div>;

@@ -30,7 +30,7 @@ const UserInfo = () => {
       <button
         className={style.iconBtn}
         onClick={handleClickBack}
-        aria-label="Кнопка назад"
+        aria-label="button back"
       >
         <svg className={style.icon}>
           <use href={sprite + "#icon-goBack"} />
@@ -45,7 +45,7 @@ const UserInfo = () => {
         <p className={style.text}>{name}</p>
         <span className={style.span}></span>
         <button className={style.btn} type="button" onClick={handleClickLogOut}>
-          Выйти
+          Exit
         </button>
       </>
     );

@@ -32,11 +32,11 @@ const LoginForm = ({ onSubmit }) => {
         {...fields.password}
       />
       <div className={style.button_wrapper}>
-        <Button type="submit" text="Войти" />
+        <Button type="submit" text="Log in" />
         <Button
           onClick={handleClick}
           type="button"
-          text="Регистрация"
+          text="Register"
           white="true"
         />
       </div>

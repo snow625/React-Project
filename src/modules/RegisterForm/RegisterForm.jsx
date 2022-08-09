@@ -31,8 +31,8 @@ const RegisterForm = ({ onSubmit }) => {
         {...fields.password}
       />
       <div className={style.button_wrapper}>
-        <Button type="submit" text="Создать" />
-        <Button onClick={handleClick} type="button" text="Войти" white="true" />
+        <Button type="submit" text="Register" />
+        <Button onClick={handleClick} type="button" text="Log in" white="true" />
       </div>
     </form>
   );

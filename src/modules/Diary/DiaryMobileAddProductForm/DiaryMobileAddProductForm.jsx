@@ -36,9 +36,7 @@ const DiaryAddProductForm = ({ onSubmit }) => {
       try {
         const result = await searchProduct(product);
         setState((prevState) => ({ ...prevState, foundProducts: result }));
-      } catch (error) {
-        console.log(error);
-      }
+      } catch (error) {}
     };
 
     if (currentProduct) {
@@ -66,7 +64,7 @@ const DiaryAddProductForm = ({ onSubmit }) => {
       <form className={styles.addForm} onSubmit={handleSubmit}>
         <div className={styles.wrapperProduct}>
           <label htmlFor={"product"} className={styles.label}>
-            Введите название продукта
+            Enter product name in "ua"
           </label>
           <input
             name="product"

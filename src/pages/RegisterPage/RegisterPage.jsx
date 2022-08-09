@@ -34,7 +34,7 @@ const RegisterPage = () => {
 
   return (
     <div className={`container ${style.wrapper}`}>
-      <h2 className={style.title}>Регистрация:</h2>
+      <h2 className={style.title}>Register:</h2>
       <RegisterForm onSubmit={onSubmit} />
       {error && errorChecker(error)}
       {loading && <Loader />}

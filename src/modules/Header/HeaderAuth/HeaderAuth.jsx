@@ -11,12 +11,12 @@ const HeaderAuth = () => {
       <ul className={s.list}>
         <li className={s.item}>
           <NavLink className={getLinkClassName} to="/login">
-            Вход
+            sign in
           </NavLink>
         </li>
         <li className={s.item}>
           <NavLink className={getLinkClassName} to="/register">
-            регистрация
+            registration
           </NavLink>
         </li>
       </ul>
