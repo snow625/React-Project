@@ -58,7 +58,7 @@ const DiaryAddProductForm = ({ isMobile, onSubmit }) => {
 
   const setCurrentProduct = (selectedProduct) => {
     const requiredId = foundProducts.find(
-      (product) => product.title.ru === selectedProduct
+      (product) => product.title.ua === selectedProduct
     )?._id;
     setState((prevState) => ({
       ...prevState,
@@ -101,7 +101,7 @@ const DiaryAddProductForm = ({ isMobile, onSubmit }) => {
       >
         <div className={styles.wrapperProduct}>
           <label htmlFor={"product"} className={styles.label}>
-            Введите название продукта
+            Enter product name
           </label>
           <input
             list="productsToSelect"
@@ -125,7 +125,7 @@ const DiaryAddProductForm = ({ isMobile, onSubmit }) => {
         </div>
         <div className={styles.wrapperGrams}>
           <label htmlFor={"weight"} className={styles.labelGrams}>
-            Граммы
+            Grams
           </label>
           <input
             className={styles.input}

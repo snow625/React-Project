@@ -6,18 +6,14 @@ import style from "./modalText.module.scss";
 const ModalText = ({ calories, list, onClick }) => {
   return (
     <>
-      <h2 className={style.title}>
-        Ваша рекомендуемая суточная норма калорий составляет:
-      </h2>
+      <h2 className={style.title}>Your recommended daily calorie intake is:</h2>
       <p className={style.text}>
-        {calories} <span className={style.amount}>ккал</span>
+        {calories} <span className={style.amount}>kcal</span>
       </p>
-      <h3 className={style.sub_title}>
-        Продукты, которые вам не рекомендуется употреблять
-      </h3>
+      <h3 className={style.sub_title}>Foods you should not eat</h3>
       <ModalList list={list} />
 
-      <Button type="button" onClick={onClick} text="Начать худеть" />
+      <Button type="button" onClick={onClick} text="Start losing weight" />
     </>
   );
 };

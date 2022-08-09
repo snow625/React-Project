@@ -87,9 +87,9 @@ const Diary = () => {
       {isCalculateFinished && (
         <div className={styles.wrapper}>
           <DiaryDateCalendar fetchDayInfo={getDayInfo} />
-           {nonMobile && (
-          <DiaryAddProductForm isMobile={false} onSubmit={addNewProduct} />
-        )}
+          {nonMobile && (
+            <DiaryAddProductForm isMobile={false} onSubmit={addNewProduct} />
+          )}
           <DiaryProductsList
             eatenProducts={eatenProducts}
             onClick={deleteProductItem}
@@ -111,12 +111,12 @@ const Diary = () => {
             <DiaryDateCalendar fetchDayInfo={getDayInfo} />
           </div>
           <div className={styles.wrapperComponent}>
-            <h3 className={styles.title}>Здравствуй новый пользоватеть!</h3>
+            <h3 className={styles.title}>Welcome new user!</h3>
             <p className={styles.text}>
-              Наше приложение предлагает Вам соблюдать диету и рассчитывать
-              каллории. Для того чтобы начать худеть сначала{" "}
+              Our application offers you to follow a diet and count calories. To
+              start losing weight first{" "}
               <Link className={styles.linkTo} to={"/calculate"}>
-                Рассчитай диету
+                Calculate your diary.
               </Link>{" "}
             </p>
           </div>

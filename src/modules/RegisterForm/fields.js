@@ -1,13 +1,13 @@
 const fields = {
   name: {
-    label: "Имя *",
+    label: "Name *",
     name: "username",
     required: true,
     type: "text",
     pattern: "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$",
     minLength: 3,
     maxLength: 254,
-    title: "Введите имя на английском",
+    title: "Input your name",
   },
   email: {
     label: "Email *",
@@ -17,17 +17,17 @@ const fields = {
     minLength: 3,
     maxLength: 254,
     pattern: "[^@]+@[^@]+.[a-zA-Z]{2,6}",
-    title: "Введите email, например: test@gmail.com",
+    title: "Input your email, example: test@gmail.com",
   },
   password: {
-    label: "Пароль *",
+    label: "Password *",
     name: "password",
     required: true,
     type: "password",
     minLength: 8,
     maxLength: 100,
     pattern: "(?=.*[0-9])(?=.*[a-z]|[0-9]).{7,}",
-    title: "Введите пароль, например: qwerty123",
+    title: "Input your password, example: qwerty123",
   },
 };
 

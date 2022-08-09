@@ -11,12 +11,12 @@ const Navigation = () => {
       <ul className={s.list}>
         <li className={s.item}>
           <NavLink className={getLinkClassName} to="/diary">
-            Дневник
+            Diary
           </NavLink>
         </li>
         <li className={s.item}>
           <NavLink className={getLinkClassName} to="/calculate">
-            Калькулятор
+            Calculator
           </NavLink>
         </li>
       </ul>

@@ -17,11 +17,7 @@ const BurgerMenu = ({ onToggle, modalState }) => {
   };
 
   return (
-    <button
-      className={s.btn}
-      aria-label="Кнопка управления меню навигации"
-      onClick={onToggle}
-    >
+    <button className={s.btn} aria-label="navigate button" onClick={onToggle}>
       <svg className={s.icon}>
         <use href={sprite + setIconSvg()}></use>
       </svg>

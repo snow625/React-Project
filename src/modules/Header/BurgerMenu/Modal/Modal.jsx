@@ -12,12 +12,12 @@ const Modal = ({ onClose }) => {
         <ul className={s.list}>
           <li className={s.item}>
             <NavLink onClick={onClose} className={s.link} to="/diary">
-              Дневник
+              Diary
             </NavLink>
           </li>
           <li className={s.item}>
             <NavLink onClick={onClose} className={s.link} to="/calculate">
-              Калькулятор
+              Calculator
             </NavLink>
           </li>
         </ul>
