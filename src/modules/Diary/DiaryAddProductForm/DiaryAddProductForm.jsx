@@ -101,7 +101,7 @@ const DiaryAddProductForm = ({ isMobile, onSubmit }) => {
       >
         <div className={styles.wrapperProduct}>
           <label htmlFor={"product"} className={styles.label}>
-            Enter product name
+            Enter product name in "ru"
           </label>
           <input
             list="productsToSelect"
